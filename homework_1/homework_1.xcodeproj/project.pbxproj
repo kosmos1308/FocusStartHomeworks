@@ -14,6 +14,7 @@
 		E91280BB272DC98F009CBC25 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91280BA272DC98F009CBC25 /* MainTabBarController.swift */; };
 		E91280BD272DC9D9009CBC25 /* CarsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91280BC272DC9D9009CBC25 /* CarsViewController.swift */; };
 		E91280BF272DC9EE009CBC25 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91280BE272DC9EE009CBC25 /* ListViewController.swift */; };
+		E91280C1272DCCAA009CBC25 /* Cars.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91280C0272DCCAA009CBC25 /* Cars.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		E91280BA272DC98F009CBC25 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		E91280BC272DC9D9009CBC25 /* CarsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarsViewController.swift; sourceTree = "<group>"; };
 		E91280BE272DC9EE009CBC25 /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
+		E91280C0272DCCAA009CBC25 /* Cars.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cars.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,14 +62,39 @@
 			children = (
 				E91280A6272DC770009CBC25 /* AppDelegate.swift */,
 				E91280A8272DC770009CBC25 /* SceneDelegate.swift */,
-				E91280BA272DC98F009CBC25 /* MainTabBarController.swift */,
-				E91280BC272DC9D9009CBC25 /* CarsViewController.swift */,
-				E91280BE272DC9EE009CBC25 /* ListViewController.swift */,
+				E91280C2272DCCC0009CBC25 /* Model */,
+				E91280C4272DCCE8009CBC25 /* View */,
+				E91280C3272DCCCE009CBC25 /* Controllers */,
 				E91280AF272DC772009CBC25 /* Assets.xcassets */,
 				E91280B1272DC772009CBC25 /* LaunchScreen.storyboard */,
 				E91280B4272DC772009CBC25 /* Info.plist */,
 			);
 			path = homework_1;
+			sourceTree = "<group>";
+		};
+		E91280C2272DCCC0009CBC25 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				E91280C0272DCCAA009CBC25 /* Cars.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		E91280C3272DCCCE009CBC25 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				E91280BA272DC98F009CBC25 /* MainTabBarController.swift */,
+				E91280BC272DC9D9009CBC25 /* CarsViewController.swift */,
+				E91280BE272DC9EE009CBC25 /* ListViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		E91280C4272DCCE8009CBC25 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -143,6 +170,7 @@
 				E91280A9272DC770009CBC25 /* SceneDelegate.swift in Sources */,
 				E91280BB272DC98F009CBC25 /* MainTabBarController.swift in Sources */,
 				E91280BF272DC9EE009CBC25 /* ListViewController.swift in Sources */,
+				E91280C1272DCCAA009CBC25 /* Cars.swift in Sources */,
 				E91280BD272DC9D9009CBC25 /* CarsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

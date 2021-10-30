@@ -24,9 +24,8 @@ class MainTabBarController: UITabBarController {
             generateNavigationController(rootViewController: carsVC, title: "Cars", image: carsImage),
             generateNavigationController(rootViewController: listVC, title: "List", image: listImage)
         ]
-
-        
     }
+    
     
     func generateNavigationController(rootViewController: UIViewController, title: String, image: UIImage) -> UIViewController {
         
@@ -36,8 +35,4 @@ class MainTabBarController: UITabBarController {
         
         return navigationVC
     }
-    
-
-
-
 }
