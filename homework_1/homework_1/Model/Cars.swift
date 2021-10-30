@@ -8,8 +8,8 @@
 import Foundation
 
 enum Body: String, CaseIterable {
-    case saloon = "Седан"
-    case estate = "Хэетчбек"
+    case sedan = "Седан"
+    case hatchback = "Хэтчбек"
     case coupe = "Купе"
 }
 
@@ -17,8 +17,8 @@ struct Cars {
     var manufacturer: String
     var model: String
     var body: Body
-    var yearOfIssue: Int
-    var carNumber: String
+    var yearOfIssue: Int?
+    var carNumber: String?
     
     static var carsArray = [Cars]()
 }
