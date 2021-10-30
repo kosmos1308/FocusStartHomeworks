@@ -46,11 +46,62 @@ class CarsViewController: UIViewController {
         super.viewDidLoad()
 
         title = "Cars"
-        view.backgroundColor = .systemBackground
+        view.backgroundColor = .systemGray6
         
+        setupTextFields()
+        showAddCarButton()
     }
     
     
+    func setupTextFields() {
+        manufacturerTextField.frame = CGRect(x: Int(view.bounds.origin.x + 20), y: Int(view.bounds.origin.y + 100), width: Int(view.bounds.width/2 - 20), height: 40)
+        manufacturerTextField.placeholder = "Марка *"
+        manufacturerTextField.inputView = nameCarPicker
+        manufacturerTextField.inputAccessoryView = toolBar
+        manufacturerTextField.borderStyle = .roundedRect
+        view.addSubview(manufacturerTextField)
+        
+        modelTextField.frame = CGRect(x: Int(view.bounds.origin.x + manufacturerTextField.bounds.width + 30), y: Int(view.bounds.origin.y + 100), width: Int(view.bounds.width/2 - 30), height: 40)
+        modelTextField.placeholder = "Модель *"
+        modelTextField.inputView = nameCarPicker
+        modelTextField.inputAccessoryView = toolBar
+        modelTextField.borderStyle = .roundedRect
+        view.addSubview(modelTextField)
+        
+        bodyTextField.frame = CGRect(x: Int(view.bounds.origin.x + 20), y: Int(view.bounds.origin.y + 150), width: Int(view.bounds.width - 40), height: 40)
+        bodyTextField.placeholder = "Тип кузова *"
+        bodyTextField.inputView = bodyPicker
+        bodyTextField.inputAccessoryView = toolBar
+        bodyTextField.borderStyle = .roundedRect
+        view.addSubview(bodyTextField)
+        
+        yearTextField.frame = CGRect(x: Int(view.bounds.origin.x + 20), y: Int(view.bounds.origin.y + 200), width: Int(view.bounds.width - 40), height: 40)
+        yearTextField.placeholder = "Год выпуска"
+        yearTextField.borderStyle = .roundedRect
+        view.addSubview(yearTextField)
+        
+        carNumberTextField.frame = CGRect(x: Int(view.bounds.origin.x + 20), y: Int(view.bounds.origin.y + 250), width: Int(view.bounds.width - 40), height: 40)
+        carNumberTextField.placeholder = "Гос. номер"
+        carNumberTextField.borderStyle = .roundedRect
+        view.addSubview(carNumberTextField)
+    }
+    
+    
+    func showAddCarButton() {
+        addCarButton.frame = CGRect(x: Int(view.bounds.origin.x + 20), y: Int(view.bounds.origin.y + 350), width: Int(view.bounds.width - 40), height: 40)
+        addCarButton.backgroundColor = .systemGreen
+        addCarButton.setTitleColor(.white, for: .normal)
+        addCarButton.setTitle("Добавить авто", for: .normal)
+        addCarButton.layer.cornerRadius = 5
+        addCarButton.addTarget(self, action: #selector(tapAddCarButton), for: .touchUpInside)
+        view.addSubview(addCarButton)
+    }
+    
+    
+    @objc func tapAddCarButton() {
+        
+    }
+        
 
    
 
