@@ -82,33 +82,48 @@ class CarsViewController: UIViewController {
     
     //MARK: - setup textFields
     func setupTextFields() {
-        manufacturerTextField.frame = CGRect(x: Int(view.bounds.origin.x + 20), y: Int(view.bounds.origin.y + 100), width: Int(view.bounds.width/2 - 20), height: 40)
+        manufacturerTextField.frame = CGRect(x: Int(view.bounds.origin.x + 20),
+                                             y: Int(view.bounds.origin.y + 100),
+                                             width: Int(view.bounds.width/2 - 20),
+                                             height: 40)
         manufacturerTextField.placeholder = "Марка *"
         manufacturerTextField.inputView = nameCarPicker
         manufacturerTextField.inputAccessoryView = toolBar
         manufacturerTextField.borderStyle = .roundedRect
         view.addSubview(manufacturerTextField)
         
-        modelTextField.frame = CGRect(x: Int(view.bounds.origin.x + manufacturerTextField.bounds.width + 30), y: Int(view.bounds.origin.y + 100), width: Int(view.bounds.width/2 - 30), height: 40)
+        modelTextField.frame = CGRect(x: Int(view.bounds.origin.x + manufacturerTextField.bounds.width + 30),
+                                      y: Int(view.bounds.origin.y + 100),
+                                      width: Int(view.bounds.width/2 - 30),
+                                      height: 40)
         modelTextField.placeholder = "Модель *"
         modelTextField.inputView = nameCarPicker
         modelTextField.inputAccessoryView = toolBar
         modelTextField.borderStyle = .roundedRect
         view.addSubview(modelTextField)
         
-        bodyTextField.frame = CGRect(x: Int(view.bounds.origin.x + 20), y: Int(view.bounds.origin.y + 150), width: Int(view.bounds.width - 40), height: 40)
+        bodyTextField.frame = CGRect(x: Int(view.bounds.origin.x + 20),
+                                     y: Int(view.bounds.origin.y + 150),
+                                     width: Int(view.bounds.width - 40),
+                                     height: 40)
         bodyTextField.placeholder = "Тип кузова *"
         bodyTextField.inputView = bodyCarPicker
         bodyTextField.inputAccessoryView = toolBar
         bodyTextField.borderStyle = .roundedRect
         view.addSubview(bodyTextField)
         
-        yearTextField.frame = CGRect(x: Int(view.bounds.origin.x + 20), y: Int(view.bounds.origin.y + 200), width: Int(view.bounds.width - 40), height: 40)
+        yearTextField.frame = CGRect(x: Int(view.bounds.origin.x + 20),
+                                     y: Int(view.bounds.origin.y + 200),
+                                     width: Int(view.bounds.width - 40),
+                                     height: 40)
         yearTextField.placeholder = "Год выпуска"
         yearTextField.borderStyle = .roundedRect
         view.addSubview(yearTextField)
         
-        carNumberTextField.frame = CGRect(x: Int(view.bounds.origin.x + 20), y: Int(view.bounds.origin.y + 250), width: Int(view.bounds.width - 40), height: 40)
+        carNumberTextField.frame = CGRect(x: Int(view.bounds.origin.x + 20),
+                                          y: Int(view.bounds.origin.y + 250),
+                                          width: Int(view.bounds.width - 40),
+                                          height: 40)
         carNumberTextField.placeholder = "Гос. номер"
         carNumberTextField.borderStyle = .roundedRect
         view.addSubview(carNumberTextField)
@@ -117,7 +132,10 @@ class CarsViewController: UIViewController {
     
     //MARK: - show button "Добавить авто" + action
     func showAddCarButton() {
-        addCarButton.frame = CGRect(x: Int(view.bounds.origin.x + 20), y: Int(view.bounds.origin.y + 350), width: Int(view.bounds.width - 40), height: 40)
+        addCarButton.frame = CGRect(x: Int(view.bounds.origin.x + 20),
+                                    y: Int(view.bounds.origin.y + 350),
+                                    width: Int(view.bounds.width - 40),
+                                    height: 40)
         addCarButton.backgroundColor = .systemGreen
         addCarButton.setTitleColor(.white, for: .normal)
         addCarButton.setTitle("Добавить авто", for: .normal)
@@ -134,22 +152,28 @@ class CarsViewController: UIViewController {
         
         //body
         let selectedBodyCar = bodyCarPicker.selectedRow(inComponent: 0)
+        //print("selectedBodyCar:", selectedBodyCar)
         let bodyCar: Body = .allCases[selectedBodyCar]
         
         //year
         guard let yearCar = yearTextField.text else {return}
         let yearOfIssue = Int(yearCar)
-         
+        
         //number car
         guard let carNumber = carNumberTextField.text else {return}
 
         //create new car
-        let car = Cars(manufacturer: manufacturerCar, model: modelCar, body: bodyCar, yearOfIssue: yearOfIssue, carNumber: carNumber)
-        Cars.carsArray.append(car)
-//        print("car: ", car)
-//        print("Cars.carsArray", Cars.carsArray)
-        
-        //delete text in textField
+        let car = Cars(manufacturer: manufacturerCar,
+                       model: modelCar, body: bodyCar,
+                       yearOfIssue: yearOfIssue,
+                       carNumber: carNumber)
+        Cars.carsArray.append(car) //add car in array
+        print("Cars.carsArray: ", Cars.carsArray)
+        deleteTextInTextFields() //delete text in textField
+    }
+    
+    //MARK: - delete text in textFields
+    func deleteTextInTextFields() {
         manufacturerTextField.text = ""
         modelTextField.text = ""
         bodyTextField.text = ""
@@ -158,7 +182,7 @@ class CarsViewController: UIViewController {
     }
     
  
-    //MARK: - show pickers + button "Done"
+    //MARK: - show pickers + button "Done" action
     func showPickers() {
         nameCarPicker.dataSource = self
         nameCarPicker.delegate = self
@@ -168,7 +192,10 @@ class CarsViewController: UIViewController {
         bodyCarPicker.delegate = self
         bodyCarPicker.tag = 1
 
-        let doneButton = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(tapDoneButton))
+        let doneButton = UIBarButtonItem(title: "Done",
+                                         style: .done,
+                                         target: self,
+                                         action: #selector(tapDoneButton))
         toolBar.barStyle = .default
         toolBar.sizeToFit()
         toolBar.setItems([doneButton], animated: true)
@@ -215,12 +242,8 @@ extension CarsViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         
-        var numberManufacturerRow: Int = 0
+        var numberManufacturerRow: Int
         numberManufacturerRow = nameCarPicker.selectedRow(inComponent: 0)
-        
-        if modelTextField.text == "" {
-            numberManufacturerRow = 0
-        }
         
         switch pickerView.tag {
         case 0:
@@ -244,6 +267,7 @@ extension CarsViewController: UIPickerViewDelegate, UIPickerViewDataSource {
         
         nameCarPicker.reloadComponent(0)
         nameCarPicker.reloadComponent(1)
+        bodyCarPicker.reloadComponent(0)
         let numberRow = nameCarPicker.selectedRow(inComponent: 0)
         
         switch pickerView.tag {
