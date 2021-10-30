@@ -4,6 +4,23 @@
 //
 //  Created by pavel on 30.10.21.
 //
+//Функционал приложения
+//Приложение должно обладать интерфейсом взаимодействия с пользователем
+//(меню с возможностью выбора нужного варианта).
+//
+//Основные функции:
+//1. Добавление нового автомобиля
+//2. Вывод списка добавленных автомобилей
+//3. Вывод списка автомобилей с использованием фильтра по типу кузова автомобиля
+
+//Тип кузова
+//Необходимо использовать enum с названием Body, в котором будут перечислены поддерживаемые приложением типы
+//Отображение информации об автомобиле
+//Отображение информации должно быть в формате:
+//• <Поле>: <Значение>
+//Для необязательных полей при отсутствии значения:
+//• год выпуска – отображать «-»
+//• гос номер – пропускать это поле (оно не должно отображаться)
 
 import UIKit
 
@@ -54,7 +71,7 @@ class CarsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        title = "Cars"
+        title = "Авто"
         view.backgroundColor = .systemGray6
         
         setupTextFields()
@@ -129,6 +146,8 @@ class CarsViewController: UIViewController {
         //create new car
         let car = Cars(manufacturer: manufacturerCar, model: modelCar, body: bodyCar, yearOfIssue: yearOfIssue, carNumber: carNumber)
         Cars.carsArray.append(car)
+//        print("car: ", car)
+//        print("Cars.carsArray", Cars.carsArray)
         
         //delete text in textField
         manufacturerTextField.text = ""

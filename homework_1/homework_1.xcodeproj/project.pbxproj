@@ -15,6 +15,7 @@
 		E91280BD272DC9D9009CBC25 /* CarsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91280BC272DC9D9009CBC25 /* CarsViewController.swift */; };
 		E91280BF272DC9EE009CBC25 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91280BE272DC9EE009CBC25 /* ListViewController.swift */; };
 		E91280C1272DCCAA009CBC25 /* Cars.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91280C0272DCCAA009CBC25 /* Cars.swift */; };
+		E91280C6272DE16C009CBC25 /* ListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91280C5272DE16C009CBC25 /* ListTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		E91280BC272DC9D9009CBC25 /* CarsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarsViewController.swift; sourceTree = "<group>"; };
 		E91280BE272DC9EE009CBC25 /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		E91280C0272DCCAA009CBC25 /* Cars.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cars.swift; sourceTree = "<group>"; };
+		E91280C5272DE16C009CBC25 /* ListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +95,7 @@
 		E91280C4272DCCE8009CBC25 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				E91280C5272DE16C009CBC25 /* ListTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -166,6 +169,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E91280C6272DE16C009CBC25 /* ListTableViewCell.swift in Sources */,
 				E91280A7272DC770009CBC25 /* AppDelegate.swift in Sources */,
 				E91280A9272DC770009CBC25 /* SceneDelegate.swift in Sources */,
 				E91280BB272DC98F009CBC25 /* MainTabBarController.swift in Sources */,
