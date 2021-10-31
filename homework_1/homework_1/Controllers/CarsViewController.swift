@@ -100,6 +100,7 @@ class CarsViewController: UIViewController {
         modelTextField.inputView = nameCarPicker
         modelTextField.inputAccessoryView = toolBar
         modelTextField.borderStyle = .roundedRect
+        modelTextField.isUserInteractionEnabled = false
         view.addSubview(modelTextField)
         
         bodyTextField.frame = CGRect(x: Int(view.bounds.origin.x + 20),
@@ -140,37 +141,61 @@ class CarsViewController: UIViewController {
         addCarButton.setTitleColor(.white, for: .normal)
         addCarButton.setTitle("Добавить авто", for: .normal)
         addCarButton.layer.cornerRadius = 5
-        addCarButton.addTarget(self, action: #selector(tapAddCarButton), for: .touchUpInside)
+        addCarButton.addTarget(self, action: #selector(tapAddCarButton),
+                               for: .touchUpInside)
         view.addSubview(addCarButton)
+    }
+    
+    func reloadComponentsInPicers() {
+        nameCarPicker.reloadComponent(0)
+        nameCarPicker.reloadComponent(1)
+        bodyCarPicker.reloadComponent(0)
     }
     
     
     @objc func tapAddCarButton() {
-        //manufacturer and model car
-        guard let manufacturerCar = manufacturerTextField.text else {return}
-        guard let modelCar = modelTextField.text else {return}
         
-        //body
-        let selectedBodyCar = bodyCarPicker.selectedRow(inComponent: 0)
-        //print("selectedBodyCar:", selectedBodyCar)
-        let bodyCar: Body = .allCases[selectedBodyCar]
-        
-        //year
-        guard let yearCar = yearTextField.text else {return}
-        let yearOfIssue = Int(yearCar)
-        
-        //number car
-        guard let carNumber = carNumberTextField.text else {return}
+        if manufacturerTextField.text == "" || modelTextField.text == "" || bodyTextField.text == "" {
+            showAlert()
+        } else {
+            
+            //manufacturer and model car
+            guard let manufacturerCar = manufacturerTextField.text else {return}
+            guard let modelCar = modelTextField.text else {return}
+            
+            //body
+            let selectedBodyCar = bodyCarPicker.selectedRow(inComponent: 0)
+            //print("selectedBodyCar:", selectedBodyCar)
+            let bodyCar: Body = .allCases[selectedBodyCar]
+            
+            //year
+            guard let yearCar = yearTextField.text else {return}
+            let yearOfIssue = Int(yearCar)
+            
+            //number car
+            guard let carNumber = carNumberTextField.text else {return}
 
-        //create new car
-        let car = Cars(manufacturer: manufacturerCar,
-                       model: modelCar, body: bodyCar,
-                       yearOfIssue: yearOfIssue,
-                       carNumber: carNumber)
-        Cars.carsArray.append(car) //add car in array
-        print("Cars.carsArray: ", Cars.carsArray)
-        deleteTextInTextFields() //delete text in textField
+            //create new car
+            let car = Cars(manufacturer: manufacturerCar,
+                           model: modelCar, body: bodyCar,
+                           yearOfIssue: yearOfIssue,
+                           carNumber: carNumber)
+            Cars.carsArray.append(car) //add car in array
+            print("Cars.carsArray: ", Cars.carsArray)
+            deleteTextInTextFields() //delete text in textField
+        }
+
     }
+    
+    
+    //MARK: - show alert
+    func showAlert() {
+        let alert = UIAlertController(title: "Ошибка!", message: "Заполните обязательные поля", preferredStyle: .alert)
+        let ok = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alert.addAction(ok)
+        present(alert, animated: true, completion: nil)
+    }
+    
     
     //MARK: - delete text in textFields
     func deleteTextInTextFields() {
@@ -241,10 +266,14 @@ extension CarsViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        
-        var numberManufacturerRow: Int
+
+        var numberManufacturerRow: Int = 0
         numberManufacturerRow = nameCarPicker.selectedRow(inComponent: 0)
         
+        if modelTextField.text == "" {
+             numberManufacturerRow = 0
+         }
+       
         switch pickerView.tag {
         case 0:
             if component == 0 {
@@ -254,6 +283,7 @@ extension CarsViewController: UIPickerViewDelegate, UIPickerViewDataSource {
                 return modelsArray[numberManufacturerRow][row]
             }
             return ""
+            
         case 1:
             return Body.allCases[row].rawValue
         
@@ -264,18 +294,28 @@ extension CarsViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        
+    
         nameCarPicker.reloadComponent(0)
         nameCarPicker.reloadComponent(1)
-        bodyCarPicker.reloadComponent(0)
+        
         let numberRow = nameCarPicker.selectedRow(inComponent: 0)
+        print(numberRow)
         
         switch pickerView.tag {
         case 0:
             if component == 0 {
                 manufacturerTextField.text = manufacturerArray[row]
+                if manufacturerTextField.text != "" {
+                    nameCarPicker.reloadComponent(1)
+                    nameCarPicker.reloadComponent(0)
+                    modelTextField.text = " "
+                 }
+                nameCarPicker.reloadComponent(0)
+                nameCarPicker.reloadComponent(1)
             } else if component == 1 {
                 modelTextField.text = modelsArray[numberRow][row]
+                nameCarPicker.reloadComponent(0)
+                nameCarPicker.reloadComponent(1)
             }
         case 1:
             let nameBody: Body = .allCases[row]
@@ -284,5 +324,5 @@ extension CarsViewController: UIPickerViewDelegate, UIPickerViewDataSource {
             break
         }
     }
-    
+
 }

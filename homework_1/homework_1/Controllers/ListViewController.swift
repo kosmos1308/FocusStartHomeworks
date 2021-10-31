@@ -27,6 +27,8 @@ class ListViewController: UIViewController {
         
         setupListCarsTableView()
         addFilterButton()
+    
+        //filterCars()
                 
     }
     
@@ -201,8 +203,57 @@ class ListViewController: UIViewController {
     
     
     @objc func valueChangeSwitch(sender: UISwitch) {
-        
+        switch sender.tag {
+        case 0:
+            if sender.isOn {
+                print("show sedan")
+                //filterCars()
+            } else {
+                print("no sedan")
+            }
+            
+        case 1:
+            if sender.isOn {
+               
+            } else {
+               
+            }
+            
+        case 2:
+            if sender.isOn {
+                
+            } else {
+                
+            }
+            
+        default:
+            break
+        }
     }
+    
+    
+    
+//    func filterCars() {
+//
+//        Cars.carsArray.filter { carsBody in
+//            print("carsBody", carsBody)
+//            print()
+//            print("carsBody.body.rawValue", carsBody.body.rawValue)
+//            return true
+//        }
+//
+//        var sedanFilter = Cars.carsArray.filter { sedan in
+//            if sedan.body.rawValue == "Седан" {
+//                print("yes")
+//                print("sedan.body.rawValue.hasPrefix_C: ", sedan.body.rawValue.hasPrefix("С"))
+//            } else {
+//                print("no")
+//            }
+//            return true
+//        }
+//
+//    }
+    
    
     
 }
@@ -233,9 +284,7 @@ extension ListViewController: UITableViewDelegate, UITableViewDataSource {
         carCell.bodyLabel.text = "Тип кузова: " + bodyCar
         
         //year
-
         let yearCar = Cars.carsArray[indexPath.row].yearOfIssue ?? 0
-        
         if Cars.carsArray[indexPath.row].yearOfIssue == nil {
             carCell.yearLabel.text = "Год выпуска: - "
         } else {
