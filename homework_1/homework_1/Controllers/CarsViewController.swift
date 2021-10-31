@@ -155,10 +155,9 @@ class CarsViewController: UIViewController {
     
     @objc func tapAddCarButton() {
         
-        if manufacturerTextField.text == "" || modelTextField.text == "" || bodyTextField.text == "" {
+        if manufacturerTextField.text == "" || modelTextField.text == "" || modelTextField.text == " " || bodyTextField.text == "" {
             showAlert()
         } else {
-            
             //manufacturer and model car
             guard let manufacturerCar = manufacturerTextField.text else {return}
             guard let modelCar = modelTextField.text else {return}
@@ -273,6 +272,10 @@ extension CarsViewController: UIPickerViewDelegate, UIPickerViewDataSource {
         if modelTextField.text == "" {
              numberManufacturerRow = 0
          }
+        
+//        if manufacturerTextField.text != "" {
+//            numberManufacturerRow = nameCarPicker.selectedRow(inComponent: 0)
+//        }
        
         switch pickerView.tag {
         case 0:

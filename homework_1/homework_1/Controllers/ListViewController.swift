@@ -12,6 +12,8 @@ class ListViewController: UIViewController {
     let listCarsTableView = UITableView()
     let filterView = UIView()
     
+    var listBodyCarsArray = [Cars]()
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -42,7 +44,7 @@ class ListViewController: UIViewController {
     
     
     @objc func tapFilterButton() {
-        showFilterView()
+        showFilterView() //show filterView
     }
    
     
@@ -114,7 +116,9 @@ class ListViewController: UIViewController {
     
     
     @objc func tapAddFilterBodyButton() {
-        print("Применить фильтр")
+        listCarsTableView.reloadData()
+        filterView.frame.origin.x += view.bounds.width + 40
+        filterView.reloadInputViews()
     }
     
     
@@ -203,65 +207,105 @@ class ListViewController: UIViewController {
     
     
     @objc func valueChangeSwitch(sender: UISwitch) {
+        var typeCarsArray: [Cars] = []
         switch sender.tag {
         case 0:
             if sender.isOn {
                 print("show sedan")
-                //filterCars()
+                typeCarsArray = filterSedanCar()
             } else {
-                print("no sedan")
+                typeCarsArray.removeAll()
             }
             
         case 1:
             if sender.isOn {
-               
+                typeCarsArray = filterHatchbackCar()
             } else {
-               
+                typeCarsArray.removeAll()
             }
             
         case 2:
             if sender.isOn {
-                
+                typeCarsArray = filterCoupeCar()
             } else {
-                
+                typeCarsArray.removeAll()
             }
-            
         default:
             break
         }
+        
+        getTypeBodyCar(list: typeCarsArray)
     }
     
     
+    func getTypeBodyCar(list typeBody: [Cars]) {
+        var typeBodyCars = typeBody
+        listBodyCarsArray = typeBodyCars
+        print("listBodyCarsArray: ", listBodyCarsArray)
+    }
     
-//    func filterCars() {
-//
-//        Cars.carsArray.filter { carsBody in
-//            print("carsBody", carsBody)
-//            print()
-//            print("carsBody.body.rawValue", carsBody.body.rawValue)
-//            return true
-//        }
-//
-//        var sedanFilter = Cars.carsArray.filter { sedan in
-//            if sedan.body.rawValue == "Седан" {
-//                print("yes")
-//                print("sedan.body.rawValue.hasPrefix_C: ", sedan.body.rawValue.hasPrefix("С"))
-//            } else {
-//                print("no")
-//            }
-//            return true
-//        }
-//
-//    }
     
-   
+    //MARK: - return all list car
+    func allListCars() -> [Cars] {
+        var allListCar: [Cars] = []
+        for list in Cars.carsArray {
+            allListCar.append(list)
+        }
+        return allListCar
+    }
+    
+    
+    //MARK: - return list sedan, hatchback, coupe cars
+    func filterSedanCar() -> [Cars] {
+        let allList = allListCars()
+        var sedanArray: [Cars] = []
+        let _ = allList.filter { result in
+            if result.body.rawValue.hasPrefix("С") {
+                sedanArray.append(result)
+            }
+            return true
+        }
+        return sedanArray
+    }
+
+    
+    func filterHatchbackCar() -> [Cars] {
+        let allList = allListCars()
+        var hatchbackArray: [Cars] = []
+        let _ = allList.filter { result in
+            if result.body.rawValue.hasPrefix("Х") {
+                hatchbackArray.append(result)
+            }
+            return true
+        }
+        return hatchbackArray
+    }
+        
+        
+    func filterCoupeCar() -> [Cars] {
+        let allList = allListCars()
+        var coupeArray: [Cars] = []
+        let _ = allList.filter { result in
+            if result.body.rawValue.hasPrefix("К") {
+                coupeArray.append(result)
+            }
+            return true
+        }
+        return coupeArray
+    }
     
 }
 
+
+//MARK: - UITableViewDelegate, UITableViewDataSource
 extension ListViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return Cars.carsArray.count
+        if listBodyCarsArray.isEmpty == false {
+            return listBodyCarsArray.count
+        } else {
+            return Cars.carsArray.count
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -275,20 +319,37 @@ extension ListViewController: UITableViewDelegate, UITableViewDataSource {
             carCell.backgroundColor = .white
         }
         
-        //manufacturer + model
-        let nameCar = Cars.carsArray[indexPath.row].manufacturer + " " + Cars.carsArray[indexPath.row].model
-        carCell.nameCarLabel.text = "Модель: " + nameCar
-        
-        //body
-        let bodyCar = Cars.carsArray[indexPath.row].body.rawValue
-        carCell.bodyLabel.text = "Тип кузова: " + bodyCar
-        
-        //year
-        let yearCar = Cars.carsArray[indexPath.row].yearOfIssue ?? 0
-        if Cars.carsArray[indexPath.row].yearOfIssue == nil {
-            carCell.yearLabel.text = "Год выпуска: - "
+        //text cell
+        if listBodyCarsArray.isEmpty == false {
+            let nameCar = listBodyCarsArray[indexPath.row].manufacturer + " " + listBodyCarsArray[indexPath.row].model
+            carCell.nameCarLabel.text = "Модель:" + nameCar
+            
+            let bodyCar = listBodyCarsArray[indexPath.row].body.rawValue
+            carCell.bodyLabel.text = "Тип кузова: " + bodyCar
+            
+            let yearCar = listBodyCarsArray[indexPath.row].yearOfIssue ?? 0
+            if listBodyCarsArray[indexPath.row].yearOfIssue == nil {
+                carCell.yearLabel.text = "Год выпуска: - "
+            } else {
+                carCell.yearLabel.text = "Год выпуска: \(yearCar)"
+            }
+            
         } else {
-            carCell.yearLabel.text = "Год выпуска: \(yearCar)"
+            //manufacturer + model
+            let nameCar = Cars.carsArray[indexPath.row].manufacturer + " " + Cars.carsArray[indexPath.row].model
+            carCell.nameCarLabel.text = "Модель: " + nameCar
+            
+            //body
+            let bodyCar = Cars.carsArray[indexPath.row].body.rawValue
+            carCell.bodyLabel.text = "Тип кузова: " + bodyCar
+            
+            //year
+            let yearCar = Cars.carsArray[indexPath.row].yearOfIssue ?? 0
+            if Cars.carsArray[indexPath.row].yearOfIssue == nil {
+                carCell.yearLabel.text = "Год выпуска: - "
+            } else {
+                carCell.yearLabel.text = "Год выпуска: \(yearCar)"
+            }
         }
         
         return carCell
