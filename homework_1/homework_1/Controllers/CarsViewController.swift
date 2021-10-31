@@ -37,6 +37,13 @@ class CarsViewController: UIViewController {
     let carNumberTextField = UITextField()
     
     let addCarButton = UIButton()
+    let informAddCarLabel: UILabel = {
+        let label = UILabel()
+        label.textAlignment = .center
+        label.text = "Вы добавили автомобиль в гараж"
+        label.textColor = .systemGreen
+        return label
+    }()
     
     let manufacturerArray = ["Audi",
                              "BMW",
@@ -62,9 +69,8 @@ class CarsViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        nameCarPicker.reloadComponent(0)
-        nameCarPicker.reloadComponent(1)
-        bodyCarPicker.reloadComponent(0)
+
+        reloadComponentsInPikcers()
     }
     
 
@@ -131,6 +137,18 @@ class CarsViewController: UIViewController {
     }
     
     
+    //MARK: - show label "Вы добавили автомобиль в гараж"
+    func showInformAddCarLabel() {
+        informAddCarLabel.frame = CGRect(x: Int(view.bounds.origin.x + 20),
+                             y: Int(view.bounds.origin.y + 300),
+                             width: Int(view.bounds.width - 40),
+                             height: 20)
+
+        informAddCarLabel.alpha = 1
+        view.addSubview(informAddCarLabel)
+    }
+    
+    
     //MARK: - show button "Добавить авто" + action
     func showAddCarButton() {
         addCarButton.frame = CGRect(x: Int(view.bounds.origin.x + 20),
@@ -146,7 +164,9 @@ class CarsViewController: UIViewController {
         view.addSubview(addCarButton)
     }
     
-    func reloadComponentsInPicers() {
+    
+    //MARK: - reload component in pickers
+    func reloadComponentsInPikcers() {
         nameCarPicker.reloadComponent(0)
         nameCarPicker.reloadComponent(1)
         bodyCarPicker.reloadComponent(0)
@@ -154,7 +174,6 @@ class CarsViewController: UIViewController {
     
     
     @objc func tapAddCarButton() {
-        
         if manufacturerTextField.text == "" || modelTextField.text == "" || modelTextField.text == " " || bodyTextField.text == "" {
             showAlert()
         } else {
@@ -180,17 +199,30 @@ class CarsViewController: UIViewController {
                            yearOfIssue: yearOfIssue,
                            carNumber: carNumber)
             Cars.carsArray.append(car) //add car in array
-            print("Cars.carsArray: ", Cars.carsArray)
             deleteTextInTextFields() //delete text in textField
-        }
+            reloadComponentsInPikcers() //update picker component
+            showInformAddCarLabel() //show label
 
+            //animate label
+            if informAddCarLabel.alpha == 1 {
+                UIView.animate(withDuration: 3) {
+                    self.informAddCarLabel.alpha = 0
+                }
+            }
+        }
     }
     
     
     //MARK: - show alert
     func showAlert() {
-        let alert = UIAlertController(title: "Ошибка!", message: "Заполните обязательные поля", preferredStyle: .alert)
-        let ok = UIAlertAction(title: "OK", style: .default, handler: nil)
+        let alert = UIAlertController(title: "Ошибка!",
+                                      message: "Заполните обязательные поля",
+                                      preferredStyle: .alert)
+        let ok = UIAlertAction(title: "OK", style: .default) { action in
+            if self.manufacturerTextField.text != "" {
+                self.manufacturerTextField.text = ""
+            }
+        }
         alert.addAction(ok)
         present(alert, animated: true, completion: nil)
     }
@@ -230,6 +262,7 @@ class CarsViewController: UIViewController {
         manufacturerTextField.resignFirstResponder()
         modelTextField.resignFirstResponder()
         bodyTextField.resignFirstResponder()
+        reloadComponentsInPikcers()
     }
 }
 
@@ -269,13 +302,13 @@ extension CarsViewController: UIPickerViewDelegate, UIPickerViewDataSource {
         var numberManufacturerRow: Int = 0
         numberManufacturerRow = nameCarPicker.selectedRow(inComponent: 0)
         
-        if modelTextField.text == "" {
-             numberManufacturerRow = 0
+        if modelTextField.text == "" && manufacturerTextField.text != "" {
+            numberManufacturerRow = 0
          }
         
-//        if manufacturerTextField.text != "" {
-//            numberManufacturerRow = nameCarPicker.selectedRow(inComponent: 0)
-//        }
+        if modelTextField.text == "" && manufacturerTextField.text == "" {
+            numberManufacturerRow = 0
+         }
        
         switch pickerView.tag {
         case 0:
@@ -327,5 +360,4 @@ extension CarsViewController: UIPickerViewDelegate, UIPickerViewDataSource {
             break
         }
     }
-
 }

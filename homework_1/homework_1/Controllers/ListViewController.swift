@@ -14,6 +14,11 @@ class ListViewController: UIViewController {
     
     var listBodyCarsArray = [Cars]()
     
+    let sedanSwitch = UISwitch()
+    let hatchbackSwitch = UISwitch()
+    let coupeSwitch = UISwitch()
+    
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -29,10 +34,8 @@ class ListViewController: UIViewController {
         
         setupListCarsTableView()
         addFilterButton()
-    
-        //filterCars()
-                
     }
+    
     
     //MARK: - add button "Filter" navigationItem + action
     func addFilterButton() {
@@ -118,7 +121,6 @@ class ListViewController: UIViewController {
     @objc func tapAddFilterBodyButton() {
         listCarsTableView.reloadData()
         filterView.frame.origin.x += view.bounds.width + 40
-        filterView.reloadInputViews()
     }
     
     
@@ -178,41 +180,44 @@ class ListViewController: UIViewController {
     
     //MARK: - add switchs on filterView
     func addSwitchsFilterView() {
-        let sedanSwitch = UISwitch()
         sedanSwitch.tag = 0
         sedanSwitch.frame = CGRect(x: Int(filterView.bounds.width - 80), y: Int(filterView.bounds.origin.y + 80), width: 0, height: 0)
-        sedanSwitch.isOn = false
+        //sedanSwitch.isOn = false
         sedanSwitch.addTarget(self, action: #selector(valueChangeSwitch(sender:)),
                               for: .valueChanged)
         
-        let hatchbackSwitch = UISwitch()
         hatchbackSwitch.tag = 1
-        hatchbackSwitch.frame = CGRect(x: Int(filterView.bounds.width - 80), y: Int(filterView.bounds.origin.y + 120), width: 0, height: 0)
-        hatchbackSwitch.isOn = false
+        hatchbackSwitch.frame = CGRect(x: Int(filterView.bounds.width - 80),
+                                     y: Int(filterView.bounds.origin.y + 120),
+                                     width: 0,
+                                     height: 0)
         hatchbackSwitch.addTarget(self, action: #selector(valueChangeSwitch(sender:)),
                                   for: .valueChanged)
         
-        let coupeSwitch = UISwitch()
         coupeSwitch.tag = 2
-        coupeSwitch.frame = CGRect(x: Int(filterView.bounds.width - 80), y: Int(filterView.bounds.origin.y + 160), width: 0, height: 0)
-        coupeSwitch.isOn = false
+        coupeSwitch.frame = CGRect(x: Int(filterView.bounds.width - 80),
+                                   y: Int(filterView.bounds.origin.y + 160),
+                                   width: 0,
+                                   height: 0)
         coupeSwitch.addTarget(self, action: #selector(valueChangeSwitch(sender:)),
                               for: .valueChanged)
         
         filterView.addSubview(sedanSwitch)
         filterView.addSubview(hatchbackSwitch)
         filterView.addSubview(coupeSwitch)
-        
     }
     
     
+    //MARK: - action switch
     @objc func valueChangeSwitch(sender: UISwitch) {
         var typeCarsArray: [Cars] = []
+        
         switch sender.tag {
         case 0:
             if sender.isOn {
-                print("show sedan")
                 typeCarsArray = filterSedanCar()
+                hatchbackSwitch.isOn = false
+                coupeSwitch.isOn = false
             } else {
                 typeCarsArray.removeAll()
             }
@@ -220,28 +225,33 @@ class ListViewController: UIViewController {
         case 1:
             if sender.isOn {
                 typeCarsArray = filterHatchbackCar()
+                sedanSwitch.isOn = false
+                coupeSwitch.isOn = false
             } else {
+                
                 typeCarsArray.removeAll()
             }
             
         case 2:
             if sender.isOn {
                 typeCarsArray = filterCoupeCar()
+                sedanSwitch.isOn = false
+                hatchbackSwitch.isOn = false
             } else {
                 typeCarsArray.removeAll()
             }
         default:
             break
         }
-        
         getTypeBodyCar(list: typeCarsArray)
     }
     
     
+    //MARK: - get type body car
     func getTypeBodyCar(list typeBody: [Cars]) {
-        var typeBodyCars = typeBody
+        let typeBodyCars = typeBody
         listBodyCarsArray = typeBodyCars
-        print("listBodyCarsArray: ", listBodyCarsArray)
+        print(listBodyCarsArray)
     }
     
     
@@ -301,7 +311,7 @@ class ListViewController: UIViewController {
 extension ListViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        if listBodyCarsArray.isEmpty == false {
+        if sedanSwitch.isOn == true || hatchbackSwitch.isOn == true || coupeSwitch.isOn == true {
             return listBodyCarsArray.count
         } else {
             return Cars.carsArray.count
@@ -314,9 +324,9 @@ extension ListViewController: UITableViewDelegate, UITableViewDataSource {
         
         //background cell
         if indexPath.row % 2 == 0 {
-            carCell.backgroundColor = .systemGray6
-        } else {
             carCell.backgroundColor = .white
+        } else {
+            carCell.backgroundColor = .systemGray6
         }
         
         //text cell
