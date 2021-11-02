@@ -1,3 +1,0 @@
-# FocusStartHomeworks
-
-Pavel Pankevich
