@@ -22,16 +22,5 @@ enum Body: String, CaseIterable {
 
         return nil
     }
-    
-//    init?(index: Int) {
-//        for (indexCases, value) in Self.allCases {
-//            if indexCases == index {
-//                self = value
-//                return
-//            }
-//        }
-//
-//        return nil
-//    }
 }
 
