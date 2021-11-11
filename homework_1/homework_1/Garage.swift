@@ -1,5 +1,5 @@
 //
-//  Manager.swift
+//  Garage.swift
 //  homework_1
 //
 //  Created by pavel on 3.11.21.

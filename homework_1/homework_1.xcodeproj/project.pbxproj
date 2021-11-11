@@ -17,7 +17,7 @@
 		E91280C1272DCCAA009CBC25 /* Car.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91280C0272DCCAA009CBC25 /* Car.swift */; };
 		E91280C6272DE16C009CBC25 /* ListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91280C5272DE16C009CBC25 /* ListTableViewCell.swift */; };
 		E964C7C42732AEC500710D34 /* Body.swift in Sources */ = {isa = PBXBuildFile; fileRef = E964C7C32732AEC500710D34 /* Body.swift */; };
-		E964C7C62732B70500710D34 /* Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E964C7C52732B70500710D34 /* Manager.swift */; };
+		E964C7C62732B70500710D34 /* Garage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E964C7C52732B70500710D34 /* Garage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,7 +33,7 @@
 		E91280C0272DCCAA009CBC25 /* Car.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Car.swift; sourceTree = "<group>"; };
 		E91280C5272DE16C009CBC25 /* ListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTableViewCell.swift; sourceTree = "<group>"; };
 		E964C7C32732AEC500710D34 /* Body.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Body.swift; sourceTree = "<group>"; };
-		E964C7C52732B70500710D34 /* Manager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Manager.swift; sourceTree = "<group>"; };
+		E964C7C52732B70500710D34 /* Garage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Garage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,7 +68,7 @@
 			children = (
 				E91280A6272DC770009CBC25 /* AppDelegate.swift */,
 				E91280A8272DC770009CBC25 /* SceneDelegate.swift */,
-				E964C7C52732B70500710D34 /* Manager.swift */,
+				E964C7C52732B70500710D34 /* Garage.swift */,
 				E91280C2272DCCC0009CBC25 /* Model */,
 				E91280C4272DCCE8009CBC25 /* View */,
 				E91280C3272DCCCE009CBC25 /* Controllers */,
@@ -182,7 +182,7 @@
 				E91280BB272DC98F009CBC25 /* MainTabBarController.swift in Sources */,
 				E91280BF272DC9EE009CBC25 /* ListViewController.swift in Sources */,
 				E91280C1272DCCAA009CBC25 /* Car.swift in Sources */,
-				E964C7C62732B70500710D34 /* Manager.swift in Sources */,
+				E964C7C62732B70500710D34 /* Garage.swift in Sources */,
 				E91280BD272DC9D9009CBC25 /* CarsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

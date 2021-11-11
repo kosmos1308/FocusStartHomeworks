@@ -124,23 +124,20 @@ class ListViewController: UIViewController {
     
     //MARK: - add "Выберете тип кузова" label
     func addLabelFilterView() {
-        let informLabel: UILabel = {
-            let label = UILabel()
-            label.frame = CGRect(x: Int(filterView.bounds.origin.x + 40),
+        let informLabel = UILabel()
+        informLabel.frame = CGRect(x: Int(filterView.bounds.origin.x + 40),
                                  y: Int(filterView.bounds.origin.y + 20),
                                  width: Int(filterView.bounds.width - 80),
                                  height: 50)
-            label.font = UIFont(name: "Arial Bold", size: 22)
-            label.text = "Выберете тип кузова"
-            label.textAlignment = .center
-            label.numberOfLines = 0
-            return label
-        }()
+        informLabel.font = UIFont(name: "Arial Bold", size: 22)
+        informLabel.text = "Выберете тип кузова"
+        informLabel.textAlignment = .center
+        informLabel.numberOfLines = 0
         filterView.addSubview(informLabel)
     }
     
     
-    //MARK: - add
+    //MARK: - add picker on filterView
     func addPickerFilterView() {
         bodyFilterPicker.frame = CGRect(x: filterView.bounds.origin.x + 20,
                                         y: filterView.bounds.height/2 - 75,
@@ -153,38 +150,21 @@ class ListViewController: UIViewController {
     
     
     //MARK: - get type body car
-    func getTypeBodyCar(list typeBody: [Car]) {
+    func showListCar(list typeBody: [Car]) {
         let typeBodyCars = typeBody
         listBodyCarsArray = typeBodyCars
     }
     
     
-    //MARK: - return all list car
-    func allListCars() -> [Car] {
-        var allListCar: [Car] = []
-        for list in garage.carsArray {
-            allListCar.append(list)
-        }
-        return allListCar
-    }
-    
-    
     //MARK: - return list sedan, hatchback, coupe cars
     func filterCar() -> [Car] {
-        let allList = allListCars()
-        var filterArray: [Car] = []
-        var _ = allList.filter { result in
-            if result.body == Body.sedan && numberBodyPicker == 0 {
-                filterArray.append(result)
-            } else if result.body == Body.hatchback && numberBodyPicker == 1 {
-                filterArray.append(result)
-            } else if result.body == Body.coupe && numberBodyPicker == 2 {
-                filterArray.append(result)
-            }
-            return true
+        numberBodyPicker = bodyFilterPicker.selectedRow(inComponent: 0)
+        let result = garage.carsArray.filter {
+            $0.body == Body.init(index: bodyFilterPicker.selectedRow(inComponent: 0))
         }
-        return filterArray
+        return result
     }
+
 }
 
 
@@ -272,21 +252,8 @@ extension ListViewController: UIPickerViewDelegate {
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        
-        var typeBody: [Car] = []
-        numberBodyPicker = row
-        
-        switch row {
-        case 0:
-            typeBody = filterCar()
-        case 1:
-            typeBody = filterCar()
-        case 2:
-            typeBody = filterCar()
-        default:
-            break
-        }
-        getTypeBodyCar(list: typeBody)
+        let carsTypeBodyArray: [Car] = filterCar()
+        showListCar(list: carsTypeBodyArray)
     }
 }
 

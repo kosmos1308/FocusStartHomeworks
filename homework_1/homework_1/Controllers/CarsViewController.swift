@@ -138,7 +138,7 @@ class CarsViewController: UIViewController {
     
     
     //MARK: - show label "Вы добавили автомобиль в гараж"
-    func showInformAddCarLabel() {
+    func showAddCarInfoLabel() {
         informAddCarLabel.frame = CGRect(x: Int(view.bounds.origin.x + 20),
                                         y: Int(view.bounds.origin.y + 420),
                                         width: Int(view.bounds.width - 40),
@@ -193,7 +193,7 @@ class CarsViewController: UIViewController {
             garage.carsArray.append(car) //add car in array
             deleteTextInTextFields() //delete text in textField
             reloadComponentsInPikcers() //update picker component
-            showInformAddCarLabel() //show label
+            showAddCarInfoLabel() //show label
 
             //animate label
             if informAddCarLabel.alpha == 1 {
