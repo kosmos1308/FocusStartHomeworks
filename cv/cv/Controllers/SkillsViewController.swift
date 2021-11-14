@@ -15,6 +15,8 @@ class SkillsViewController: UIViewController {
         view.backgroundColor = .systemGray
     }
     
+    
+    
 
    
 

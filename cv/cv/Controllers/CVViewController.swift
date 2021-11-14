@@ -145,7 +145,7 @@ class CVViewController: UIViewController {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.backgroundColor = .systemGray6
-        label.text = "Student TeachMeSkills"
+        //label.text = "Student TeachMeSkills"
         label.font = UIFont(name: "Avenir", size: 20)
         return label
     }()
@@ -154,7 +154,7 @@ class CVViewController: UIViewController {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.backgroundColor = .systemGray5
-        label.text = "Trainee iOS Developer"
+        //label.text = "Trainee iOS Developer"
         label.font = UIFont(name: "Avenir", size: 20)
         return label
     }()
@@ -163,11 +163,13 @@ class CVViewController: UIViewController {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.backgroundColor = .systemGray5
-        label.text = "May 2021 - Oct 2021"
+        //label.text = "May 2021 - Oct 2021"
         label.font = UIFont(name: "Avenir", size: 20)
         label.textColor = .systemGray
         return label
     }()
+    
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -194,6 +196,8 @@ class CVViewController: UIViewController {
         setupCircleAndLineViews() //circles and lines views
         setupExpirienceStackViewAutoLayout() // expirience
         
+        
+        setupTextInLabels()
     }
     
     
@@ -223,15 +227,13 @@ class CVViewController: UIViewController {
     func setupViews() {
         view.addSubview(scrollView)
         scrollView.addSubview(photoImageView)
-        
+
         scrollView.addSubview(descriptionTextLabel)
         scrollView.addSubview(personStackView)
         scrollView.addSubview(skillsLabel)
         scrollView.addSubview(skillsStackView)
         scrollView.addSubview(experienceLabel)
         scrollView.addSubview(experienceStackView)
-        
-        
         
         personStackView.addArrangedSubview(fullNameLabel)
         personStackView.addArrangedSubview(positionLabel)
@@ -246,6 +248,33 @@ class CVViewController: UIViewController {
         experienceStackView.addArrangedSubview(companyLabel)
         experienceStackView.addArrangedSubview(dateLabel)
     }
+    
+    
+    func setupTextInLabels() {
+        let person = Person(name: "Pavel",
+                            surname: "Pankevich",
+                            photoName: "person.fill",
+                            position: "IOS Developer",
+                            city: "Minsk",
+                            country: "Belarus")
+        fullNameLabel.text = person.name + " " + person.surname
+        photoImageView.image = UIImage(systemName: person.photoName)
+        positionLabel.text = person.position
+        locationLabel.text = person.city + ", " + person.country
+        
+        let experience = Experience(jobPosition: "Student",
+                                    company: "Coding School TeachMeSkills",
+                                    date: "May 2020 - Oct 2021")
+        
+        jobPositionLabel.text = experience.jobPosition
+        companyLabel.text = experience.company
+        dateLabel.text = experience.date
+        
+    }
+    
+    
+    
+    
     
     //MARK: - setup layout
     func setupScrollViewAutoLayout() {

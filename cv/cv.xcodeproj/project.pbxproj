@@ -16,6 +16,7 @@
 		E900D6E327400FEF00A801CB /* SkillsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E900D6E227400FEF00A801CB /* SkillsViewController.swift */; };
 		E900D6E5274016FD00A801CB /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = E900D6E4274016FD00A801CB /* Person.swift */; };
 		E900D6EA27408DDD00A801CB /* Experience.swift in Sources */ = {isa = PBXBuildFile; fileRef = E900D6E927408DDD00A801CB /* Experience.swift */; };
+		E900D6EC2740976200A801CB /* HobbyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E900D6EB2740976100A801CB /* HobbyViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		E900D6E227400FEF00A801CB /* SkillsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillsViewController.swift; sourceTree = "<group>"; };
 		E900D6E4274016FD00A801CB /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 		E900D6E927408DDD00A801CB /* Experience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Experience.swift; sourceTree = "<group>"; };
+		E900D6EB2740976100A801CB /* HobbyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HobbyViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +90,7 @@
 			children = (
 				E900D6E027400F8300A801CB /* CVViewController.swift */,
 				E900D6E227400FEF00A801CB /* SkillsViewController.swift */,
+				E900D6EB2740976100A801CB /* HobbyViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -177,6 +180,7 @@
 				E900D6CB273FE3C200A801CB /* AppDelegate.swift in Sources */,
 				E900D6E327400FEF00A801CB /* SkillsViewController.swift in Sources */,
 				E900D6CD273FE3C200A801CB /* SceneDelegate.swift in Sources */,
+				E900D6EC2740976200A801CB /* HobbyViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
