@@ -15,6 +15,7 @@
 		E900D6E127400F8300A801CB /* CVViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E900D6E027400F8300A801CB /* CVViewController.swift */; };
 		E900D6E327400FEF00A801CB /* SkillsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E900D6E227400FEF00A801CB /* SkillsViewController.swift */; };
 		E900D6E5274016FD00A801CB /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = E900D6E4274016FD00A801CB /* Person.swift */; };
+		E900D6EA27408DDD00A801CB /* Experience.swift in Sources */ = {isa = PBXBuildFile; fileRef = E900D6E927408DDD00A801CB /* Experience.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		E900D6E027400F8300A801CB /* CVViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CVViewController.swift; sourceTree = "<group>"; };
 		E900D6E227400FEF00A801CB /* SkillsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillsViewController.swift; sourceTree = "<group>"; };
 		E900D6E4274016FD00A801CB /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
+		E900D6E927408DDD00A801CB /* Experience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Experience.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,9 +64,9 @@
 			children = (
 				E900D6CA273FE3C200A801CB /* AppDelegate.swift */,
 				E900D6CC273FE3C200A801CB /* SceneDelegate.swift */,
+				E900D6E6274017B900A801CB /* Model */,
 				E900D6E827401D1600A801CB /* TabBar */,
 				E900D6E7274017C400A801CB /* Controllers */,
-				E900D6E6274017B900A801CB /* Model */,
 				E900D6D3273FE3C600A801CB /* Assets.xcassets */,
 				E900D6D5273FE3C600A801CB /* LaunchScreen.storyboard */,
 				E900D6D8273FE3C600A801CB /* Info.plist */,
@@ -76,6 +78,7 @@
 			isa = PBXGroup;
 			children = (
 				E900D6E4274016FD00A801CB /* Person.swift */,
+				E900D6E927408DDD00A801CB /* Experience.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -170,6 +173,7 @@
 				E900D6E5274016FD00A801CB /* Person.swift in Sources */,
 				E900D6DF27400EF400A801CB /* TabBarController.swift in Sources */,
 				E900D6E127400F8300A801CB /* CVViewController.swift in Sources */,
+				E900D6EA27408DDD00A801CB /* Experience.swift in Sources */,
 				E900D6CB273FE3C200A801CB /* AppDelegate.swift in Sources */,
 				E900D6E327400FEF00A801CB /* SkillsViewController.swift in Sources */,
 				E900D6CD273FE3C200A801CB /* SceneDelegate.swift in Sources */,

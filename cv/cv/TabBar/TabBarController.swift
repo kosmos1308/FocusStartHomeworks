@@ -23,6 +23,7 @@ class TabBarController: UITabBarController {
         viewControllers = [ generateNavigationController(rootViewControlller: cvVC, title: "CV", image: cvImage),
                             generateNavigationController(rootViewControlller: skillsVC, title: "Skills", image: skillsImage)
                             ]
+        tabBar.backgroundColor = .systemGray
 
     }
     
