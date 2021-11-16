@@ -5,279 +5,273 @@
 //  Created by pavel on 13.11.21.
 //
 
+
 import UIKit
 
-class CVViewController: UIViewController {
-    
-    let scrollView: UIScrollView = {
+final class CVViewController: UIViewController {
+    private let scrollView: UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         scrollView.maximumZoomScale = 2
         scrollView.minimumZoomScale = 1
         scrollView.backgroundColor = .white
-        scrollView.contentSize = CGSize(width: 414, height: 1000)
         return scrollView
     }()
     
-    let photoImageView: UIImageView = {
+    //person
+    private let photoImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.backgroundColor = .red
-        imageView.layer.cornerRadius = 8
+        imageView.backgroundColor = .systemGray6
+        imageView.layer.cornerRadius = 10
+        imageView.contentMode = .scaleAspectFill
+        imageView.layer.shadowOpacity = 1
         return imageView
     }()
     
-    let fullNameLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.backgroundColor = .systemGray5
-        label.text = "My name"
-        label.font = UIFont(name: "Avenir", size: 30)
-        return label
-    }()
-    
-    let positionLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.backgroundColor = .systemGray6
-        label.text = "My position"
-        label.font = UIFont(name: "Avenir", size: 20)
-        return label
-    }()
-    
-    let locationLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.backgroundColor = .systemGray5
-        label.text = "My location My location My location My location My location"
-        label.font = UIFont(name: "Avenir", size: 20)
-        label.textColor = .systemGray
-        
-        return label
-    }()
-    
-    let locationImageView: UIImageView = { //add!!
-        let imageView = UIImageView()
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.image = UIImage(systemName: "location.circle")
-        imageView.tintColor = .systemGray
-        imageView.contentMode = .scaleAspectFit
-        
-        return imageView
-    }()
-    
-    let descriptionTextLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont(name: "Avenir", size: 20)
-        label.text = "Description Description"
-        label.backgroundColor = .systemBlue
-        return label
-    }()
-    
-    let skillsLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont(name: "Avenir", size: 30)
-        label.text = "Skills"
-        label.backgroundColor = .systemBlue
-        return label
-    }()
-    
-    let personStackView: UIStackView = {
+    private let personStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .vertical
         stackView.distribution = .equalSpacing
-        stackView.backgroundColor = .systemBlue
         return stackView
     }()
     
-    let skillsStackView: UIStackView = {
+    private let fullNameLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = UIFont(name: "Avenir Heavy", size: 30)
+        label.minimumScaleFactor = 0.5
+        label.adjustsFontSizeToFitWidth = true
+        return label
+    }()
+    
+    private let positionLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = UIFont(name: "Avenir", size: 20)
+        label.minimumScaleFactor = 0.5
+        label.adjustsFontSizeToFitWidth = true
+        return label
+    }()
+    
+    private let locationLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = UIFont(name: "Avenir", size: 20)
+        label.textColor = .systemGray
+        label.minimumScaleFactor = 0.5
+        label.adjustsFontSizeToFitWidth = true
+        return label
+    }()
+    
+    private let descriptionTextView: UITextView = {
+        let textView = UITextView()
+        textView.translatesAutoresizingMaskIntoConstraints = false
+        textView.font = UIFont(name: "Avenir", size: 20)
+        textView.isEditable = false
+        textView.isScrollEnabled = false
+        return textView
+    }()
+    
+    //skills
+    private let skillsLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = UIFont(name: "Avenir Heavy", size: 30)
+        label.text = "Skills"
+        return label
+    }()
+    
+    private let skillsStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .horizontal
         stackView.distribution = .equalSpacing
-        stackView.backgroundColor = .systemBlue
         return stackView
     }()
     
-    let swiftSkillView: UIView = {
-        let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = .systemGray
-        return view
-    }()
+    private let swiftSkillView = UIView()
+    private let gitSkillView = UIView()
+    private let englishSkillView = UIView()
+    private let swiftImageView = UIImageView()
+    private let gitImageView = UIImageView()
+    private let englishImageView = UIImageView()
+    let swiftLabel = UILabel()
+    let gitLabel = UILabel()
+    let englishLabel = UILabel()
     
-    let gitSkillView: UIView = {
-        let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = .systemGray
-        return view
-    }()
-    
-    let englishSkillView: UIView = {
-        let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = .systemGray
-        return view
-    }()
-    
-    let experienceLabel: UILabel = {
+    //experience
+    private let experienceLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.backgroundColor = .systemBlue
         label.text = "Experience"
-        label.font = UIFont(name: "Avenir", size: 30)
+        label.font = UIFont(name: "Avenir Heavy", size: 30)
         return label
     }()
     
-    let experienceStackView: UIStackView = {
+    private let firstExperienceStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .vertical
         stackView.distribution = .equalSpacing
-        stackView.backgroundColor = .systemBlue
         return stackView
     }()
     
-    let jobPositionLabel: UILabel = {
+    private let presentExperienceStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.axis = .vertical
+        stackView.distribution = .equalSpacing
+        return stackView
+    }()
+    
+    private let firstJobPositionLabel = UILabel()
+    private let firstCompanyLabel = UILabel()
+    private let firstDateWorkLabel = UILabel()
+    private let presentJobPositionLabel = UILabel()
+    private let presentCompanyLabel = UILabel()
+    private let presentDateWorkLabel = UILabel()
+    
+    private let firstCircleView = UIView()
+    private let secondCircleView = UIView()
+    private let lineView = UIView()
+    
+    //contacts
+    private let contactsLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.backgroundColor = .systemGray6
-        //label.text = "Student TeachMeSkills"
-        label.font = UIFont(name: "Avenir", size: 20)
+        label.text = "Contacts"
+        label.font = UIFont(name: "Avenir Heavy", size: 30)
         return label
     }()
     
-    let companyLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.backgroundColor = .systemGray5
-        //label.text = "Trainee iOS Developer"
-        label.font = UIFont(name: "Avenir", size: 20)
-        return label
+    private let contactsStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.axis = .vertical
+        stackView.distribution = .equalSpacing
+        return stackView
     }()
     
-    let dateLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.backgroundColor = .systemGray5
-        //label.text = "May 2021 - Oct 2021"
-        label.font = UIFont(name: "Avenir", size: 20)
-        label.textColor = .systemGray
-        return label
-    }()
-    
+    let phoneLabel = UILabel()
+    let emailLabel = UILabel()
+    let telegramLabel = UILabel()
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        view.backgroundColor = .white
-        //navigationController?.navigationBar.barStyle = .black
+        view.backgroundColor = .systemBackground
         navigationController?.navigationBar.prefersLargeTitles = true
-        navigationController?.navigationBar.isHidden = false
-        navigationController?.navigationBar.backgroundColor = .systemGray
         title = "CV"
+
+        setupViews()
+        setupScrollViewAutoLayout()         // scrollView
+        setupPhotoImageViewAutoLayout()     // photo
+        setupPersonStackViewAutoLayout()    // personStackView (name, position, location, description)
+        setupDescriptionTextViewAutoLayout() // description
+        setupSkillsLabelAutoLayout()         // label "Skills"
+        setupSkillsStackViewAutoLayout()      // skill stackView
+        setupExperienceLabelAutoLayout()      // label "Experience"
+        setupExpirienceStackViewsAutoLayout() // expirienceStackViews
+        setupCircleAndLineViews()            // circles and line views
         
-        updateNavBar()
-        setupViews() //add scrollView, photo,
-        
-        setupScrollViewAutoLayout() //scroll
-        setupPhotoImageViewAutoLayout() //photo
-        setupLabelsAutoLayout() //labels(name, position, location, description) !!! change name
-        
-        setupDescriptionLabelAutoLayout() //description
-        setupSkillsLabelAutoLayout() // skill label
-        setupSkillsStackViewAutoLayout() //skill stackView
-        setupExperienceLabelAutoLayout() //experience label
-        
-        setupCircleAndLineViews() //circles and lines views
-        setupExpirienceStackViewAutoLayout() // expirience
-        
-        
+        setupContactsLabelAutoLayout()        //label "Contacts"
+        setupContactsStackViewsAutoLayout()
         setupTextInLabels()
     }
     
     
-    func updateNavBar() {
-        navigationItem.rightBarButtonItems = [
-            UIBarButtonItem(image: UIImage(systemName: "circle.righthalf.fill"),
-                            style: .done,
-                            target: self,
-                            action: #selector(tapThemesButton)),
-            UIBarButtonItem(image: UIImage(systemName: "message"),
-                            style: .done,
-                            target: self,
-                            action: #selector(tapMessageButton))
-        ]
-    }
-    
-    
-    @objc func tapMessageButton() {
-        print("message")
-    }
-    
-    
-    @objc func tapThemesButton() {
-        print("themes")
-    }
-    
-    func setupViews() {
+    //MARK: - setup views
+    private func setupViews() {
+        scrollView.contentSize = CGSize(width: view.bounds.width, height: 900)
         view.addSubview(scrollView)
         scrollView.addSubview(photoImageView)
-
-        scrollView.addSubview(descriptionTextLabel)
+        scrollView.addSubview(descriptionTextView)
         scrollView.addSubview(personStackView)
         scrollView.addSubview(skillsLabel)
         scrollView.addSubview(skillsStackView)
         scrollView.addSubview(experienceLabel)
-        scrollView.addSubview(experienceStackView)
+        scrollView.addSubview(firstExperienceStackView)
+        scrollView.addSubview(presentExperienceStackView)
+        scrollView.addSubview(firstCircleView)
+        scrollView.addSubview(secondCircleView)
+        scrollView.addSubview(lineView)
+        scrollView.addSubview(contactsLabel)
+        scrollView.addSubview(contactsStackView)
         
         personStackView.addArrangedSubview(fullNameLabel)
         personStackView.addArrangedSubview(positionLabel)
         personStackView.addArrangedSubview(locationLabel)
-        //personStackView.addArrangedSubview(locationImageView)
-        
         skillsStackView.addArrangedSubview(swiftSkillView)
         skillsStackView.addArrangedSubview(gitSkillView)
         skillsStackView.addArrangedSubview(englishSkillView)
-        
-        experienceStackView.addArrangedSubview(jobPositionLabel)
-        experienceStackView.addArrangedSubview(companyLabel)
-        experienceStackView.addArrangedSubview(dateLabel)
+        firstExperienceStackView.addArrangedSubview(firstJobPositionLabel)
+        firstExperienceStackView.addArrangedSubview(firstCompanyLabel)
+        firstExperienceStackView.addArrangedSubview(firstDateWorkLabel)
+        presentExperienceStackView.addArrangedSubview(presentJobPositionLabel)
+        presentExperienceStackView.addArrangedSubview(presentCompanyLabel)
+        presentExperienceStackView.addArrangedSubview(presentDateWorkLabel)
+        contactsStackView.addArrangedSubview(phoneLabel)
+        contactsStackView.addArrangedSubview(emailLabel)
+        contactsStackView.addArrangedSubview(telegramLabel)
     }
     
     
-    func setupTextInLabels() {
+    //MARK: - setup text in labels
+    private func setupTextInLabels() {
         let person = Person(name: "Pavel",
                             surname: "Pankevich",
                             photoName: "person.fill",
-                            position: "IOS Developer",
-                            city: "Minsk",
+                            position: "Junior iOS Developer",
+                            city: "📍 Minsk",
                             country: "Belarus")
         fullNameLabel.text = person.name + " " + person.surname
         photoImageView.image = UIImage(systemName: person.photoName)
         positionLabel.text = person.position
         locationLabel.text = person.city + ", " + person.country
+        descriptionTextView.text = "Hardworking, responsible person.  I can deal with difficult situations. Always do my best to achieve goals."
         
         let experience = Experience(jobPosition: "Student",
-                                    company: "Coding School TeachMeSkills",
+                                    company: "School TeachMeSkills",
                                     date: "May 2020 - Oct 2021")
         
-        jobPositionLabel.text = experience.jobPosition
-        companyLabel.text = experience.company
-        dateLabel.text = experience.date
+        let presentExperience = Experience(jobPosition: "Trainee iOS Developer",
+                                         company: "CFT",
+                                         date: "Oct 2021 - Present")
         
+        let experienceLabelsArray = [firstJobPositionLabel, firstCompanyLabel, firstDateWorkLabel, presentJobPositionLabel, presentCompanyLabel, presentDateWorkLabel]
+        
+        for label in experienceLabelsArray {
+            label.font = UIFont(name: "Avenir", size: 20)
+        }
+        
+        firstDateWorkLabel.textColor = .systemGray
+        presentDateWorkLabel.textColor = .systemGray
+        
+        firstJobPositionLabel.text = experience.jobPosition
+        firstCompanyLabel.text = experience.company
+        firstDateWorkLabel.text = experience.date
+        presentJobPositionLabel.text = presentExperience.jobPosition
+        presentCompanyLabel.text = presentExperience.company
+        presentDateWorkLabel.text = presentExperience.date
+        
+        let contacts = Contacts(phone: " 📞   +375(29)284-63-64", email: " ✉️   pasha13kosmos@gmail.com", telegram: " ✍️   @kosmos1308")
+        
+        let contactsLabelsArray = [phoneLabel, emailLabel, telegramLabel]
+        for contsct in contactsLabelsArray {
+            contsct.font = UIFont(name: "Avenir", size: 20)
+        }
+        
+        phoneLabel.text = contacts.phone
+        emailLabel.text = contacts.email
+        telegramLabel.text = contacts.telegram
     }
     
     
-    
-    
-    
     //MARK: - setup layout
-    func setupScrollViewAutoLayout() {
+    private func setupScrollViewAutoLayout() {
         scrollView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
         scrollView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
         scrollView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
@@ -285,153 +279,163 @@ class CVViewController: UIViewController {
     }
             
        
-    func setupPhotoImageViewAutoLayout() {
-        photoImageView.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 40).isActive = true
-        photoImageView.leftAnchor.constraint(equalTo: scrollView.leftAnchor, constant: 40).isActive = true
+    private func setupPhotoImageViewAutoLayout() {
+        photoImageView.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 20).isActive = true
+        photoImageView.leftAnchor.constraint(equalTo: scrollView.leftAnchor, constant: 20).isActive = true
         photoImageView.widthAnchor.constraint(equalToConstant: 100).isActive = true
         photoImageView.heightAnchor.constraint(equalToConstant: 100).isActive = true
     }
     
-    
-    func setupLabelsAutoLayout() {
+
+    private func setupPersonStackViewAutoLayout() {
         personStackView.leftAnchor.constraint(equalTo: photoImageView.rightAnchor, constant: 20).isActive = true
-        personStackView.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 40).isActive = true
-        //personStackView.rightAnchor.constraint(equalTo: scrollView.rightAnchor, constant: -40).isActive = true
-        personStackView.widthAnchor.constraint(equalToConstant: 230).isActive = true
+        personStackView.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 20).isActive = true
+        personStackView.widthAnchor.constraint(equalToConstant: view.bounds.width - photoImageView.bounds.width - 160).isActive = true
         personStackView.heightAnchor.constraint(equalToConstant: 100).isActive = true
-        
-//
-//        fullNameLabel.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 40).isActive = true
-//        fullNameLabel.leftAnchor.constraint(equalTo: photoImageView.rightAnchor, constant: 20).isActive = true
-//        fullNameLabel.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor, constant: -20).isActive = true
-//
-//        positionLabel.topAnchor.constraint(equalTo: fullNameLabel.bottomAnchor, constant: 2).isActive = true
-//        positionLabel.leftAnchor.constraint(equalTo: photoImageView.rightAnchor, constant: 20).isActive = true
-//        positionLabel.rightAnchor.constraint(equalTo: scrollView.rightAnchor, constant: -20).isActive = true
-//
-//        locationLabel.topAnchor.constraint(equalTo: positionLabel.bottomAnchor, constant: 2).isActive = true
-//        locationLabel.leftAnchor.constraint(equalTo: photoImageView.rightAnchor, constant: 50).isActive = true
-//        locationLabel.widthAnchor.constraint(equalToConstant: 200).isActive = true
-//
-//
-//        locationImageView.centerYAnchor.constraint(equalTo: locationLabel.centerYAnchor).isActive = true
-//        locationImageView.leftAnchor.constraint(equalTo: photoImageView.rightAnchor, constant: 20).isActive = true
-//        locationImageView.widthAnchor.constraint(equalToConstant: 25).isActive = true
-//        locationImageView.heightAnchor.constraint(equalToConstant: 25).isActive = true
     }
     
     
-    func setupDescriptionLabelAutoLayout() {
-        descriptionTextLabel.topAnchor.constraint(equalTo: personStackView.bottomAnchor, constant: 30).isActive = true
-        descriptionTextLabel.leftAnchor.constraint(equalTo: scrollView.leftAnchor, constant: 40).isActive = true
-        descriptionTextLabel.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor).isActive = true
-        descriptionTextLabel.heightAnchor.constraint(equalToConstant: 100).isActive = true
+    private func setupDescriptionTextViewAutoLayout() {
+        descriptionTextView.topAnchor.constraint(equalTo: personStackView.bottomAnchor, constant: 20).isActive = true
+        descriptionTextView.leftAnchor.constraint(equalTo: scrollView.leftAnchor, constant: 20).isActive = true
+        descriptionTextView.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor).isActive = true
+        descriptionTextView.heightAnchor.constraint(equalToConstant: 100).isActive = true
     }
     
     
-    func setupSkillsLabelAutoLayout() {
-        skillsLabel.topAnchor.constraint(equalTo: descriptionTextLabel.bottomAnchor, constant: 30).isActive = true
-        skillsLabel.leftAnchor.constraint(equalTo: scrollView.leftAnchor, constant: 40).isActive = true
+    private func setupSkillsLabelAutoLayout() {
+        skillsLabel.topAnchor.constraint(equalTo: descriptionTextView.bottomAnchor, constant: 20).isActive = true
+        skillsLabel.leftAnchor.constraint(equalTo: scrollView.leftAnchor, constant: 20).isActive = true
         skillsLabel.widthAnchor.constraint(equalToConstant: 150).isActive = true
         skillsLabel.heightAnchor.constraint(equalToConstant: 30).isActive = true
     }
     
     
-    func setupSkillsStackViewAutoLayout() {
-        swiftSkillView.widthAnchor.constraint(equalToConstant: 110).isActive = true
-        swiftSkillView.heightAnchor.constraint(equalToConstant: 110).isActive = true
+    private func setupSkillsStackViewAutoLayout() {
+        //views
+        let skillsViewArray = [swiftSkillView, gitSkillView, englishSkillView]
+        for skillView in skillsViewArray {
+            skillView.translatesAutoresizingMaskIntoConstraints = false
+            skillView.backgroundColor = .systemGray5
+            skillView.layer.cornerRadius = 10
+            skillView.layer.shadowOpacity = 1
+            
+            skillView.widthAnchor.constraint(equalToConstant: 100).isActive = true
+            skillView.heightAnchor.constraint(equalToConstant: 100).isActive = true
+        }
         
-        gitSkillView.widthAnchor.constraint(equalToConstant: 110).isActive = true
-        gitSkillView.heightAnchor.constraint(equalToConstant: 110).isActive = true
-        
-        englishSkillView.widthAnchor.constraint(equalToConstant: 110).isActive = true
-        englishSkillView.heightAnchor.constraint(equalToConstant: 110).isActive = true
-        
-        skillsStackView.topAnchor.constraint(equalTo: skillsLabel.bottomAnchor, constant: 20).isActive = true
-        skillsStackView.leftAnchor.constraint(equalTo: scrollView.leftAnchor, constant: 40).isActive = true
-        skillsStackView.heightAnchor.constraint(equalToConstant: 110).isActive = true
-        skillsStackView.widthAnchor.constraint(equalToConstant: 350).isActive = true
+        //imageViews
+        let skillsImageViewsArray = [swiftImageView, gitImageView, englishImageView]
+        let nameImageArray = ["swift", "git", "english"]
+        var index = -1
+        for skillImageView in skillsImageViewsArray {
+            index += 1
+            skillImageView.translatesAutoresizingMaskIntoConstraints = false
+            skillImageView.image = UIImage(named: nameImageArray[index])
+            skillImageView.contentMode = .scaleAspectFit
+            skillImageView.layer.shadowOpacity = 1
+            skillsViewArray[index].addSubview(skillImageView)
+            
+            skillImageView.centerXAnchor.constraint(equalTo: skillsViewArray[index].centerXAnchor).isActive = true
+            skillImageView.centerYAnchor.constraint(equalTo: skillsViewArray[index].centerYAnchor).isActive = true
+            skillImageView.widthAnchor.constraint(equalToConstant: 40).isActive = true
+            skillImageView.heightAnchor.constraint(equalToConstant: 40).isActive = true
+            
+        }
+     
+        //labels
+        let skillLabelsArray = [swiftLabel, gitLabel, englishLabel]
+        let skillTextArray = ["Swift", "Git", "English B1"]
+        var number = -1
+        for label in skillLabelsArray {
+            number += 1
+            label.translatesAutoresizingMaskIntoConstraints = false
+            label.font = UIFont(name: "Avenir Heavy", size: 15)
+            label.textAlignment = .center
+            label.text = skillTextArray[number]
+            skillsViewArray[number].addSubview(label)
+            
+            label.centerXAnchor.constraint(equalTo: skillsViewArray[number].centerXAnchor).isActive = true
+            label.leadingAnchor.constraint(equalTo: skillsViewArray[number].leadingAnchor).isActive = true
+            label.bottomAnchor.constraint(equalTo: skillsViewArray[number].bottomAnchor, constant: 0).isActive = true
+            label.trailingAnchor.constraint(equalTo: skillsViewArray[number].trailingAnchor).isActive = true
+            label.heightAnchor.constraint(equalToConstant: 20).isActive = true
+        }
+             
+        skillsStackView.topAnchor.constraint(equalTo: skillsLabel.bottomAnchor, constant: 10).isActive = true
+        skillsStackView.leftAnchor.constraint(equalTo: scrollView.leftAnchor, constant: 20).isActive = true
+        skillsStackView.heightAnchor.constraint(equalToConstant: 100).isActive = true
+        skillsStackView.widthAnchor.constraint(equalToConstant: view.bounds.width - 40).isActive = true
     }
     
     
-    func setupExperienceLabelAutoLayout() {
+    private func setupExperienceLabelAutoLayout() {
         experienceLabel.topAnchor.constraint(equalTo: skillsStackView.bottomAnchor, constant: 30).isActive = true
-        experienceLabel.leftAnchor.constraint(equalTo: scrollView.leftAnchor, constant: 40).isActive = true
-        experienceLabel.widthAnchor.constraint(equalToConstant: 150).isActive = true
+        experienceLabel.leftAnchor.constraint(equalTo: scrollView.leftAnchor, constant: 20).isActive = true
+        experienceLabel.widthAnchor.constraint(equalToConstant: 200).isActive = true
         experienceLabel.heightAnchor.constraint(equalToConstant: 30).isActive = true
     }
     
     
-    //change method and
-    func setupCircleAndLineViews() {
-        let circleView = UIView()
-        circleView.translatesAutoresizingMaskIntoConstraints = false
-        circleView.layer.cornerRadius = 4
-        circleView.backgroundColor = .systemBlue
-        scrollView.addSubview(circleView)
-        
-        circleView.leftAnchor.constraint(equalTo: scrollView.leftAnchor, constant: 80).isActive = true
-        circleView.topAnchor.constraint(equalTo: experienceLabel.bottomAnchor, constant: 50).isActive = true
-        circleView.widthAnchor.constraint(equalToConstant: 8).isActive = true
-        circleView.heightAnchor.constraint(equalToConstant: 8).isActive = true
-        
-        
-        let lineView = UIView()
-        lineView.translatesAutoresizingMaskIntoConstraints = false
-        lineView.backgroundColor = .systemBlue
-        scrollView.addSubview(lineView)
-        
-        lineView.leftAnchor.constraint(equalTo: scrollView.leftAnchor, constant: 83).isActive = true
-        lineView.topAnchor.constraint(equalTo: circleView.bottomAnchor, constant: 15).isActive = true
-        lineView.widthAnchor.constraint(equalToConstant: 2).isActive = true
-        lineView.heightAnchor.constraint(equalToConstant: 100).isActive = true
-        
-        
-        let secondCircleView = UIView()
-        secondCircleView.translatesAutoresizingMaskIntoConstraints = false
-        secondCircleView.layer.cornerRadius = 4
-        secondCircleView.backgroundColor = .systemBlue
-        scrollView.addSubview(secondCircleView)
-        
-        secondCircleView.leftAnchor.constraint(equalTo: scrollView.leftAnchor, constant: 80).isActive = true
-        secondCircleView.topAnchor.constraint(equalTo: lineView.bottomAnchor, constant: 15).isActive = true
-        secondCircleView.widthAnchor.constraint(equalToConstant: 8).isActive = true
-        secondCircleView.heightAnchor.constraint(equalToConstant: 8).isActive = true
-        
-        let secondLineView = UIView()
-        secondLineView.translatesAutoresizingMaskIntoConstraints = false
-        secondLineView.backgroundColor = .systemBlue
-        scrollView.addSubview(secondLineView)
-        
-        secondLineView.leftAnchor.constraint(equalTo: scrollView.leftAnchor, constant: 83).isActive = true
-        secondLineView.topAnchor.constraint(equalTo: secondCircleView.bottomAnchor, constant: 15).isActive = true
-        secondLineView.widthAnchor.constraint(equalToConstant: 2).isActive = true
-        secondLineView.heightAnchor.constraint(equalToConstant: 100).isActive = true
-        
-        let thirdCircleView = UIView()
-        thirdCircleView.translatesAutoresizingMaskIntoConstraints = false
-        thirdCircleView.layer.cornerRadius = 4
-        thirdCircleView.backgroundColor = .systemBlue
-        scrollView.addSubview(thirdCircleView)
-        
-        thirdCircleView.leftAnchor.constraint(equalTo: scrollView.leftAnchor, constant: 80).isActive = true
-        thirdCircleView.topAnchor.constraint(equalTo: secondLineView.bottomAnchor, constant: 15).isActive = true
-        thirdCircleView.widthAnchor.constraint(equalToConstant: 8).isActive = true
-        thirdCircleView.heightAnchor.constraint(equalToConstant: 8).isActive = true
+    private func setupCircleAndLineViews() {
+        let circleArray = [firstCircleView, secondCircleView]
+        var index = -1
+        for circle in circleArray {
+            circle.translatesAutoresizingMaskIntoConstraints = false
+            circle.layer.cornerRadius = 4
+            circle.layer.shadowOpacity = 1
+            circle.backgroundColor = .systemGray5
+            
+            index += 1
+            circle.leftAnchor.constraint(equalTo: scrollView.leftAnchor, constant: 30).isActive = true
+            circle.widthAnchor.constraint(equalToConstant: 8).isActive = true
+            circle.heightAnchor.constraint(equalToConstant: 8).isActive = true
+            
+            if index == 0 {
+                circle.centerYAnchor.constraint(equalTo: firstExperienceStackView.centerYAnchor).isActive = true
+                
+                lineView.translatesAutoresizingMaskIntoConstraints = false
+                lineView.backgroundColor = .systemGray5
+                lineView.layer.shadowOpacity = 1
+                
+                lineView.leftAnchor.constraint(equalTo: scrollView.leftAnchor, constant: 33).isActive = true
+                lineView.topAnchor.constraint(equalTo: circleArray[0].bottomAnchor, constant: 15).isActive = true
+                lineView.bottomAnchor.constraint(equalTo: circleArray[1].topAnchor, constant: -15).isActive = true
+                lineView.widthAnchor.constraint(equalToConstant: 2).isActive = true
+            } else {
+                circle.centerYAnchor.constraint(equalTo: presentExperienceStackView.centerYAnchor).isActive = true
+            }
+        }
     }
-    
-    
-    func setupExpirienceStackViewAutoLayout() {
-        experienceStackView.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor).isActive = true
-        experienceStackView.topAnchor.constraint(equalTo: experienceLabel.bottomAnchor, constant: 20).isActive = true
-        experienceStackView.widthAnchor.constraint(equalToConstant: 230).isActive = true
-        experienceStackView.heightAnchor.constraint(equalToConstant: 100).isActive = true
-        
-    }
-    
-    
-    
-    
     
 
+    private func setupExpirienceStackViewsAutoLayout() {
+        firstExperienceStackView.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor).isActive = true
+        firstExperienceStackView.topAnchor.constraint(equalTo: experienceLabel.bottomAnchor, constant: 10).isActive = true
+        firstExperienceStackView.widthAnchor.constraint(equalToConstant: view.bounds.width/2 + 50).isActive = true
+        firstExperienceStackView.heightAnchor.constraint(equalToConstant: 100).isActive = true
+        
+        presentExperienceStackView.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor).isActive = true
+        presentExperienceStackView.topAnchor.constraint(equalTo: firstExperienceStackView.bottomAnchor, constant: 40).isActive = true
+        presentExperienceStackView.widthAnchor.constraint(equalToConstant: view.bounds.width/2 + 50).isActive = true
+        presentExperienceStackView.heightAnchor.constraint(equalToConstant: 100).isActive = true
+    }
+    
+    
+    private func setupContactsLabelAutoLayout() {
+        contactsLabel.topAnchor.constraint(equalTo: presentExperienceStackView.bottomAnchor, constant: 30).isActive = true
+        contactsLabel.leftAnchor.constraint(equalTo: scrollView.leftAnchor, constant: 20).isActive = true
+        contactsLabel.widthAnchor.constraint(equalToConstant: 200).isActive = true
+        contactsLabel.heightAnchor.constraint(equalToConstant: 30).isActive = true
+    }
+    
+    
+    private func setupContactsStackViewsAutoLayout() {
+        contactsStackView.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor).isActive = true
+        contactsStackView.topAnchor.constraint(equalTo: contactsLabel.bottomAnchor, constant: 10).isActive = true
+        contactsStackView.widthAnchor.constraint(equalToConstant: view.bounds.width - 40).isActive = true
+        contactsStackView.heightAnchor.constraint(equalToConstant: 100).isActive = true
+    }
+    
+    
 }

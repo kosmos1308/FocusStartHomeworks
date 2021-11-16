@@ -7,14 +7,8 @@
 
 import Foundation
 
-class Experience {
+struct Experience {
     let jobPosition: String
     let company: String
     let date: String
-    
-    init(jobPosition: String, company: String, date: String) {
-        self.jobPosition = jobPosition
-        self.company = company
-        self.date = date
-    }
 }

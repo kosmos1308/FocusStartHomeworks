@@ -12,7 +12,6 @@ class TabBarController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //view.backgroundColor = .systemRed
         let cvVC = CVViewController()
         let skillsVC = SkillsViewController()
         let hobbyVC = HobbyViewController()
@@ -26,20 +25,14 @@ class TabBarController: UITabBarController {
                             generateNavigationController(rootViewControlller: skillsVC, title: "Skills", image: skillsImage),
                             generateNavigationController(rootViewControlller: hobbyVC, title: "Hobby", image: hobbyImage)
                             ]
-        tabBar.backgroundColor = .systemGray
-
     }
     
     
     func generateNavigationController(rootViewControlller: UIViewController, title: String, image: UIImage) -> UIViewController {
-        
         let navigationVC = UINavigationController(rootViewController: rootViewControlller)
         navigationVC.tabBarItem.title = title
         navigationVC.tabBarItem.image = image
         
         return navigationVC
     }
-    
-
-
 }
