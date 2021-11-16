@@ -151,14 +151,7 @@ class ProjectsTableViewCell: UITableViewCell {
                                                  attribute: .bottom,
                                                  multiplier: 1,
                                                  constant: 30)
-//        let widthConstraintTextView = NSLayoutConstraint(item: descriptionProjectTextView,
-//                                                 attribute: .width,
-//                                                 relatedBy: .equal,
-//                                                 toItem: nil,
-//                                                 attribute: .notAnAttribute,
-//                                                 multiplier: 1,
-//                                                 constant: contentView.bounds.width - projectImageView.bounds.width - 60)
-        addConstraints([topConstraintTextView, leftConstraintTextView, rightConstraintTextView,  bottomConstraintTextView/*, widthConstraintTextView*/])
+        addConstraints([topConstraintTextView, leftConstraintTextView, rightConstraintTextView,  bottomConstraintTextView])
     }
 
 }
