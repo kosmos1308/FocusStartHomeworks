@@ -8,6 +8,5 @@
 import Foundation
 
 class Skills {
-    
-    static var skillsArray = [String]()
+    var nameArray = [String]()
 }

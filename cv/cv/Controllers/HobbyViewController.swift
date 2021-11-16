@@ -7,26 +7,31 @@
 
 import UIKit
 
-class HobbyViewController: UIViewController {
+final class HobbyViewController: UIViewController {
     
-    let footballHobbyView = UIView()
-    let tennisHobbyView = UIView()
-    let programmingHobbyView = UIView()
+    private let footballHobbyView = UIView()
+    private let tennisHobbyView = UIView()
+    private let programmingHobbyView = UIView()
     
-    let footballImageView = UIImageView()
-    let tennisImageView = UIImageView()
-    let programmingImageView = UIImageView()
+    private let footballImageView = UIImageView()
+    private let tennisImageView = UIImageView()
+    private let programmingImageView = UIImageView()
     
-    let footballLabel = UILabel()
-    let tennisLabel = UILabel()
-    let codingLabel = UILabel()
+    private let footballLabel = UILabel()
+    private let tennisLabel = UILabel()
+    private let codingLabel = UILabel()
 
-    var hobbyTitleArray = ["Football", "Table tennis", "Coding"]
-    var hobbyImageArray = ["football", "tennis", "coding"]
+    private var hobbyTitleArray = ["Football", "Table tennis", "Coding"]
+    private var hobbyImageArray = ["football", "tennis", "coding"]
     
-    var hobbyViewArray = [UIView]()
-    var hobbyImgViewArray = [UIImageView]()
-    var hobbyLabelsArray = [UILabel]()
+    private var hobbyViewArray = [UIView]()
+    private var hobbyImgViewArray = [UIImageView]()
+    private var hobbyLabelsArray = [UILabel]()
+    
+    private let left: CGFloat = 20
+    private let top: CGFloat = 20
+    private let width: CGFloat = 100
+    private let height: CGFloat = 100
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,11 +51,10 @@ class HobbyViewController: UIViewController {
         setupViewsAutoLayout()       //views
         setupImageViewsAutoLayout()  //imageViews
         setupHobbyLabelsAutoLayout() //labels
-        
     }
 
     
-    func addHobbyView(hobbyView: UIView) {
+    private func addHobbyView(hobbyView: UIView) {
         hobbyView.translatesAutoresizingMaskIntoConstraints = false
         hobbyView.layer.cornerRadius = 10
         hobbyView.layer.shadowColor = UIColor.black.cgColor
@@ -59,7 +63,7 @@ class HobbyViewController: UIViewController {
     }
     
     
-    func addHobbyImageView(hobbyImageView: UIImageView) {
+    private func addHobbyImageView(hobbyImageView: UIImageView) {
         hobbyImageView.translatesAutoresizingMaskIntoConstraints = false
         hobbyImageView.backgroundColor = .systemGray6
         hobbyImageView.layer.shadowColor = UIColor.black.cgColor
@@ -70,17 +74,17 @@ class HobbyViewController: UIViewController {
     }
     
     
-    func setupViewsAutoLayout() {
+    private func setupViewsAutoLayout() {
         hobbyViewArray = [footballHobbyView, tennisHobbyView, programmingHobbyView]
         var index = -1
         var constant: CGFloat = 0
         for hobby in hobbyViewArray {
             index += 1
-            constant += 140
+            constant += 150
         
-            hobby.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20).isActive = true
-            hobby.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -60).isActive = true
-            hobby.heightAnchor.constraint(equalToConstant: 140).isActive = true
+            hobby.leftAnchor.constraint(equalTo: view.leftAnchor, constant: left).isActive = true
+            hobby.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -(left * 3)).isActive = true
+            hobby.heightAnchor.constraint(equalToConstant: height + (left * 2)).isActive = true
            
             switch index {
             case 0:
@@ -88,10 +92,10 @@ class HobbyViewController: UIViewController {
                 hobby.topAnchor.constraint(equalTo: view.topAnchor, constant: constant).isActive = true
             case 1:
                 hobby.backgroundColor = #colorLiteral(red: 0.8574097157, green: 0.2946243882, blue: 0.2486538291, alpha: 1)
-                hobby.topAnchor.constraint(equalTo: hobbyViewArray[0].bottomAnchor, constant: 20).isActive = true
+                hobby.topAnchor.constraint(equalTo: hobbyViewArray[0].bottomAnchor, constant: top).isActive = true
             case 2:
                 hobby.backgroundColor = #colorLiteral(red: 0.01008087303, green: 0.9371960759, blue: 0.8205029368, alpha: 1)
-                hobby.topAnchor.constraint(equalTo: hobbyViewArray[1].bottomAnchor, constant: 20).isActive = true
+                hobby.topAnchor.constraint(equalTo: hobbyViewArray[1].bottomAnchor, constant: top).isActive = true
             default:
                 break
             }
@@ -99,7 +103,7 @@ class HobbyViewController: UIViewController {
     }
     
     
-    func setupHobbyLabelsAutoLayout() {
+    private func setupHobbyLabelsAutoLayout() {
         hobbyLabelsArray = [footballLabel, tennisLabel, codingLabel]
         var index = -1
         for label in hobbyLabelsArray {
@@ -113,13 +117,13 @@ class HobbyViewController: UIViewController {
 
             label.centerXAnchor.constraint(equalTo: hobbyViewArray[index].centerXAnchor).isActive = true
             label.centerYAnchor.constraint(equalTo: hobbyViewArray[index].centerYAnchor).isActive = true
-            label.widthAnchor.constraint(equalToConstant: 200).isActive = true
-            label.heightAnchor.constraint(equalToConstant: 50).isActive = true
+            label.widthAnchor.constraint(equalToConstant: width * 2).isActive = true
+            label.heightAnchor.constraint(equalToConstant: height/2).isActive = true
         }
     }
     
 
-    func setupImageViewsAutoLayout() {
+    private func setupImageViewsAutoLayout() {
         hobbyImgViewArray = [footballImageView, tennisImageView, programmingImageView]
         var index = -1
         for imgView in hobbyImgViewArray {
@@ -128,9 +132,9 @@ class HobbyViewController: UIViewController {
             view.addSubview(hobbyImgViewArray[index])
             
             imgView.centerXAnchor.constraint(equalTo: hobbyViewArray[index].trailingAnchor).isActive = true
-            imgView.topAnchor.constraint(equalTo: hobbyViewArray[index].topAnchor, constant: 30).isActive = true
-            imgView.heightAnchor.constraint(equalToConstant: 80).isActive = true
-            imgView.widthAnchor.constraint(equalToConstant: 80).isActive = true
+            imgView.topAnchor.constraint(equalTo: hobbyViewArray[index].topAnchor, constant: top * 1.5).isActive = true
+            imgView.heightAnchor.constraint(equalToConstant: height - left).isActive = true
+            imgView.widthAnchor.constraint(equalToConstant: width - left).isActive = true
         }
     }
 

@@ -11,22 +11,21 @@ class SkillsCollectionViewCell: UICollectionViewCell {
     
     static let cellIdentifier = "SkillsCollectionViewCell"
     
-    let skillView = UIView()
     let skillImage: UIImageView = {
         let imgView = UIImageView()
         imgView.translatesAutoresizingMaskIntoConstraints = false
-        imgView.backgroundColor = .systemGray
         imgView.contentMode = .scaleAspectFit
         return imgView
     }()
     
-    
     let skillLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont(name: "Avenir", size: 15)
+        label.font = UIFont(name: "Avenir Heavy", size: 15)
         label.numberOfLines = 2
-        label.backgroundColor = .systemRed
+        label.textAlignment = .center
+        label.minimumScaleFactor = 0.7
+        label.adjustsFontSizeToFitWidth = true
         return label
     }()
     
@@ -37,16 +36,17 @@ class SkillsCollectionViewCell: UICollectionViewCell {
         addSubview(skillImage)
         addSubview(skillLabel)
         
-        skillImage.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 20).isActive = true
-        skillImage.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 10).isActive = true
-        //skillImage.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: 20).isActive = true
-        skillImage.widthAnchor.constraint(equalToConstant: 40).isActive = true
-        skillImage.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        NSLayoutConstraint.activate([
+            skillImage.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 20),
+            skillImage.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 10),
+            skillImage.widthAnchor.constraint(equalToConstant: 40),
+            skillImage.heightAnchor.constraint(equalToConstant: 40)])
         
-        skillLabel.topAnchor.constraint(equalTo: skillImage.bottomAnchor, constant: 20).isActive = true
-        skillLabel.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 10).isActive = true
-        skillLabel.widthAnchor.constraint(equalToConstant: 80).isActive = true
-        skillLabel.heightAnchor.constraint(equalToConstant: 30).isActive = true
+        NSLayoutConstraint.activate([
+            skillLabel.topAnchor.constraint(equalTo: skillImage.bottomAnchor, constant: 20),
+            skillLabel.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 10),
+            skillLabel.widthAnchor.constraint(equalToConstant: 80),
+            skillLabel.heightAnchor.constraint(equalToConstant: 30)])
     }
     
 }
