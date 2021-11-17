@@ -21,8 +21,8 @@ final class HobbyViewController: UIViewController {
     private let tennisLabel = UILabel()
     private let codingLabel = UILabel()
 
-    private var hobbyTitleArray = ["Football", "Table tennis", "Coding"]
-    private var hobbyImageArray = ["football", "tennis", "coding"]
+    private let hobbyTitleArray = ["Football", "Table tennis", "Coding"]
+    private let hobbyImageArray = ["football", "tennis", "coding"]
     
     private var hobbyViewArray = [UIView]()
     private var hobbyImgViewArray = [UIImageView]()
@@ -48,9 +48,9 @@ final class HobbyViewController: UIViewController {
         addHobbyImageView(hobbyImageView: tennisImageView)
         addHobbyImageView(hobbyImageView: programmingImageView)
         
-        setupViewsAutoLayout()       //views
-        setupImageViewsAutoLayout()  //imageViews
-        setupHobbyLabelsAutoLayout() //labels
+        setupViewsAutoLayout()
+        setupImageViewsAutoLayout()
+        setupHobbyLabelsAutoLayout()
     }
 
     

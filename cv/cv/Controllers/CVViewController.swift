@@ -97,9 +97,9 @@ final class CVViewController: UIViewController {
     private let swiftImageView = UIImageView()
     private let gitImageView = UIImageView()
     private let englishImageView = UIImageView()
-    let swiftLabel = UILabel()
-    let gitLabel = UILabel()
-    let englishLabel = UILabel()
+    private let swiftLabel = UILabel()
+    private let gitLabel = UILabel()
+    private let englishLabel = UILabel()
     
     //experience
     private let experienceLabel: UILabel = {
@@ -162,7 +162,6 @@ final class CVViewController: UIViewController {
     private let top: CGFloat = 20
     private let width: CGFloat = 100
     private let height: CGFloat = 100
-    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -172,17 +171,17 @@ final class CVViewController: UIViewController {
         title = "CV"
 
         setupViews()
-        setupScrollViewAutoLayout()         // scrollView
-        setupPhotoImageViewAutoLayout()     // photo
-        setupPersonStackViewAutoLayout()    // personStackView (name, position, location, description)
-        setupDescriptionTextViewAutoLayout() // description
-        setupSkillsLabelAutoLayout()         // label "Skills"
-        setupSkillsStackViewAutoLayout()      // skill stackView
-        setupExperienceLabelAutoLayout()      // label "Experience"
-        setupExpirienceStackViewsAutoLayout() // expirienceStackViews
-        setupCircleAndLineViews()            // circles and line views
-        setupContactsLabelAutoLayout()        //label "Contacts"
-        setupContactsStackViewsAutoLayout()   //contacts stackView
+        setupScrollViewAutoLayout()
+        setupPhotoImageViewAutoLayout()
+        setupPersonStackViewAutoLayout()
+        setupDescriptionTextViewAutoLayout()
+        setupSkillsLabelAutoLayout()
+        setupSkillsStackViewAutoLayout()
+        setupExperienceLabelAutoLayout()
+        setupExpirienceStackViewsAutoLayout()
+        setupCircleAndLineViews()
+        setupContactsLabelAutoLayout()
+        setupContactsStackViewsAutoLayout()   
         setupTextInLabels()
     }
     

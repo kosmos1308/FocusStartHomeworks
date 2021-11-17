@@ -161,7 +161,7 @@ extension SkillsViewController: UITableViewDataSource, UITableViewDelegate {
 }
 
 
-//MARK: - UICollectionViewDataSource, UICollectionViewDelegateFlowLayout
+//MARK: - UICollectionViewDataSource
 extension SkillsViewController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
@@ -180,7 +180,10 @@ extension SkillsViewController: UICollectionViewDataSource, UICollectionViewDele
 
         return skillCell
     }
-    
+}
+
+//MARK: - UICollectionViewDelegate
+extension SkillsViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
         return CGSize(width: 100, height: 120)
