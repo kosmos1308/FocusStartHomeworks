@@ -48,5 +48,4 @@ class SkillsCollectionViewCell: UICollectionViewCell {
             skillLabel.widthAnchor.constraint(equalToConstant: 80),
             skillLabel.heightAnchor.constraint(equalToConstant: 30)])
     }
-    
 }

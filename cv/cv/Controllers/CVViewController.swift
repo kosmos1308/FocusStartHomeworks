@@ -5,7 +5,6 @@
 //  Created by pavel on 13.11.21.
 //
 
-
 import UIKit
 
 final class CVViewController: UIViewController {
@@ -238,7 +237,7 @@ final class CVViewController: UIViewController {
         
         let experience = Experience(jobPosition: "Student",
                                     company: "School TeachMeSkills",
-                                    date: "May 2020 - Oct 2021")
+                                    date: "May 2021 - Oct 2021")
         
         let presentExperience = Experience(jobPosition: "Trainee iOS Developer",
                                          company: "CFT",
@@ -282,34 +281,34 @@ final class CVViewController: UIViewController {
             
        
     private func setupPhotoImageViewAutoLayout() {
-        photoImageView.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: top).isActive = true
-        photoImageView.leftAnchor.constraint(equalTo: scrollView.leftAnchor, constant: left).isActive = true
-        photoImageView.widthAnchor.constraint(equalToConstant: width).isActive = true
-        photoImageView.heightAnchor.constraint(equalToConstant: height).isActive = true
+        photoImageView.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: Metrics.left.rawValue).isActive = true
+        photoImageView.leftAnchor.constraint(equalTo: scrollView.leftAnchor, constant: Metrics.left.rawValue).isActive = true
+        photoImageView.widthAnchor.constraint(equalToConstant: Metrics.width.rawValue).isActive = true
+        photoImageView.heightAnchor.constraint(equalToConstant: Metrics.width.rawValue).isActive = true
     }
     
 
     private func setupPersonStackViewAutoLayout() {
-        personStackView.leftAnchor.constraint(equalTo: photoImageView.rightAnchor, constant: left).isActive = true
-        personStackView.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: top).isActive = true
-        personStackView.widthAnchor.constraint(equalToConstant: view.bounds.width - photoImageView.bounds.width - width - (left * 3)).isActive = true
-        personStackView.heightAnchor.constraint(equalToConstant: height).isActive = true
+        personStackView.leftAnchor.constraint(equalTo: photoImageView.rightAnchor, constant: Metrics.left.rawValue).isActive = true
+        personStackView.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: Metrics.left.rawValue).isActive = true
+        personStackView.widthAnchor.constraint(equalToConstant: view.bounds.width - photoImageView.bounds.width - Metrics.width.rawValue - (Metrics.left.rawValue * 3)).isActive = true
+        personStackView.heightAnchor.constraint(equalToConstant: Metrics.width.rawValue).isActive = true
     }
     
     
     private func setupDescriptionTextViewAutoLayout() {
-        descriptionTextView.topAnchor.constraint(equalTo: personStackView.bottomAnchor, constant: top).isActive = true
-        descriptionTextView.leftAnchor.constraint(equalTo: scrollView.leftAnchor, constant: left).isActive = true
+        descriptionTextView.topAnchor.constraint(equalTo: personStackView.bottomAnchor, constant: Metrics.left.rawValue).isActive = true
+        descriptionTextView.leftAnchor.constraint(equalTo: scrollView.leftAnchor, constant: Metrics.left.rawValue).isActive = true
         descriptionTextView.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor).isActive = true
-        descriptionTextView.heightAnchor.constraint(equalToConstant: height).isActive = true
+        descriptionTextView.heightAnchor.constraint(equalToConstant: Metrics.width.rawValue).isActive = true
     }
     
     
     private func setupSkillsLabelAutoLayout() {
-        skillsLabel.topAnchor.constraint(equalTo: descriptionTextView.bottomAnchor, constant: top).isActive = true
-        skillsLabel.leftAnchor.constraint(equalTo: scrollView.leftAnchor, constant: left).isActive = true
-        skillsLabel.widthAnchor.constraint(equalToConstant: width * 2).isActive = true
-        skillsLabel.heightAnchor.constraint(equalToConstant: left * 1.5).isActive = true
+        skillsLabel.topAnchor.constraint(equalTo: descriptionTextView.bottomAnchor, constant: Metrics.left.rawValue).isActive = true
+        skillsLabel.leftAnchor.constraint(equalTo: scrollView.leftAnchor, constant: Metrics.left.rawValue).isActive = true
+        skillsLabel.widthAnchor.constraint(equalToConstant: Metrics.width.rawValue * 2).isActive = true
+        skillsLabel.heightAnchor.constraint(equalToConstant: Metrics.left.rawValue * 1.5).isActive = true
     }
     
     
@@ -322,8 +321,8 @@ final class CVViewController: UIViewController {
             skillView.layer.cornerRadius = 10
             skillView.layer.shadowOpacity = 1
             
-            skillView.widthAnchor.constraint(equalToConstant: width).isActive = true
-            skillView.heightAnchor.constraint(equalToConstant: height).isActive = true
+            skillView.widthAnchor.constraint(equalToConstant: Metrics.width.rawValue).isActive = true
+            skillView.heightAnchor.constraint(equalToConstant: Metrics.width.rawValue).isActive = true
         }
         
         //imageViews
@@ -340,8 +339,8 @@ final class CVViewController: UIViewController {
             
             skillImageView.centerXAnchor.constraint(equalTo: skillsViewArray[index].centerXAnchor).isActive = true
             skillImageView.centerYAnchor.constraint(equalTo: skillsViewArray[index].centerYAnchor).isActive = true
-            skillImageView.widthAnchor.constraint(equalToConstant: left * 2).isActive = true
-            skillImageView.heightAnchor.constraint(equalToConstant: left * 2).isActive = true
+            skillImageView.widthAnchor.constraint(equalToConstant: Metrics.left.rawValue * 2).isActive = true
+            skillImageView.heightAnchor.constraint(equalToConstant: Metrics.left.rawValue * 2).isActive = true
         }
      
         //labels
@@ -360,21 +359,21 @@ final class CVViewController: UIViewController {
             label.leadingAnchor.constraint(equalTo: skillsViewArray[number].leadingAnchor).isActive = true
             label.bottomAnchor.constraint(equalTo: skillsViewArray[number].bottomAnchor, constant: 0).isActive = true
             label.trailingAnchor.constraint(equalTo: skillsViewArray[number].trailingAnchor).isActive = true
-            label.heightAnchor.constraint(equalToConstant: height/5).isActive = true
+            label.heightAnchor.constraint(equalToConstant: Metrics.width.rawValue/5).isActive = true
         }
              
-        skillsStackView.topAnchor.constraint(equalTo: skillsLabel.bottomAnchor, constant: 10).isActive = true
-        skillsStackView.leftAnchor.constraint(equalTo: scrollView.leftAnchor, constant: left).isActive = true
-        skillsStackView.heightAnchor.constraint(equalToConstant: height).isActive = true
-        skillsStackView.widthAnchor.constraint(equalToConstant: view.bounds.width - (left * 2)).isActive = true
+        skillsStackView.topAnchor.constraint(equalTo: skillsLabel.bottomAnchor, constant: Metrics.bottom.rawValue).isActive = true
+        skillsStackView.leftAnchor.constraint(equalTo: scrollView.leftAnchor, constant: Metrics.left.rawValue).isActive = true
+        skillsStackView.heightAnchor.constraint(equalToConstant: Metrics.width.rawValue).isActive = true
+        skillsStackView.widthAnchor.constraint(equalToConstant: view.bounds.width - (Metrics.left.rawValue * 2)).isActive = true
     }
     
     
     private func setupExperienceLabelAutoLayout() {
-        experienceLabel.topAnchor.constraint(equalTo: skillsStackView.bottomAnchor, constant: top * 1.5).isActive = true
-        experienceLabel.leftAnchor.constraint(equalTo: scrollView.leftAnchor, constant: left).isActive = true
-        experienceLabel.widthAnchor.constraint(equalToConstant: width * 2).isActive = true
-        experienceLabel.heightAnchor.constraint(equalToConstant: left * 1.5).isActive = true
+        experienceLabel.topAnchor.constraint(equalTo: skillsStackView.bottomAnchor, constant: Metrics.left.rawValue * 1.5).isActive = true
+        experienceLabel.leftAnchor.constraint(equalTo: scrollView.leftAnchor, constant: Metrics.left.rawValue).isActive = true
+        experienceLabel.widthAnchor.constraint(equalToConstant: Metrics.width.rawValue * 2).isActive = true
+        experienceLabel.heightAnchor.constraint(equalToConstant: Metrics.left.rawValue * 1.5).isActive = true
     }
     
     
@@ -388,7 +387,7 @@ final class CVViewController: UIViewController {
             circle.backgroundColor = .systemGray5
             
             index += 1
-            circle.leftAnchor.constraint(equalTo: scrollView.leftAnchor, constant: left * 1.5).isActive = true
+            circle.leftAnchor.constraint(equalTo: scrollView.leftAnchor, constant: Metrics.left.rawValue * 1.5).isActive = true
             circle.widthAnchor.constraint(equalToConstant: 8).isActive = true
             circle.heightAnchor.constraint(equalToConstant: 8).isActive = true
             
@@ -412,29 +411,29 @@ final class CVViewController: UIViewController {
 
     private func setupExpirienceStackViewsAutoLayout() {
         firstExperienceStackView.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor).isActive = true
-        firstExperienceStackView.topAnchor.constraint(equalTo: experienceLabel.bottomAnchor, constant: top/2).isActive = true
-        firstExperienceStackView.widthAnchor.constraint(equalToConstant: view.bounds.width/2 + width/2).isActive = true
-        firstExperienceStackView.heightAnchor.constraint(equalToConstant: height).isActive = true
+        firstExperienceStackView.topAnchor.constraint(equalTo: experienceLabel.bottomAnchor, constant: Metrics.bottom.rawValue).isActive = true
+        firstExperienceStackView.widthAnchor.constraint(equalToConstant: view.bounds.width/2 + Metrics.width.rawValue/2).isActive = true
+        firstExperienceStackView.heightAnchor.constraint(equalToConstant: Metrics.width.rawValue).isActive = true
         
         presentExperienceStackView.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor).isActive = true
-        presentExperienceStackView.topAnchor.constraint(equalTo: firstExperienceStackView.bottomAnchor, constant: top * 2).isActive = true
-        presentExperienceStackView.widthAnchor.constraint(equalToConstant: view.bounds.width/2 + width/2).isActive = true
-        presentExperienceStackView.heightAnchor.constraint(equalToConstant: height).isActive = true
+        presentExperienceStackView.topAnchor.constraint(equalTo: firstExperienceStackView.bottomAnchor, constant: Metrics.left.rawValue * 2).isActive = true
+        presentExperienceStackView.widthAnchor.constraint(equalToConstant: view.bounds.width/2 + Metrics.width.rawValue/2).isActive = true
+        presentExperienceStackView.heightAnchor.constraint(equalToConstant: Metrics.width.rawValue).isActive = true
     }
     
     
     private func setupContactsLabelAutoLayout() {
-        contactsLabel.topAnchor.constraint(equalTo: presentExperienceStackView.bottomAnchor, constant: top * 1.5).isActive = true
-        contactsLabel.leftAnchor.constraint(equalTo: scrollView.leftAnchor, constant: left).isActive = true
-        contactsLabel.widthAnchor.constraint(equalToConstant: width * 2).isActive = true
-        contactsLabel.heightAnchor.constraint(equalToConstant: height/3).isActive = true
+        contactsLabel.topAnchor.constraint(equalTo: presentExperienceStackView.bottomAnchor, constant: Metrics.left.rawValue * 1.5).isActive = true
+        contactsLabel.leftAnchor.constraint(equalTo: scrollView.leftAnchor, constant: Metrics.left.rawValue).isActive = true
+        contactsLabel.widthAnchor.constraint(equalToConstant: Metrics.width.rawValue * 2).isActive = true
+        contactsLabel.heightAnchor.constraint(equalToConstant: Metrics.width.rawValue/3).isActive = true
     }
     
     
     private func setupContactsStackViewsAutoLayout() {
         contactsStackView.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor).isActive = true
-        contactsStackView.topAnchor.constraint(equalTo: contactsLabel.bottomAnchor, constant: top/2).isActive = true
-        contactsStackView.widthAnchor.constraint(equalToConstant: view.bounds.width - (left * 2)).isActive = true
-        contactsStackView.heightAnchor.constraint(equalToConstant: width).isActive = true
+        contactsStackView.topAnchor.constraint(equalTo: contactsLabel.bottomAnchor, constant: Metrics.bottom.rawValue).isActive = true
+        contactsStackView.widthAnchor.constraint(equalToConstant: view.bounds.width - (Metrics.left.rawValue * 2)).isActive = true
+        contactsStackView.heightAnchor.constraint(equalToConstant: Metrics.width.rawValue).isActive = true
     }
 }

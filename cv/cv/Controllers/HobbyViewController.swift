@@ -28,11 +28,6 @@ final class HobbyViewController: UIViewController {
     private var hobbyImgViewArray = [UIImageView]()
     private var hobbyLabelsArray = [UILabel]()
     
-    private let left: CGFloat = 20
-    private let top: CGFloat = 20
-    private let width: CGFloat = 100
-    private let height: CGFloat = 100
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -82,9 +77,9 @@ final class HobbyViewController: UIViewController {
             index += 1
             constant += 150
         
-            hobby.leftAnchor.constraint(equalTo: view.leftAnchor, constant: left).isActive = true
-            hobby.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -(left * 3)).isActive = true
-            hobby.heightAnchor.constraint(equalToConstant: height + (left * 2)).isActive = true
+            hobby.leftAnchor.constraint(equalTo: view.leftAnchor, constant: Metrics.left.rawValue).isActive = true
+            hobby.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -(Metrics.left.rawValue * 3)).isActive = true
+            hobby.heightAnchor.constraint(equalToConstant: Metrics.width.rawValue + (Metrics.left.rawValue * 2)).isActive = true
            
             switch index {
             case 0:
@@ -92,10 +87,10 @@ final class HobbyViewController: UIViewController {
                 hobby.topAnchor.constraint(equalTo: view.topAnchor, constant: constant).isActive = true
             case 1:
                 hobby.backgroundColor = #colorLiteral(red: 0.8574097157, green: 0.2946243882, blue: 0.2486538291, alpha: 1)
-                hobby.topAnchor.constraint(equalTo: hobbyViewArray[0].bottomAnchor, constant: top).isActive = true
+                hobby.topAnchor.constraint(equalTo: hobbyViewArray[0].bottomAnchor, constant: Metrics.left.rawValue).isActive = true
             case 2:
                 hobby.backgroundColor = #colorLiteral(red: 0.01008087303, green: 0.9371960759, blue: 0.8205029368, alpha: 1)
-                hobby.topAnchor.constraint(equalTo: hobbyViewArray[1].bottomAnchor, constant: top).isActive = true
+                hobby.topAnchor.constraint(equalTo: hobbyViewArray[1].bottomAnchor, constant: Metrics.left.rawValue).isActive = true
             default:
                 break
             }
@@ -117,8 +112,8 @@ final class HobbyViewController: UIViewController {
 
             label.centerXAnchor.constraint(equalTo: hobbyViewArray[index].centerXAnchor).isActive = true
             label.centerYAnchor.constraint(equalTo: hobbyViewArray[index].centerYAnchor).isActive = true
-            label.widthAnchor.constraint(equalToConstant: width * 2).isActive = true
-            label.heightAnchor.constraint(equalToConstant: height/2).isActive = true
+            label.widthAnchor.constraint(equalToConstant: Metrics.width.rawValue * 2).isActive = true
+            label.heightAnchor.constraint(equalToConstant: Metrics.width.rawValue/2).isActive = true
         }
     }
     
@@ -132,9 +127,9 @@ final class HobbyViewController: UIViewController {
             view.addSubview(hobbyImgViewArray[index])
             
             imgView.centerXAnchor.constraint(equalTo: hobbyViewArray[index].trailingAnchor).isActive = true
-            imgView.topAnchor.constraint(equalTo: hobbyViewArray[index].topAnchor, constant: top * 1.5).isActive = true
-            imgView.heightAnchor.constraint(equalToConstant: height - left).isActive = true
-            imgView.widthAnchor.constraint(equalToConstant: width - left).isActive = true
+            imgView.topAnchor.constraint(equalTo: hobbyViewArray[index].topAnchor, constant: Metrics.left.rawValue * 1.5).isActive = true
+            imgView.heightAnchor.constraint(equalToConstant: Metrics.width.rawValue - Metrics.left.rawValue).isActive = true
+            imgView.widthAnchor.constraint(equalToConstant: Metrics.width.rawValue - Metrics.left.rawValue).isActive = true
         }
     }
 

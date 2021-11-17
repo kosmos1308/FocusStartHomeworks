@@ -58,10 +58,6 @@ final class SkillsViewController: UIViewController {
     private var skills = Skills()
     private var projectArray = [Project]()
     
-    private let left: CGFloat = 20
-    private let top: CGFloat = 20
-    private let width: CGFloat = 100
-    private let height: CGFloat = 100
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -72,15 +68,12 @@ final class SkillsViewController: UIViewController {
         view.addSubview(tableView)
         
         updateNavigationBar()
-
         appendSkills()
         appendProjects()
-
         setupCollectionViewAutoLayout()
         setupProjectsLabelAutoLayout()
         setupTableViewAutoLayout()
     }
-    
     
     private func updateNavigationBar() {
         navigationController?.navigationBar.prefersLargeTitles = true
@@ -97,7 +90,6 @@ final class SkillsViewController: UIViewController {
         }
     }
     
-    
     private func appendProjects() {
         let weatherProject = Project(name: "Weather",
                                      description: "This project about ...",
@@ -109,20 +101,19 @@ final class SkillsViewController: UIViewController {
         projectArray.append(noteBookProject)
     }
     
-    
     //MARK: - AutoLayout
     private func setupProjectsLabelAutoLayout() {
         NSLayoutConstraint.activate([
-            projectsLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: left),
-            projectsLabel.topAnchor.constraint(equalTo: collectionView.bottomAnchor, constant: top),
-            projectsLabel.heightAnchor.constraint(equalToConstant: height/3),
-            projectsLabel.widthAnchor.constraint(equalToConstant: width * 2)])
+            projectsLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: Metrics.left.rawValue),
+            projectsLabel.topAnchor.constraint(equalTo: collectionView.bottomAnchor, constant: Metrics.left.rawValue),
+            projectsLabel.heightAnchor.constraint(equalToConstant: Metrics.width.rawValue/3),
+            projectsLabel.widthAnchor.constraint(equalToConstant: Metrics.width.rawValue * 2)])
     }
     
     private func setupTableViewAutoLayout() {
         NSLayoutConstraint.activate([
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0),
-            tableView.topAnchor.constraint(equalTo: projectsLabel.bottomAnchor, constant: top),
+            tableView.topAnchor.constraint(equalTo: projectsLabel.bottomAnchor, constant: Metrics.left.rawValue),
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0),
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0)])
     }
@@ -130,9 +121,9 @@ final class SkillsViewController: UIViewController {
     private func setupCollectionViewAutoLayout() {
         NSLayoutConstraint.activate([
             collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0),
-            collectionView.topAnchor.constraint(equalTo: view.topAnchor, constant: 112),
+            collectionView.topAnchor.constraint(equalTo: view.topAnchor, constant: Metrics.top.rawValue),
             collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0),
-            collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -(view.bounds.height/2 + (top * 2)))])
+            collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -(view.bounds.height/2 + (Metrics.left.rawValue * 2)))])
     }
 }
 
@@ -156,10 +147,9 @@ extension SkillsViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
-        return height
+        return Metrics.width.rawValue
     }
 }
-
 
 //MARK: - UICollectionViewDataSource
 extension SkillsViewController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
@@ -186,7 +176,7 @@ extension SkillsViewController: UICollectionViewDataSource, UICollectionViewDele
 extension SkillsViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        return CGSize(width: 100, height: 120)
+        return CGSize(width: Metrics.width.rawValue, height: Metrics.width.rawValue + Metrics.left.rawValue)
     }
 }
 

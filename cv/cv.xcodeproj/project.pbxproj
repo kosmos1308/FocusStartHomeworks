@@ -18,6 +18,7 @@
 		E900D6EA27408DDD00A801CB /* Experience.swift in Sources */ = {isa = PBXBuildFile; fileRef = E900D6E927408DDD00A801CB /* Experience.swift */; };
 		E900D6EC2740976200A801CB /* HobbyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E900D6EB2740976100A801CB /* HobbyViewController.swift */; };
 		E93CE58A2743D03100718B90 /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93CE5892743D03100718B90 /* Project.swift */; };
+		E971F98927456302000ECEC2 /* Metrics.swift in Sources */ = {isa = PBXBuildFile; fileRef = E971F98827456302000ECEC2 /* Metrics.swift */; };
 		E9C1DEB62741A7080064E84C /* ProjectsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C1DEB52741A7080064E84C /* ProjectsTableViewCell.swift */; };
 		E9E817FE2741329900F6EBA2 /* SkillsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E817FD2741329900F6EBA2 /* SkillsCollectionViewCell.swift */; };
 		E9E81800274133E200F6EBA2 /* Skills.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E817FF274133E200F6EBA2 /* Skills.swift */; };
@@ -38,6 +39,7 @@
 		E900D6E927408DDD00A801CB /* Experience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Experience.swift; sourceTree = "<group>"; };
 		E900D6EB2740976100A801CB /* HobbyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HobbyViewController.swift; sourceTree = "<group>"; };
 		E93CE5892743D03100718B90 /* Project.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Project.swift; sourceTree = "<group>"; };
+		E971F98827456302000ECEC2 /* Metrics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Metrics.swift; sourceTree = "<group>"; };
 		E9C1DEB52741A7080064E84C /* ProjectsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectsTableViewCell.swift; sourceTree = "<group>"; };
 		E9E817FD2741329900F6EBA2 /* SkillsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillsCollectionViewCell.swift; sourceTree = "<group>"; };
 		E9E817FF274133E200F6EBA2 /* Skills.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Skills.swift; sourceTree = "<group>"; };
@@ -95,6 +97,7 @@
 				E9E8B93F27432EC20004E892 /* Contacts.swift */,
 				E9E817FF274133E200F6EBA2 /* Skills.swift */,
 				E93CE5892743D03100718B90 /* Project.swift */,
+				E971F98827456302000ECEC2 /* Metrics.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -207,6 +210,7 @@
 				E9E8B94027432EC20004E892 /* Contacts.swift in Sources */,
 				E900D6CB273FE3C200A801CB /* AppDelegate.swift in Sources */,
 				E900D6E327400FEF00A801CB /* SkillsViewController.swift in Sources */,
+				E971F98927456302000ECEC2 /* Metrics.swift in Sources */,
 				E900D6CD273FE3C200A801CB /* SceneDelegate.swift in Sources */,
 				E900D6EC2740976200A801CB /* HobbyViewController.swift in Sources */,
 			);
