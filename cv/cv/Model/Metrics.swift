@@ -8,10 +8,9 @@
 import Foundation
 import UIKit
 
-enum Metrics: CGFloat {
-    case left = 20
-    case top = 112
-    case bottom = 10
-    case width = 100
-    //case height = 100
+enum Metrics {
+    static let left: CGFloat = 20
+    static let top: CGFloat = 112
+    static let bottom: CGFloat = 10
+    static let width: CGFloat = 100
 }

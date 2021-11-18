@@ -104,16 +104,16 @@ final class SkillsViewController: UIViewController {
     //MARK: - AutoLayout
     private func setupProjectsLabelAutoLayout() {
         NSLayoutConstraint.activate([
-            projectsLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: Metrics.left.rawValue),
-            projectsLabel.topAnchor.constraint(equalTo: collectionView.bottomAnchor, constant: Metrics.left.rawValue),
-            projectsLabel.heightAnchor.constraint(equalToConstant: Metrics.width.rawValue/3),
-            projectsLabel.widthAnchor.constraint(equalToConstant: Metrics.width.rawValue * 2)])
+            projectsLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: Metrics.left),
+            projectsLabel.topAnchor.constraint(equalTo: collectionView.bottomAnchor, constant: Metrics.left),
+            projectsLabel.heightAnchor.constraint(equalToConstant: Metrics.width/3),
+            projectsLabel.widthAnchor.constraint(equalToConstant: Metrics.width * 2)])
     }
     
     private func setupTableViewAutoLayout() {
         NSLayoutConstraint.activate([
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0),
-            tableView.topAnchor.constraint(equalTo: projectsLabel.bottomAnchor, constant: Metrics.left.rawValue),
+            tableView.topAnchor.constraint(equalTo: projectsLabel.bottomAnchor, constant: Metrics.left),
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0),
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0)])
     }
@@ -121,9 +121,9 @@ final class SkillsViewController: UIViewController {
     private func setupCollectionViewAutoLayout() {
         NSLayoutConstraint.activate([
             collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0),
-            collectionView.topAnchor.constraint(equalTo: view.topAnchor, constant: Metrics.top.rawValue),
+            collectionView.topAnchor.constraint(equalTo: view.topAnchor, constant: Metrics.top),
             collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0),
-            collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -(view.bounds.height/2 + (Metrics.left.rawValue * 2)))])
+            collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -(view.bounds.height/2 + (Metrics.left * 2)))])
     }
 }
 
@@ -147,7 +147,7 @@ extension SkillsViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
-        return Metrics.width.rawValue
+        return Metrics.width
     }
 }
 
@@ -176,7 +176,7 @@ extension SkillsViewController: UICollectionViewDataSource, UICollectionViewDele
 extension SkillsViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        return CGSize(width: Metrics.width.rawValue, height: Metrics.width.rawValue + Metrics.left.rawValue)
+        return CGSize(width: Metrics.width, height: Metrics.width + Metrics.left)
     }
 }
 
