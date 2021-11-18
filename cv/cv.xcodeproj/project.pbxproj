@@ -17,6 +17,10 @@
 		E900D6E5274016FD00A801CB /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = E900D6E4274016FD00A801CB /* Person.swift */; };
 		E900D6EA27408DDD00A801CB /* Experience.swift in Sources */ = {isa = PBXBuildFile; fileRef = E900D6E927408DDD00A801CB /* Experience.swift */; };
 		E900D6EC2740976200A801CB /* HobbyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E900D6EB2740976100A801CB /* HobbyViewController.swift */; };
+		E92CDB8F274643CA00389A05 /* PersonVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E92CDB8E274643C900389A05 /* PersonVC.swift */; };
+		E92CDB91274648EF00389A05 /* SkillVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E92CDB90274648EF00389A05 /* SkillVC.swift */; };
+		E92CDB93274649FA00389A05 /* ExperienceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E92CDB92274649FA00389A05 /* ExperienceVC.swift */; };
+		E92CDB9527464B8E00389A05 /* ContactVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E92CDB9427464B8E00389A05 /* ContactVC.swift */; };
 		E93CE58A2743D03100718B90 /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93CE5892743D03100718B90 /* Project.swift */; };
 		E971F98927456302000ECEC2 /* Metrics.swift in Sources */ = {isa = PBXBuildFile; fileRef = E971F98827456302000ECEC2 /* Metrics.swift */; };
 		E9C1DEB62741A7080064E84C /* ProjectsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C1DEB52741A7080064E84C /* ProjectsTableViewCell.swift */; };
@@ -38,6 +42,10 @@
 		E900D6E4274016FD00A801CB /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 		E900D6E927408DDD00A801CB /* Experience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Experience.swift; sourceTree = "<group>"; };
 		E900D6EB2740976100A801CB /* HobbyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HobbyViewController.swift; sourceTree = "<group>"; };
+		E92CDB8E274643C900389A05 /* PersonVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonVC.swift; sourceTree = "<group>"; };
+		E92CDB90274648EF00389A05 /* SkillVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillVC.swift; sourceTree = "<group>"; };
+		E92CDB92274649FA00389A05 /* ExperienceVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExperienceVC.swift; sourceTree = "<group>"; };
+		E92CDB9427464B8E00389A05 /* ContactVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactVC.swift; sourceTree = "<group>"; };
 		E93CE5892743D03100718B90 /* Project.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Project.swift; sourceTree = "<group>"; };
 		E971F98827456302000ECEC2 /* Metrics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Metrics.swift; sourceTree = "<group>"; };
 		E9C1DEB52741A7080064E84C /* ProjectsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectsTableViewCell.swift; sourceTree = "<group>"; };
@@ -105,6 +113,10 @@
 		E900D6E7274017C400A801CB /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				E92CDB8E274643C900389A05 /* PersonVC.swift */,
+				E92CDB90274648EF00389A05 /* SkillVC.swift */,
+				E92CDB92274649FA00389A05 /* ExperienceVC.swift */,
+				E92CDB9427464B8E00389A05 /* ContactVC.swift */,
 				E900D6E027400F8300A801CB /* CVViewController.swift */,
 				E900D6E227400FEF00A801CB /* SkillsViewController.swift */,
 				E900D6EB2740976100A801CB /* HobbyViewController.swift */,
@@ -199,6 +211,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E92CDB91274648EF00389A05 /* SkillVC.swift in Sources */,
 				E900D6E5274016FD00A801CB /* Person.swift in Sources */,
 				E9C1DEB62741A7080064E84C /* ProjectsTableViewCell.swift in Sources */,
 				E900D6DF27400EF400A801CB /* TabBarController.swift in Sources */,
@@ -207,8 +220,11 @@
 				E9E81800274133E200F6EBA2 /* Skills.swift in Sources */,
 				E9E817FE2741329900F6EBA2 /* SkillsCollectionViewCell.swift in Sources */,
 				E900D6EA27408DDD00A801CB /* Experience.swift in Sources */,
+				E92CDB9527464B8E00389A05 /* ContactVC.swift in Sources */,
 				E9E8B94027432EC20004E892 /* Contacts.swift in Sources */,
 				E900D6CB273FE3C200A801CB /* AppDelegate.swift in Sources */,
+				E92CDB8F274643CA00389A05 /* PersonVC.swift in Sources */,
+				E92CDB93274649FA00389A05 /* ExperienceVC.swift in Sources */,
 				E900D6E327400FEF00A801CB /* SkillsViewController.swift in Sources */,
 				E971F98927456302000ECEC2 /* Metrics.swift in Sources */,
 				E900D6CD273FE3C200A801CB /* SceneDelegate.swift in Sources */,

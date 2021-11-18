@@ -127,8 +127,8 @@ final class SkillsViewController: UIViewController {
     }
 }
 
-//MARK: - UITableViewDataSource, UITableViewDelegate
-extension SkillsViewController: UITableViewDataSource, UITableViewDelegate {
+//MARK: - UITableViewDataSource
+extension SkillsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         return projectArray.count
@@ -144,7 +144,10 @@ extension SkillsViewController: UITableViewDataSource, UITableViewDelegate {
         projectCell.descriptionProjectTextView.text = projectArray[indexPath.row].description
         return projectCell
     }
-    
+}
+
+//MARK: - UITableViewDelegate
+extension SkillsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
         return Metrics.width
