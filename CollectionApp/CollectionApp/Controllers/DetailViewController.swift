@@ -25,6 +25,15 @@ class DetailViewController: UIViewController {
         return label
         
     }()
+    
+    private let detailButton: UIButton = {
+        let button = UIButton()
+        button.backgroundColor = .systemBlue
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setTitle("Open modal window", for: .normal)
+        button.setTitleColor(.white, for: .normal)
+        return button
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,9 +41,19 @@ class DetailViewController: UIViewController {
         view.backgroundColor = .white
         view.addSubview(detailPhotoImageView)
         view.addSubview(detailLabel)
+        view.addSubview(detailButton)
+        
+        detailButton.addTarget(self, action: #selector(tapDetailButton(sender:)), for: .touchUpInside)
         
         setupDetailPhotoImageViewAutoLayout()
         setupDetailLabelViewAutoLayout()
+        setupDetailButtonViewAutoLayout()
+    }
+    
+    //MARK: - action detail button
+    @objc func tapDetailButton(sender: UIButton) {
+        let modalVC = ModalViewController()
+        navigationController?.present(modalVC, animated: true, completion: nil)
     }
     
     
@@ -47,7 +66,6 @@ class DetailViewController: UIViewController {
             detailPhotoImageView.heightAnchor.constraint(equalToConstant: 200)])
     }
     
-    
     private func setupDetailLabelViewAutoLayout() {
         NSLayoutConstraint.activate([
             detailLabel.topAnchor.constraint(equalTo: detailPhotoImageView.bottomAnchor, constant: 10),
@@ -55,7 +73,13 @@ class DetailViewController: UIViewController {
             detailLabel.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -20),
             detailLabel.heightAnchor.constraint(equalToConstant: 40)])
     }
-
-
+    
+    private func setupDetailButtonViewAutoLayout() {
+        NSLayoutConstraint.activate([
+            detailButton.topAnchor.constraint(equalTo: detailLabel.bottomAnchor, constant: 20),
+            detailButton.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20),
+            detailButton.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -20),
+            detailButton.heightAnchor.constraint(equalToConstant: 40)])
+    }
 
 }

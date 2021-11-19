@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		E92CD6DE2747EA9F00A020E8 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E92CD6DD2747EA9F00A020E8 /* DetailViewController.swift */; };
 		E92CD6E12747EBBD00A020E8 /* PhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E92CD6E02747EBBD00A020E8 /* PhotoCollectionViewCell.swift */; };
+		E92CD6E42748079800A020E8 /* ModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E92CD6E32748079800A020E8 /* ModalViewController.swift */; };
 		E96652AD2746E911007A0BC6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96652AC2746E911007A0BC6 /* AppDelegate.swift */; };
 		E96652AF2746E911007A0BC6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96652AE2746E911007A0BC6 /* SceneDelegate.swift */; };
 		E96652B12746E911007A0BC6 /* PhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96652B02746E911007A0BC6 /* PhotoViewController.swift */; };
@@ -19,6 +20,7 @@
 /* Begin PBXFileReference section */
 		E92CD6DD2747EA9F00A020E8 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		E92CD6E02747EBBD00A020E8 /* PhotoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCollectionViewCell.swift; sourceTree = "<group>"; };
+		E92CD6E32748079800A020E8 /* ModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalViewController.swift; sourceTree = "<group>"; };
 		E96652A92746E911007A0BC6 /* CollectionApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CollectionApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E96652AC2746E911007A0BC6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E96652AE2746E911007A0BC6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -53,6 +55,7 @@
 			children = (
 				E96652B02746E911007A0BC6 /* PhotoViewController.swift */,
 				E92CD6DD2747EA9F00A020E8 /* DetailViewController.swift */,
+				E92CD6E32748079800A020E8 /* ModalViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -176,6 +179,7 @@
 				E92CD6E12747EBBD00A020E8 /* PhotoCollectionViewCell.swift in Sources */,
 				E96652AD2746E911007A0BC6 /* AppDelegate.swift in Sources */,
 				E96652AF2746E911007A0BC6 /* SceneDelegate.swift in Sources */,
+				E92CD6E42748079800A020E8 /* ModalViewController.swift in Sources */,
 				E92CD6DE2747EA9F00A020E8 /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
