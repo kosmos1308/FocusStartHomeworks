@@ -65,6 +65,13 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		E92CD6E22747FE9200A020E8 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		E96652A02746E911007A0BC6 = {
 			isa = PBXGroup;
 			children = (
@@ -85,6 +92,7 @@
 			isa = PBXGroup;
 			children = (
 				E92CD6DB2747E54F00A020E8 /* Applications */,
+				E92CD6E22747FE9200A020E8 /* Models */,
 				E92CD6DF2747EB9100A020E8 /* Views */,
 				E92CD6DC2747E56000A020E8 /* Controllers */,
 				E96652B52746E913007A0BC6 /* Assets.xcassets */,

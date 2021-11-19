@@ -31,8 +31,8 @@ class PhotoViewController: UIViewController {
     private func setupCollectionView() {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
-        layout.itemSize = CGSize(width: Int(view.bounds.width/3 - 10),
-                                 height: Int(view.bounds.width/3 - 10))
+        layout.itemSize = CGSize(width: Int(view.bounds.width/3 - 20),
+                                 height: Int(view.bounds.width/3 - 20))
         
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         guard let collectionView = collectionView else {return}
@@ -54,11 +54,13 @@ class PhotoViewController: UIViewController {
     }
     
     
-    //MARK: -
-    //MARK: -
-    //MARK: -
+    
+    
+    
+    
 }
 
+//MARK: - UICollectionViewDataSource
 extension PhotoViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
@@ -72,11 +74,21 @@ extension PhotoViewController: UICollectionViewDataSource {
     }
 }
 
+//MARK: - UICollectionViewDelegate
 extension PhotoViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let detailVC = DetailViewController()
+        navigationController?.pushViewController(detailVC, animated: true)
         
-
     }
     
+}
+
+//MARK: - UICollectionViewDelegateFlowLayout
+extension PhotoViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        
+        return UIEdgeInsets(top: 10, left: 10, bottom: 0, right: 10)
+    }
 }
 
