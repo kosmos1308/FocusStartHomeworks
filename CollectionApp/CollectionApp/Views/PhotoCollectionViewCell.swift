@@ -36,6 +36,10 @@ class PhotoCollectionViewCell: UICollectionViewCell {
     }()
     
     
+    let gradient = CAGradientLayer()
+    
+    
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -45,6 +49,13 @@ class PhotoCollectionViewCell: UICollectionViewCell {
         contentView.layer.cornerRadius = Metrics.cornerRadius
         contentView.addSubview(photoImageView)
         contentView.addSubview(namePhotoLabel)
+        
+        gradient.frame = contentView.bounds
+        gradient.contents = photoImageView.image?.cgImage
+        gradient.colors = [UIColor.clear.cgColor, UIColor.black.cgColor]
+        gradient.startPoint = CGPoint(x: 0, y: 0)
+        gradient.endPoint = CGPoint(x: 0, y: 1)
+        photoImageView.layer.addSublayer(gradient)
     }
     
     required init?(coder: NSCoder) {

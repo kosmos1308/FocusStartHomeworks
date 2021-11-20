@@ -14,7 +14,7 @@ struct Photo {
     
     static let data = [
         Photo(namePhoto: "dog",
-              titlePhoto: "Man's best firend",
+              titlePhoto: "Man's best friend",
               descriptionPhoto: "The dog or domestic dog is a domesticated descendant of the wolf which is characterized by an upturning tail. The dog derived from an ancient, extinct wolf, and the modern grey wolf is the dog's nearest living relative. The dog was the first species to be domesticated, by hunter–gatherers over 15,000 years ago, before the development of agriculture.The dog has been selectively bred over millennia for various behaviors, sensory capabilities, and physical attributes. Dog breeds vary widely in shape, size, and color. They perform many roles for humans, such as hunting, herding, pulling loads, protection, assisting police and the military, companionship, therapy, and aiding disabled people. This influence on human society has given them the sobriquet of \"man's best friend.\""),
         Photo(namePhoto: "minsk",
               titlePhoto: "Minsk",

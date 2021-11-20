@@ -19,6 +19,8 @@ class PhotoViewController: UIViewController {
         updateNavController()
         setupCollectionView()
         
+        
+
     }
     
     
