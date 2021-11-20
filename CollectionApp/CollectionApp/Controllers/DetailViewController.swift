@@ -35,6 +35,9 @@ class DetailViewController: UIViewController {
         return button
     }()
 
+    var text = ""
+    var nameImage = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -48,6 +51,11 @@ class DetailViewController: UIViewController {
         setupDetailPhotoImageViewAutoLayout()
         setupDetailLabelViewAutoLayout()
         setupDetailButtonViewAutoLayout()
+        
+        
+        detailLabel.text = text
+        detailPhotoImageView.image = UIImage(systemName: nameImage)
+        
     }
     
     //MARK: - action detail button
