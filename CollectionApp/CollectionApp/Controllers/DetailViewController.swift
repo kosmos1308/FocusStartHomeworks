@@ -13,17 +13,18 @@ class DetailViewController: UIViewController {
         let imageView = UIImageView()
         imageView.backgroundColor = .systemGray
         imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.contentMode = .scaleAspectFill
+        //imageView.sizeToFit()
         return imageView
-        
     }()
     
     private let detailLabel: UILabel = {
         let label = UILabel()
-        label.backgroundColor = .systemGray
+        //label.backgroundColor = .systemGray
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = .center
+        label.font = UIFont(name: "Rockwell", size: 20)
         return label
-        
     }()
     
     private let detailButton: UIButton = {
@@ -32,11 +33,14 @@ class DetailViewController: UIViewController {
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("Open modal window", for: .normal)
         button.setTitleColor(.white, for: .normal)
+        button.titleLabel?.font = UIFont(name: "Rockwell", size: 20)
+        button.addTarget(self, action: #selector(tapDetailButton(sender:)), for: .touchUpInside)
         return button
     }()
 
     var text = ""
     var nameImage = ""
+    var descriptionText = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,21 +50,19 @@ class DetailViewController: UIViewController {
         view.addSubview(detailLabel)
         view.addSubview(detailButton)
         
-        detailButton.addTarget(self, action: #selector(tapDetailButton(sender:)), for: .touchUpInside)
-        
         setupDetailPhotoImageViewAutoLayout()
         setupDetailLabelViewAutoLayout()
         setupDetailButtonViewAutoLayout()
         
-        
         detailLabel.text = text
-        detailPhotoImageView.image = UIImage(systemName: nameImage)
+        detailPhotoImageView.image = UIImage(named: nameImage)
         
     }
     
     //MARK: - action detail button
     @objc func tapDetailButton(sender: UIButton) {
         let modalVC = ModalViewController()
+        modalVC.detailText = descriptionText
         navigationController?.present(modalVC, animated: true, completion: nil)
     }
     
@@ -76,7 +78,7 @@ class DetailViewController: UIViewController {
     
     private func setupDetailLabelViewAutoLayout() {
         NSLayoutConstraint.activate([
-            detailLabel.topAnchor.constraint(equalTo: detailPhotoImageView.bottomAnchor, constant: Metrics.top/2),
+            detailLabel.topAnchor.constraint(equalTo: detailPhotoImageView.bottomAnchor, constant: Metrics.top * 2),
             detailLabel.leftAnchor.constraint(equalTo: view.leftAnchor, constant: Metrics.left),
             detailLabel.rightAnchor.constraint(equalTo: view.rightAnchor, constant: Metrics.right),
             detailLabel.heightAnchor.constraint(equalToConstant: Metrics.height/3)])

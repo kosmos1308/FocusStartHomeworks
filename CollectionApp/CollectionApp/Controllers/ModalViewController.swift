@@ -15,21 +15,33 @@ class ModalViewController: UIViewController {
         button.layer.cornerRadius = 17
         button.setImage(UIImage(systemName: "xmark.circle"), for: .normal)
         button.tintColor = .systemRed
-
+        button.addTarget(self, action: #selector(tapCloseButton), for: .touchUpInside)
         return button
     }()
     
+    let descriptionLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.textAlignment = .left
+        label.numberOfLines = 0
+        label.backgroundColor = .systemGray5
+        return label
+        
+    }()
+    
+    var detailText = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         view.backgroundColor = .secondarySystemBackground
         view.addSubview(closeButton)
+        view.addSubview(descriptionLabel)
         
-        closeButton.addTarget(self, action: #selector(tapCloseButton), for: .touchUpInside)
+        descriptionLabel.text = detailText
         
         setupCloseButtonAutoLayout()
-        
+        setupDescriptionLabelAutoLayout()
     }
     
     
@@ -45,6 +57,15 @@ class ModalViewController: UIViewController {
             closeButton.leftAnchor.constraint(equalTo: view.leftAnchor, constant: Metrics.left/2),
             closeButton.widthAnchor.constraint(equalToConstant: Metrics.width/4),
             closeButton.heightAnchor.constraint(equalToConstant: Metrics.width/4)])
+    }
+    
+    
+    private func setupDescriptionLabelAutoLayout() {
+        NSLayoutConstraint.activate([
+            descriptionLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: Metrics.top * 2),
+            descriptionLabel.leftAnchor.constraint(equalTo: view.leftAnchor, constant: Metrics.left),
+            descriptionLabel.rightAnchor.constraint(equalTo: view.rightAnchor, constant: Metrics.right),
+            descriptionLabel.heightAnchor.constraint(equalToConstant: Metrics.height * 2)])
     }
     
     

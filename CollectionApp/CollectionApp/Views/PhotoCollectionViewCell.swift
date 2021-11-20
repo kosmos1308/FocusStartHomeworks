@@ -15,23 +15,34 @@ class PhotoCollectionViewCell: UICollectionViewCell {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.backgroundColor = .darkGray
-        imageView.image = UIImage(systemName: "person")
+        imageView.layer.borderColor = UIColor.black.cgColor
+        imageView.layer.borderWidth = 1
+        imageView.layer.cornerRadius = Metrics.cornerRadius
+        imageView.contentMode = .scaleAspectFill
+        imageView.clipsToBounds = true
+        //imageView.sizeToFit()
+        
         return imageView
     }()
     
     let namePhotoLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.backgroundColor = .darkGray
-        label.textAlignment = .center
-        label.text = "Some text"
+        label.textAlignment = .left
+        label.textColor = .white
+        label.font = UIFont(name: "Rockwell", size: 20)
+        
         return label
     }()
     
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        contentView.backgroundColor = .systemBlue
+        
+        contentView.backgroundColor = .systemGray5
+        contentView.layer.borderWidth = 1
+        contentView.layer.borderColor = UIColor.black.cgColor
+        contentView.layer.cornerRadius = Metrics.cornerRadius
         contentView.addSubview(photoImageView)
         contentView.addSubview(namePhotoLabel)
     }
@@ -43,19 +54,15 @@ class PhotoCollectionViewCell: UICollectionViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        photoImageView.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 10).isActive = true
-        photoImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10).isActive = true
-        photoImageView.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -10).isActive = true
-        photoImageView.widthAnchor.constraint(equalToConstant: contentView.bounds.width - 20).isActive = true
-        photoImageView.heightAnchor.constraint(equalToConstant: contentView.bounds.width - 20).isActive = true
-        //photoImageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10 - namePhotoLabel.bounds.height - 5).isActive = true
-        //photoImageView.heightAnchor.constraint(equalToConstant: photoImageView.bounds.width).isActive = true
+        photoImageView.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: Metrics.left/2).isActive = true
+        photoImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: Metrics.top/2).isActive = true
+        photoImageView.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: Metrics.right/2).isActive = true
+        photoImageView.heightAnchor.constraint(equalToConstant: contentView.bounds.height + Metrics.right).isActive = true
         
-        
-        namePhotoLabel.leftAnchor.constraint(equalTo: contentView.leftAnchor).isActive = true
-        namePhotoLabel.rightAnchor.constraint(equalTo: contentView.rightAnchor).isActive = true
-        namePhotoLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
-        namePhotoLabel.heightAnchor.constraint(equalToConstant: 20).isActive = true
+        namePhotoLabel.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: Metrics.left).isActive = true
+        namePhotoLabel.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: Metrics.right).isActive = true
+        namePhotoLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: Metrics.right).isActive = true
+        namePhotoLabel.heightAnchor.constraint(equalToConstant: Metrics.height/5).isActive = true
     }
     
 }

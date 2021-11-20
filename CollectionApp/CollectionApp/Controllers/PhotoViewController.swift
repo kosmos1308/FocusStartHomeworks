@@ -10,39 +10,32 @@ import UIKit
 class PhotoViewController: UIViewController {
     
     private var collectionView: UICollectionView?
-    var photoArray = [Photo]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         view.backgroundColor = .white
         
-        appendPhoto()
         updateNavController()
         setupCollectionView()
         
     }
     
-    func appendPhoto() {
-        let photo = Photo(namePhoto: "airplane", titlePhoto: "Airplane", descriptionPhoto: "Airplane ...... ...... ......")
-        let secondPhoto = Photo(namePhoto: "car.fill", titlePhoto: "Car", descriptionPhoto: "Car - .... .... ....")
-        photoArray.append(photo)
-        photoArray.append(secondPhoto)
-        
-    }
     
     //MARK: - update navigationController
     private func updateNavController() {
         navigationController?.navigationBar.backgroundColor = .systemGray5
         navigationController?.navigationBar.prefersLargeTitles = true
         title = "Photo"
+        
+        navigationItem.titleView?.tintColor = .white
     }
     
     //MARK: - setup collectionView
     private func setupCollectionView() {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
-        layout.itemSize = CGSize(width: view.bounds.width/3 - Metrics.left, height: view.bounds.width/3)
+        layout.itemSize = CGSize(width: view.bounds.width/2 - Metrics.left, height: view.bounds.width/2)
         
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         guard let collectionView = collectionView else {return}
@@ -69,15 +62,15 @@ class PhotoViewController: UIViewController {
 extension PhotoViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        return photoArray.count
+        return Photo.data.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PhotoCollectionViewCell.id, for: indexPath)
         guard let photoCell = cell as? PhotoCollectionViewCell else {return cell}
         
-        photoCell.photoImageView.image = UIImage(systemName: "\(photoArray[indexPath.item].namePhoto)")
-        photoCell.namePhotoLabel.text = photoArray[indexPath.item].titlePhoto
+        photoCell.photoImageView.image = UIImage(named: "\(Photo.data[indexPath.item].namePhoto)")
+        photoCell.namePhotoLabel.text = Photo.data[indexPath.item].titlePhoto
         
         return photoCell
     }
@@ -87,13 +80,10 @@ extension PhotoViewController: UICollectionViewDataSource {
 extension PhotoViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let detailVC = DetailViewController()
-        //data
-        
-        detailVC.text = photoArray[indexPath.item].titlePhoto
-        detailVC.nameImage = photoArray[indexPath.item].namePhoto
-        
+        detailVC.text = Photo.data[indexPath.item].titlePhoto
+        detailVC.nameImage = Photo.data[indexPath.item].namePhoto
+        detailVC.descriptionText = Photo.data[indexPath.item].descriptionPhoto
         navigationController?.pushViewController(detailVC, animated: true)
-        
     }
     
 }
