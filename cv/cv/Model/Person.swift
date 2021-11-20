@@ -7,7 +7,7 @@
 
 import Foundation
 
-class Person {
+final class Person {
     let name: String
     let surname: String
     let photoName: String

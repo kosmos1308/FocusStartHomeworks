@@ -27,9 +27,7 @@ final class HobbyViewController: UIViewController {
     private var hobbyViewArray = [UIView]()
     private var hobbyImgViewArray = [UIImageView]()
     private var hobbyLabelsArray = [UILabel]()
-    
-    private let cornerRadius: CGFloat = 10
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -53,7 +51,7 @@ final class HobbyViewController: UIViewController {
     
     private func addHobbyView(hobbyView: UIView) {
         hobbyView.translatesAutoresizingMaskIntoConstraints = false
-        hobbyView.layer.cornerRadius = cornerRadius
+        hobbyView.layer.cornerRadius = Metrics.cornerRadius
         hobbyView.layer.shadowColor = UIColor.black.cgColor
         hobbyView.layer.shadowOpacity = 1
         view.addSubview(hobbyView)
@@ -65,7 +63,7 @@ final class HobbyViewController: UIViewController {
         hobbyImageView.backgroundColor = .systemGray6
         hobbyImageView.layer.shadowColor = UIColor.black.cgColor
         hobbyImageView.layer.shadowOpacity = 1
-        hobbyImageView.layer.cornerRadius = cornerRadius * 4
+        hobbyImageView.layer.cornerRadius = Metrics.cornerRadius * 4
         hobbyImageView.contentMode = .scaleAspectFit
         view.addSubview(hobbyImageView)
     }

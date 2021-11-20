@@ -13,4 +13,8 @@ enum Metrics {
     static let top: CGFloat = 112
     static let bottom: CGFloat = 10
     static let width: CGFloat = 100
+    
+    static let cornerRadius: CGFloat = 10
+    static let circleWidth: CGFloat = 8
+    static let circleTop: CGFloat = 15
 }

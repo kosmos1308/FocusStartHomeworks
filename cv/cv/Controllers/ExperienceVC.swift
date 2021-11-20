@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ExperienceVC {
+final class ExperienceVC {
     let experienceLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false

@@ -7,12 +7,12 @@
 
 import UIKit
 
-class PersonVC: UIViewController {
+final class PersonVC: UIViewController {
     let photoImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.backgroundColor = .systemGray6
-        imageView.layer.cornerRadius = 10
+        imageView.layer.cornerRadius = Metrics.cornerRadius
         imageView.clipsToBounds = true
         imageView.contentMode = .scaleAspectFill
         return imageView

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ProjectsTableViewCell: UITableViewCell {
+final class ProjectsTableViewCell: UITableViewCell {
     
     static let id = "ProjectsTableViewCell"
     
@@ -31,20 +31,10 @@ class ProjectsTableViewCell: UITableViewCell {
     lazy var projectImageView: UIImageView = {
         let imgView = UIImageView()
         imgView.translatesAutoresizingMaskIntoConstraints = false
-        imgView.layer.cornerRadius = 10
+        imgView.layer.cornerRadius = Metrics.cornerRadius
         return imgView
     }()
 
-//    override func awakeFromNib() {
-//        super.awakeFromNib()
-//        
-//    }
-//
-//    override func setSelected(_ selected: Bool, animated: Bool) {
-//        super.setSelected(selected, animated: animated)
-//
-//        
-//    }
     
     override func layoutSubviews() {
         super.layoutSubviews()
@@ -60,35 +50,35 @@ class ProjectsTableViewCell: UITableViewCell {
                                                                  toItem: contentView,
                                                                  attribute: .left,
                                                                  multiplier: 1,
-                                                                 constant: 20)
+                                                                 constant: Metrics.left)
         let topConstraintImageView = NSLayoutConstraint(item: projectImageView,
                                                               attribute: .top,
                                                                 relatedBy: .equal,
                                                               toItem: contentView,
                                                               attribute: .top,
                                                               multiplier: 1,
-                                                              constant: 20)
+                                                              constant: Metrics.left)
         let bottomConstraintImageView = NSLayoutConstraint(item: projectImageView,
                                                                  attribute: .bottom,
                                                                  relatedBy: .equal,
                                                                  toItem: contentView,
                                                                  attribute: .bottom,
                                                                  multiplier: 1,
-                                                                 constant: 20)
+                                                                 constant: Metrics.left)
         let widthConstraintImageView = NSLayoutConstraint(item: projectImageView,
                                                          attribute: .width,
                                                          relatedBy: .equal,
                                                          toItem: nil,
                                                          attribute: .notAnAttribute,
                                                          multiplier: 1,
-                                                         constant: 60)
+                                                         constant: Metrics.left * 3)
         let heightConstraintImageView = NSLayoutConstraint(item: projectImageView,
                                                           attribute: .height,
                                                           relatedBy: .equal,
                                                           toItem: nil,
                                                           attribute: .notAnAttribute,
                                                           multiplier: 1,
-                                                          constant: 60)
+                                                          constant: Metrics.left * 3)
         addConstraints([leftConstraintImageView, topConstraintImageView, bottomConstraintImageView, widthConstraintImageView, heightConstraintImageView])
         
         //label
@@ -105,21 +95,21 @@ class ProjectsTableViewCell: UITableViewCell {
                                                      toItem: projectImageView,
                                                      attribute: .right,
                                                      multiplier: 1,
-                                                       constant: 10)
+                                                     constant: Metrics.bottom)
         let widthConstraintLabel = NSLayoutConstraint(item: nameProjectLabel,
                                                  attribute: .width,
                                                  relatedBy: .equal,
                                                  toItem: nil,
                                                  attribute: .notAnAttribute,
                                                  multiplier: 1,
-                                                 constant: 150)
+                                                 constant: Metrics.width * 1.5)
         let heightConstraintLabel = NSLayoutConstraint(item: nameProjectLabel,
                                                   attribute: .height,
                                                   relatedBy: .equal,
                                                   toItem: nil,
                                                   attribute: .notAnAttribute,
                                                   multiplier: 1,
-                                                  constant: 30)
+                                                  constant: Metrics.bottom * 3)
         addConstraints([topConstraintLabel, leftConstraintLabel, widthConstraintLabel, heightConstraintLabel])
         
         //textView
@@ -136,21 +126,21 @@ class ProjectsTableViewCell: UITableViewCell {
                                                     toItem: projectImageView,
                                                     attribute: .right,
                                                     multiplier: 1,
-                                                    constant: 10)
+                                                    constant: Metrics.bottom)
         let rightConstraintTextView = NSLayoutConstraint(item: descriptionProjectTextView,
                                                     attribute: .right,
                                                     relatedBy: .equal,
                                                     toItem: contentView,
                                                     attribute: .right,
                                                     multiplier: 1,
-                                                    constant: -20)
+                                                    constant: -Metrics.left)
         let bottomConstraintTextView = NSLayoutConstraint(item: descriptionProjectTextView,
                                                  attribute: .bottom,
                                                  relatedBy: .equal,
                                                  toItem: contentView,
                                                  attribute: .bottom,
                                                  multiplier: 1,
-                                                 constant: 30)
+                                                 constant: Metrics.bottom * 3)
         addConstraints([topConstraintTextView, leftConstraintTextView, rightConstraintTextView,  bottomConstraintTextView])
     }
 

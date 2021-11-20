@@ -7,6 +7,6 @@
 
 import Foundation
 
-class Skills {
+final class Skills {
     var nameArray = [String]()
 }

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ContactVC: UIViewController {
+final class ContactVC: UIViewController {
     
     let contactsLabel: UILabel = {
         let label = UILabel()

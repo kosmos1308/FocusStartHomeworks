@@ -218,7 +218,7 @@ final class CVViewController: UIViewController {
         for skillView in skillsViewArray {
             skillView.translatesAutoresizingMaskIntoConstraints = false
             skillView.backgroundColor = .systemGray5
-            skillView.layer.cornerRadius = 10
+            skillView.layer.cornerRadius = Metrics.cornerRadius
             skillView.layer.shadowOpacity = 1
             
             skillView.widthAnchor.constraint(equalToConstant: Metrics.width).isActive = true
@@ -282,14 +282,14 @@ final class CVViewController: UIViewController {
         var index = -1
         for circle in circleArray {
             circle.translatesAutoresizingMaskIntoConstraints = false
-            circle.layer.cornerRadius = 4
+            circle.layer.cornerRadius = Metrics.circleWidth/2
             circle.layer.shadowOpacity = 1
             circle.backgroundColor = .systemGray5
             
             index += 1
             circle.leftAnchor.constraint(equalTo: scrollView.leftAnchor, constant: Metrics.left * 1.5).isActive = true
-            circle.widthAnchor.constraint(equalToConstant: 8).isActive = true
-            circle.heightAnchor.constraint(equalToConstant: 8).isActive = true
+            circle.widthAnchor.constraint(equalToConstant: Metrics.circleWidth).isActive = true
+            circle.heightAnchor.constraint(equalToConstant: Metrics.circleWidth).isActive = true
             
             if index == 0 {
                 circle.centerYAnchor.constraint(equalTo: firstExperienceStackView.centerYAnchor).isActive = true
@@ -298,10 +298,10 @@ final class CVViewController: UIViewController {
                 experienceVC.lineView.backgroundColor = .systemGray5
                 experienceVC.lineView.layer.shadowOpacity = 1
                 
-                experienceVC.lineView.leftAnchor.constraint(equalTo: scrollView.leftAnchor, constant: 33).isActive = true
-                experienceVC.lineView.topAnchor.constraint(equalTo: circleArray[0].bottomAnchor, constant: 15).isActive = true
-                experienceVC.lineView.bottomAnchor.constraint(equalTo: circleArray[1].topAnchor, constant: -15).isActive = true
-                experienceVC.lineView.widthAnchor.constraint(equalToConstant: 2).isActive = true
+                experienceVC.lineView.leftAnchor.constraint(equalTo: scrollView.leftAnchor, constant: Metrics.width/3).isActive = true
+                experienceVC.lineView.topAnchor.constraint(equalTo: circleArray[0].bottomAnchor, constant: Metrics.circleTop).isActive = true
+                experienceVC.lineView.bottomAnchor.constraint(equalTo: circleArray[1].topAnchor, constant: -Metrics.circleTop).isActive = true
+                experienceVC.lineView.widthAnchor.constraint(equalToConstant: Metrics.circleWidth/4).isActive = true
             } else {
                 circle.centerYAnchor.constraint(equalTo: presentExperienceStackView.centerYAnchor).isActive = true
             }

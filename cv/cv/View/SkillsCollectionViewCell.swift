@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SkillsCollectionViewCell: UICollectionViewCell {
+final class SkillsCollectionViewCell: UICollectionViewCell {
     
     static let cellIdentifier = "SkillsCollectionViewCell"
     
@@ -37,15 +37,15 @@ class SkillsCollectionViewCell: UICollectionViewCell {
         addSubview(skillLabel)
         
         NSLayoutConstraint.activate([
-            skillImage.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 20),
-            skillImage.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 10),
-            skillImage.widthAnchor.constraint(equalToConstant: 40),
-            skillImage.heightAnchor.constraint(equalToConstant: 40)])
+            skillImage.topAnchor.constraint(equalTo: contentView.topAnchor, constant: Metrics.left),
+            skillImage.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: Metrics.bottom),
+            skillImage.widthAnchor.constraint(equalToConstant: Metrics.left * 2),
+            skillImage.heightAnchor.constraint(equalToConstant: Metrics.left * 2)])
         
         NSLayoutConstraint.activate([
-            skillLabel.topAnchor.constraint(equalTo: skillImage.bottomAnchor, constant: 20),
-            skillLabel.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 10),
-            skillLabel.widthAnchor.constraint(equalToConstant: 80),
-            skillLabel.heightAnchor.constraint(equalToConstant: 30)])
+            skillLabel.topAnchor.constraint(equalTo: skillImage.bottomAnchor, constant: Metrics.left),
+            skillLabel.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: Metrics.left/2),
+            skillLabel.widthAnchor.constraint(equalToConstant: Metrics.left * 4),
+            skillLabel.heightAnchor.constraint(equalToConstant: Metrics.left * 1.5)])
     }
 }

@@ -57,7 +57,7 @@ final class SkillsViewController: UIViewController {
     
     private var skills = Skills()
     private var projectArray = [Project]()
-    
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -166,7 +166,7 @@ extension SkillsViewController: UICollectionViewDataSource, UICollectionViewDele
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SkillsCollectionViewCell.cellIdentifier, for: indexPath)
         guard let skillCell = cell as? SkillsCollectionViewCell else { return cell }
         skillCell.backgroundColor = .systemGray4
-        skillCell.layer.cornerRadius = 10
+        skillCell.layer.cornerRadius = Metrics.cornerRadius
         skillCell.layer.shadowOpacity = 1
         skillCell.skillLabel.text = skills.nameArray[indexPath.item]
         skillCell.skillImage.image = UIImage(named: skills.nameArray[indexPath.item])

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SkillVC: UIViewController {
+final class SkillVC: UIViewController {
     let skillsLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
