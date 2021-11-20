@@ -62,24 +62,24 @@ class DetailViewController: UIViewController {
         NSLayoutConstraint.activate([
             detailPhotoImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             detailPhotoImageView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            detailPhotoImageView.widthAnchor.constraint(equalToConstant: 200),
-            detailPhotoImageView.heightAnchor.constraint(equalToConstant: 200)])
+            detailPhotoImageView.widthAnchor.constraint(equalToConstant: Metrics.width * 2),
+            detailPhotoImageView.heightAnchor.constraint(equalToConstant: Metrics.width * 2)])
     }
     
     private func setupDetailLabelViewAutoLayout() {
         NSLayoutConstraint.activate([
-            detailLabel.topAnchor.constraint(equalTo: detailPhotoImageView.bottomAnchor, constant: 10),
-            detailLabel.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20),
-            detailLabel.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -20),
-            detailLabel.heightAnchor.constraint(equalToConstant: 40)])
+            detailLabel.topAnchor.constraint(equalTo: detailPhotoImageView.bottomAnchor, constant: Metrics.top/2),
+            detailLabel.leftAnchor.constraint(equalTo: view.leftAnchor, constant: Metrics.left),
+            detailLabel.rightAnchor.constraint(equalTo: view.rightAnchor, constant: Metrics.right),
+            detailLabel.heightAnchor.constraint(equalToConstant: Metrics.height/3)])
     }
     
     private func setupDetailButtonViewAutoLayout() {
         NSLayoutConstraint.activate([
-            detailButton.topAnchor.constraint(equalTo: detailLabel.bottomAnchor, constant: 20),
-            detailButton.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20),
-            detailButton.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -20),
-            detailButton.heightAnchor.constraint(equalToConstant: 40)])
+            detailButton.topAnchor.constraint(equalTo: detailLabel.bottomAnchor, constant: Metrics.top),
+            detailButton.leftAnchor.constraint(equalTo: view.leftAnchor, constant: Metrics.left),
+            detailButton.rightAnchor.constraint(equalTo: view.rightAnchor, constant: Metrics.right),
+            detailButton.heightAnchor.constraint(equalToConstant: Metrics.height/3)])
     }
 
 }

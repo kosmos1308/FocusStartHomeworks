@@ -31,8 +31,7 @@ class PhotoViewController: UIViewController {
     private func setupCollectionView() {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
-        layout.itemSize = CGSize(width: Int(view.bounds.width/3 - 20),
-                                 height: Int(view.bounds.width/3 - 20))
+        layout.itemSize = CGSize(width: view.bounds.width/3 - Metrics.left, height: view.bounds.width/3 - Metrics.left)
         
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         guard let collectionView = collectionView else {return}
@@ -52,10 +51,6 @@ class PhotoViewController: UIViewController {
         collectionView?.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
         collectionView?.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
     }
-    
-    
-    
-    
     
     
 }
@@ -78,6 +73,7 @@ extension PhotoViewController: UICollectionViewDataSource {
 extension PhotoViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let detailVC = DetailViewController()
+        //data
         navigationController?.pushViewController(detailVC, animated: true)
         
     }
