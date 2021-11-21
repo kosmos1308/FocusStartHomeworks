@@ -12,8 +12,6 @@ class DetailViewController: UIViewController {
     private let scrollView: UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.translatesAutoresizingMaskIntoConstraints = false
-//        scrollView.maximumZoomScale = 2
-//        scrollView.minimumZoomScale = 1
         return scrollView
     }()
     
@@ -61,8 +59,6 @@ class DetailViewController: UIViewController {
         super.viewDidLoad()
 
         view.backgroundColor = .white
-//        navigationController?.navigationBar.prefersLargeTitles = true
-//        navigationController?.navigationBar.tintColor = .systemBlue
         
         setupScrollView()
         showTextAndImage()
@@ -75,7 +71,8 @@ class DetailViewController: UIViewController {
     
     //MARK: - setup scrollView
     func setupScrollView() {
-        scrollView.contentSize = CGSize(width: view.bounds.width, height: view.bounds.height + 100)
+        scrollView.contentSize = CGSize(width: view.bounds.width,
+                                        height: view.bounds.height + 100)
         view.addSubview(scrollView)
         scrollView.addSubview(detailLabel)
         scrollView.addSubview(detailPhotoImageView)
@@ -113,15 +110,19 @@ class DetailViewController: UIViewController {
     private func setupDetailLabelAutoLayout() {
         NSLayoutConstraint.activate([
             detailLabel.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor),
-            detailLabel.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: Metrics.top/3),
-            detailLabel.leftAnchor.constraint(equalTo: scrollView.leftAnchor, constant: Metrics.left),
-            detailLabel.rightAnchor.constraint(equalTo: scrollView.rightAnchor, constant: Metrics.right),
+            detailLabel.topAnchor.constraint(equalTo: scrollView.topAnchor,
+                                             constant: Metrics.top/3),
+            detailLabel.leftAnchor.constraint(equalTo: scrollView.leftAnchor,
+                                              constant: Metrics.left),
+            detailLabel.rightAnchor.constraint(equalTo: scrollView.rightAnchor,
+                                               constant: Metrics.right),
             detailLabel.heightAnchor.constraint(equalToConstant: Metrics.height/3)])
     }
     
     private func setupDetailPhotoImageViewAutoLayout() {
         NSLayoutConstraint.activate([
-            detailPhotoImageView.topAnchor.constraint(equalTo: detailLabel.bottomAnchor, constant: Metrics.top/3),
+            detailPhotoImageView.topAnchor.constraint(equalTo: detailLabel.bottomAnchor,
+                                                      constant: Metrics.top/3),
             detailPhotoImageView.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor),
             detailPhotoImageView.widthAnchor.constraint(equalToConstant: Metrics.width * 2),
             detailPhotoImageView.heightAnchor.constraint(equalToConstant: Metrics.width * 2)])
@@ -129,18 +130,25 @@ class DetailViewController: UIViewController {
     
     private func setupDescriptionLabelAutoLayout() {
         NSLayoutConstraint.activate([
-            descriptionLabel.topAnchor.constraint(equalTo: detailPhotoImageView.bottomAnchor, constant: Metrics.top/3),
-            descriptionLabel.leftAnchor.constraint(equalTo: scrollView.leftAnchor, constant: Metrics.left),
-            descriptionLabel.rightAnchor.constraint(equalTo: scrollView.rightAnchor, constant: Metrics.right),
+            descriptionLabel.topAnchor.constraint(equalTo: detailPhotoImageView.bottomAnchor,
+                                                  constant: Metrics.top/3),
+            descriptionLabel.leftAnchor.constraint(equalTo: scrollView.leftAnchor,
+                                                   constant: Metrics.left),
+            descriptionLabel.rightAnchor.constraint(equalTo: scrollView.rightAnchor,
+                                                    constant: Metrics.right),
             descriptionLabel.heightAnchor.constraint(equalToConstant: Metrics.height/2)])
     }
     
     private func setupDetailButtonAutoLayout() {
         NSLayoutConstraint.activate([
-            detailButton.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: Metrics.bottom),
-            detailButton.leftAnchor.constraint(equalTo: scrollView.leftAnchor, constant: Metrics.left),
-            detailButton.rightAnchor.constraint(equalTo: scrollView.rightAnchor, constant: Metrics.right),
+            detailButton.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor,
+                                              constant: Metrics.bottom),
+            detailButton.leftAnchor.constraint(equalTo: scrollView.leftAnchor,
+                                               constant: Metrics.left),
+            detailButton.rightAnchor.constraint(equalTo: scrollView.rightAnchor,
+                                                constant: Metrics.right),
             detailButton.heightAnchor.constraint(equalToConstant: Metrics.height/3),
-            detailButton.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: -(scrollView.bounds.height + detailButton.bounds.height))])
+            detailButton.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor,
+                                                 constant: -(scrollView.bounds.height + detailButton.bounds.height))])
     }
 }

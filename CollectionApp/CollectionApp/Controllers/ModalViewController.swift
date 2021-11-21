@@ -12,22 +12,23 @@ class ModalViewController: UIViewController {
     private let closeButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.layer.cornerRadius = 20
-        button.setImage(UIImage(systemName: "xmark.circle"), for: .normal)
+        button.setImage(UIImage(systemName: "xmark"), for: .normal)
         button.tintColor = .systemRed
-        button.addTarget(self, action: #selector(tapCloseButton), for: .touchUpInside)
+        button.layer.cornerRadius = Metrics.cornerRadius * 2
+        button.layer.borderWidth = 1
+        button.layer.borderColor = UIColor.systemRed.cgColor
+        button.addTarget(self,
+                         action: #selector(tapCloseButton),
+                         for: .touchUpInside)
         return button
     }()
     
-    let descriptionLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.textAlignment = .left
-        label.numberOfLines = 0
-        label.backgroundColor = .systemGray5
-        label.font = UIFont(name: "Rockwell", size: 17)
-        return label
-        
+    private let descrptionTextView: UITextView = {
+        let textView = UITextView()
+        textView.translatesAutoresizingMaskIntoConstraints = false
+        textView.font = UIFont(name: "Rockwell", size: 17)
+        textView.isEditable = false
+        return textView
     }()
     
     var detailText = ""
@@ -37,15 +38,16 @@ class ModalViewController: UIViewController {
 
         view.backgroundColor = .white
         view.addSubview(closeButton)
-        view.addSubview(descriptionLabel)
+        view.addSubview(descrptionTextView)
         
-        descriptionLabel.text = detailText
-        
+        descrptionTextView.text = detailText
+    
         setupCloseButtonAutoLayout()
-        setupDescriptionLabelAutoLayout()
+        setupDescriptionTextViewAutoLayout()
     }
     
     
+    //MARK: - action closeButton
     @objc func tapCloseButton() {
         dismiss(animated: true, completion: nil)
     }
@@ -54,18 +56,21 @@ class ModalViewController: UIViewController {
     //MARK: - AutoLayout
     private func setupCloseButtonAutoLayout() {
         NSLayoutConstraint.activate([
-            closeButton.topAnchor.constraint(equalTo: view.topAnchor, constant: Metrics.top/2),
-            closeButton.leftAnchor.constraint(equalTo: view.leftAnchor, constant: Metrics.left/2),
-            closeButton.widthAnchor.constraint(equalToConstant: Metrics.width/4),
-            closeButton.heightAnchor.constraint(equalToConstant: Metrics.width/4)])
+            closeButton.topAnchor.constraint(equalTo: view.topAnchor, constant: Metrics.top * 2),
+            closeButton.leftAnchor.constraint(equalTo: view.leftAnchor, constant: Metrics.left),
+            closeButton.widthAnchor.constraint(equalToConstant: Metrics.cornerRadius * 4),
+            closeButton.heightAnchor.constraint(equalToConstant: Metrics.cornerRadius * 4)])
     }
     
-    private func setupDescriptionLabelAutoLayout() {
+    private func setupDescriptionTextViewAutoLayout() {
         NSLayoutConstraint.activate([
-            descriptionLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: Metrics.top * 2),
-            descriptionLabel.leftAnchor.constraint(equalTo: view.leftAnchor, constant: Metrics.left),
-            descriptionLabel.rightAnchor.constraint(equalTo: view.rightAnchor, constant: Metrics.right),
-            descriptionLabel.heightAnchor.constraint(equalToConstant: view.bounds.height - Metrics.height)])
+            descrptionTextView.topAnchor.constraint(equalTo: closeButton.bottomAnchor,
+                                                    constant: Metrics.bottom + Metrics.top/3),
+            descrptionTextView.leftAnchor.constraint(equalTo: view.leftAnchor,
+                                                     constant: Metrics.left),
+            descrptionTextView.rightAnchor.constraint(equalTo: view.rightAnchor,
+                                                      constant: Metrics.right),
+            descrptionTextView.heightAnchor.constraint(equalToConstant: view.bounds.height - Metrics.height)])
     }
     
     

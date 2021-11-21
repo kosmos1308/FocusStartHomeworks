@@ -7,7 +7,7 @@
 
 import UIKit
 
-class PhotoViewController: UIViewController {
+final class PhotoViewController: UIViewController {
     
     private var collectionView: UICollectionView?
 
@@ -18,7 +18,6 @@ class PhotoViewController: UIViewController {
         
         updateNavController()
         setupCollectionView()
-   
     }
     
     
@@ -36,7 +35,8 @@ class PhotoViewController: UIViewController {
         
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         guard let collectionView = collectionView else {return}
-        collectionView.register(PhotoCollectionViewCell.self, forCellWithReuseIdentifier: PhotoCollectionViewCell.id)
+        collectionView.register(PhotoCollectionViewCell.self,
+                                forCellWithReuseIdentifier: PhotoCollectionViewCell.id)
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.translatesAutoresizingMaskIntoConstraints = false
@@ -52,8 +52,8 @@ class PhotoViewController: UIViewController {
         collectionView?.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
         collectionView?.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
     }
-
 }
+
 
 //MARK: - UICollectionViewDataSource
 extension PhotoViewController: UICollectionViewDataSource {
@@ -65,10 +65,8 @@ extension PhotoViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PhotoCollectionViewCell.id, for: indexPath)
         guard let photoCell = cell as? PhotoCollectionViewCell else {return cell}
-        
         photoCell.photoImageView.image = UIImage(named: "\(Photo.data[indexPath.item].namePhoto)")
         photoCell.namePhotoLabel.text = Photo.data[indexPath.item].titlePhoto
-        
         
         return photoCell
     }
@@ -83,7 +81,6 @@ extension PhotoViewController: UICollectionViewDelegate {
         detailVC.descriptionText = Photo.data[indexPath.item].descriptionPhoto
         navigationController?.pushViewController(detailVC, animated: true)
     }
-    
 }
 
 //MARK: - UICollectionViewDelegateFlowLayout
