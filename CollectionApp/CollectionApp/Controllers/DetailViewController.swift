@@ -9,32 +9,47 @@ import UIKit
 
 class DetailViewController: UIViewController {
     
+    private let scrollView: UIScrollView = {
+        let scrollView = UIScrollView()
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
+//        scrollView.maximumZoomScale = 2
+//        scrollView.minimumZoomScale = 1
+        return scrollView
+    }()
+    
     private let detailPhotoImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.backgroundColor = .systemGray
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.contentMode = .scaleAspectFill
-        //imageView.sizeToFit()
+        imageView.clipsToBounds = true
         return imageView
     }()
     
     private let detailLabel: UILabel = {
         let label = UILabel()
-        //label.backgroundColor = .systemGray
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = .center
-        label.font = UIFont(name: "Rockwell", size: 20)
+        label.font = UIFont(name: "Rockwell Bold", size: 20)
+        return label
+    }()
+    
+    private let descriptionLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = UIFont(name: "Rockwell", size: 17)
+        label.numberOfLines = 3
         return label
     }()
     
     private let detailButton: UIButton = {
         let button = UIButton()
-        button.backgroundColor = .systemBlue
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle("Open modal window", for: .normal)
-        button.setTitleColor(.white, for: .normal)
+        button.setTitle("open description", for: .normal)
+        button.setTitleColor(.systemBlue, for: .normal)
         button.titleLabel?.font = UIFont(name: "Rockwell", size: 20)
-        button.addTarget(self, action: #selector(tapDetailButton(sender:)), for: .touchUpInside)
+        button.addTarget(self,
+                         action: #selector(tapDetailButton(sender:)),
+                         for: .touchUpInside)
         return button
     }()
 
@@ -46,50 +61,86 @@ class DetailViewController: UIViewController {
         super.viewDidLoad()
 
         view.backgroundColor = .white
-        view.addSubview(detailPhotoImageView)
-        view.addSubview(detailLabel)
-        view.addSubview(detailButton)
+//        navigationController?.navigationBar.prefersLargeTitles = true
+//        navigationController?.navigationBar.tintColor = .systemBlue
         
+        setupScrollView()
+        showTextAndImage()
+        setupScrollViewAutoLayout()
+        setupDetailLabelAutoLayout()
         setupDetailPhotoImageViewAutoLayout()
-        setupDetailLabelViewAutoLayout()
-        setupDetailButtonViewAutoLayout()
-        
+        setupDescriptionLabelAutoLayout()
+        setupDetailButtonAutoLayout()
+    }
+    
+    //MARK: - setup scrollView
+    func setupScrollView() {
+        scrollView.contentSize = CGSize(width: view.bounds.width, height: view.bounds.height + 100)
+        view.addSubview(scrollView)
+        scrollView.addSubview(detailLabel)
+        scrollView.addSubview(detailPhotoImageView)
+        scrollView.addSubview(descriptionLabel)
+        scrollView.addSubview(detailButton)
+    }
+    
+    
+    //MARK: - show text and image
+    func showTextAndImage() {
         detailLabel.text = text
         detailPhotoImageView.image = UIImage(named: nameImage)
-        
+        descriptionLabel.text = descriptionText
     }
+    
     
     //MARK: - action detail button
     @objc func tapDetailButton(sender: UIButton) {
         let modalVC = ModalViewController()
         modalVC.detailText = descriptionText
+        modalVC.modalPresentationStyle = .fullScreen
         navigationController?.present(modalVC, animated: true, completion: nil)
     }
     
     
     //MARK: - AutoLayout
+    private func setupScrollViewAutoLayout() {
+        NSLayoutConstraint.activate([
+            scrollView.leftAnchor.constraint(equalTo: view.leftAnchor),
+            scrollView.topAnchor.constraint(equalTo: view.topAnchor),
+            scrollView.rightAnchor.constraint(equalTo: view.rightAnchor),
+            scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor)])
+    }
+    
+    private func setupDetailLabelAutoLayout() {
+        NSLayoutConstraint.activate([
+            detailLabel.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor),
+            detailLabel.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: Metrics.top/3),
+            detailLabel.leftAnchor.constraint(equalTo: scrollView.leftAnchor, constant: Metrics.left),
+            detailLabel.rightAnchor.constraint(equalTo: scrollView.rightAnchor, constant: Metrics.right),
+            detailLabel.heightAnchor.constraint(equalToConstant: Metrics.height/3)])
+    }
+    
     private func setupDetailPhotoImageViewAutoLayout() {
         NSLayoutConstraint.activate([
-            detailPhotoImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            detailPhotoImageView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            detailPhotoImageView.topAnchor.constraint(equalTo: detailLabel.bottomAnchor, constant: Metrics.top/3),
+            detailPhotoImageView.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor),
             detailPhotoImageView.widthAnchor.constraint(equalToConstant: Metrics.width * 2),
             detailPhotoImageView.heightAnchor.constraint(equalToConstant: Metrics.width * 2)])
     }
     
-    private func setupDetailLabelViewAutoLayout() {
+    private func setupDescriptionLabelAutoLayout() {
         NSLayoutConstraint.activate([
-            detailLabel.topAnchor.constraint(equalTo: detailPhotoImageView.bottomAnchor, constant: Metrics.top * 2),
-            detailLabel.leftAnchor.constraint(equalTo: view.leftAnchor, constant: Metrics.left),
-            detailLabel.rightAnchor.constraint(equalTo: view.rightAnchor, constant: Metrics.right),
-            detailLabel.heightAnchor.constraint(equalToConstant: Metrics.height/3)])
+            descriptionLabel.topAnchor.constraint(equalTo: detailPhotoImageView.bottomAnchor, constant: Metrics.top/3),
+            descriptionLabel.leftAnchor.constraint(equalTo: scrollView.leftAnchor, constant: Metrics.left),
+            descriptionLabel.rightAnchor.constraint(equalTo: scrollView.rightAnchor, constant: Metrics.right),
+            descriptionLabel.heightAnchor.constraint(equalToConstant: Metrics.height/2)])
     }
     
-    private func setupDetailButtonViewAutoLayout() {
+    private func setupDetailButtonAutoLayout() {
         NSLayoutConstraint.activate([
-            detailButton.topAnchor.constraint(equalTo: detailLabel.bottomAnchor, constant: Metrics.top),
-            detailButton.leftAnchor.constraint(equalTo: view.leftAnchor, constant: Metrics.left),
-            detailButton.rightAnchor.constraint(equalTo: view.rightAnchor, constant: Metrics.right),
-            detailButton.heightAnchor.constraint(equalToConstant: Metrics.height/3)])
+            detailButton.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: Metrics.bottom),
+            detailButton.leftAnchor.constraint(equalTo: scrollView.leftAnchor, constant: Metrics.left),
+            detailButton.rightAnchor.constraint(equalTo: scrollView.rightAnchor, constant: Metrics.right),
+            detailButton.heightAnchor.constraint(equalToConstant: Metrics.height/3),
+            detailButton.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: -(scrollView.bounds.height + detailButton.bounds.height))])
     }
-
 }

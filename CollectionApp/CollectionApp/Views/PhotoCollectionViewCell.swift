@@ -20,8 +20,6 @@ class PhotoCollectionViewCell: UICollectionViewCell {
         imageView.layer.cornerRadius = Metrics.cornerRadius
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
-        //imageView.sizeToFit()
-        
         return imageView
     }()
     
@@ -35,10 +33,7 @@ class PhotoCollectionViewCell: UICollectionViewCell {
         return label
     }()
     
-    
     let gradient = CAGradientLayer()
-    
-    
     
     override init(frame: CGRect) {
         super.init(frame: frame)

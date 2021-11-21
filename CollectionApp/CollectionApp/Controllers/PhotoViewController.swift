@@ -18,19 +18,14 @@ class PhotoViewController: UIViewController {
         
         updateNavController()
         setupCollectionView()
-        
-        
-
+   
     }
     
     
     //MARK: - update navigationController
     private func updateNavController() {
-        navigationController?.navigationBar.backgroundColor = .systemGray5
         navigationController?.navigationBar.prefersLargeTitles = true
         title = "Photo"
-        
-        navigationItem.titleView?.tintColor = .white
     }
     
     //MARK: - setup collectionView
@@ -74,6 +69,7 @@ extension PhotoViewController: UICollectionViewDataSource {
         photoCell.photoImageView.image = UIImage(named: "\(Photo.data[indexPath.item].namePhoto)")
         photoCell.namePhotoLabel.text = Photo.data[indexPath.item].titlePhoto
         
+        
         return photoCell
     }
 }
@@ -94,7 +90,7 @@ extension PhotoViewController: UICollectionViewDelegate {
 extension PhotoViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         
-        return UIEdgeInsets(top: 10, left: 10, bottom: 0, right: 10)
+        return UIEdgeInsets(top: Metrics.top/2, left: 13, bottom: Metrics.bottom, right: 13)
     }
 }
 
