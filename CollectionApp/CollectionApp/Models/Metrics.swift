@@ -16,4 +16,5 @@ enum Metrics {
     static let width: CGFloat = 102
     static let height: CGFloat = 120
     static let cornerRadius: CGFloat = 7
+    static let spacing: CGFloat = 13
 }

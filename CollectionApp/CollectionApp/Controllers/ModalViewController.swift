@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ModalViewController: UIViewController {
+final class ModalViewController: UIViewController {
     
     private let closeButton: UIButton = {
         let button = UIButton()
@@ -69,9 +69,7 @@ class ModalViewController: UIViewController {
             descrptionTextView.leftAnchor.constraint(equalTo: view.leftAnchor,
                                                      constant: Metrics.left),
             descrptionTextView.rightAnchor.constraint(equalTo: view.rightAnchor,
-                                                      constant: Metrics.right),
+                                                      constant: Metrics.right * 2),
             descrptionTextView.heightAnchor.constraint(equalToConstant: view.bounds.height - Metrics.height)])
     }
-    
-    
 }

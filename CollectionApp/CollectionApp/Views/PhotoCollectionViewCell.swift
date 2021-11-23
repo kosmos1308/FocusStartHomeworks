@@ -7,7 +7,7 @@
 
 import UIKit
 
-class PhotoCollectionViewCell: UICollectionViewCell {
+final class PhotoCollectionViewCell: UICollectionViewCell {
     
     static let id = "PhotoCollectionViewCell"
     
@@ -60,14 +60,20 @@ class PhotoCollectionViewCell: UICollectionViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        photoImageView.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: Metrics.left/2).isActive = true
-        photoImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: Metrics.top/2).isActive = true
-        photoImageView.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: Metrics.right/2).isActive = true
+        photoImageView.leftAnchor.constraint(equalTo: contentView.leftAnchor,
+                                             constant: Metrics.left/2).isActive = true
+        photoImageView.topAnchor.constraint(equalTo: contentView.topAnchor,
+                                            constant: Metrics.top/2).isActive = true
+        photoImageView.rightAnchor.constraint(equalTo: contentView.rightAnchor,
+                                              constant: Metrics.right/2).isActive = true
         photoImageView.heightAnchor.constraint(equalToConstant: contentView.bounds.height + Metrics.right).isActive = true
         
-        namePhotoLabel.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: Metrics.left).isActive = true
-        namePhotoLabel.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: Metrics.right).isActive = true
-        namePhotoLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: Metrics.right).isActive = true
+        namePhotoLabel.leftAnchor.constraint(equalTo: contentView.leftAnchor,
+                                             constant: Metrics.left).isActive = true
+        namePhotoLabel.rightAnchor.constraint(equalTo: contentView.rightAnchor,
+                                              constant: Metrics.right).isActive = true
+        namePhotoLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor,
+                                               constant: Metrics.right).isActive = true
         namePhotoLabel.heightAnchor.constraint(equalToConstant: Metrics.height/5).isActive = true
     }
     

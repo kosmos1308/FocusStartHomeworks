@@ -7,7 +7,7 @@
 
 import UIKit
 
-class DetailViewController: UIViewController {
+final class DetailViewController: UIViewController {
     
     private let scrollView: UIScrollView = {
         let scrollView = UIScrollView()
@@ -72,7 +72,7 @@ class DetailViewController: UIViewController {
     //MARK: - setup scrollView
     func setupScrollView() {
         scrollView.contentSize = CGSize(width: view.bounds.width,
-                                        height: view.bounds.height + 100)
+                                        height: view.bounds.height + Metrics.height)
         view.addSubview(scrollView)
         scrollView.addSubview(detailLabel)
         scrollView.addSubview(detailPhotoImageView)
@@ -135,7 +135,7 @@ class DetailViewController: UIViewController {
             descriptionLabel.leftAnchor.constraint(equalTo: scrollView.leftAnchor,
                                                    constant: Metrics.left),
             descriptionLabel.rightAnchor.constraint(equalTo: scrollView.rightAnchor,
-                                                    constant: Metrics.right),
+                                                    constant: Metrics.right * 2),
             descriptionLabel.heightAnchor.constraint(equalToConstant: Metrics.height/2)])
     }
     

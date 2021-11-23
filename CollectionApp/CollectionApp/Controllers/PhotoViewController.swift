@@ -10,7 +10,7 @@ import UIKit
 final class PhotoViewController: UIViewController {
     
     private var collectionView: UICollectionView?
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -27,11 +27,13 @@ final class PhotoViewController: UIViewController {
         title = "Photo"
     }
     
+    
     //MARK: - setup collectionView
     private func setupCollectionView() {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
-        layout.itemSize = CGSize(width: view.bounds.width/2 - Metrics.left, height: view.bounds.width/2)
+        layout.itemSize = CGSize(width: view.bounds.width/2 - (Metrics.spacing * 2),
+                                 height: view.bounds.width/2)
         
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         guard let collectionView = collectionView else {return}
@@ -40,6 +42,7 @@ final class PhotoViewController: UIViewController {
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.translatesAutoresizingMaskIntoConstraints = false
+        collectionView.contentInsetAdjustmentBehavior = .always
         view.addSubview(collectionView)
         setupCollectionViewAutoLayout()
     }
@@ -86,8 +89,8 @@ extension PhotoViewController: UICollectionViewDelegate {
 //MARK: - UICollectionViewDelegateFlowLayout
 extension PhotoViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        
-        return UIEdgeInsets(top: Metrics.top/2, left: 13, bottom: Metrics.bottom, right: 13)
+
+        return UIEdgeInsets(top: Metrics.spacing, left: Metrics.spacing, bottom: Metrics.spacing, right: Metrics.spacing)
     }
 }
 
