@@ -7,9 +7,10 @@
 
 import UIKit
 
-class PhotosViewController: UIViewController {
+final class PhotosViewController: UIViewController {
     
     private var photosView: PhotosView?
+    
     
     override func loadView() {
         super.loadView()
@@ -26,13 +27,16 @@ class PhotosViewController: UIViewController {
         }
         view.addSubview(photosView)
         
-        navigationController?.navigationBar.backgroundColor = .systemPink
+        //navigationBar
+        navigationController?.navigationBar.prefersLargeTitles = true
+        title = "Photos"
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         photosView?.configureView()
     }
-
+    
+    
 }
 

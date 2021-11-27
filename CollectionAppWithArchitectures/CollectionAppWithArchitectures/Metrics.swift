@@ -6,3 +6,8 @@
 //
 
 import Foundation
+import UIKit
+
+enum Metrics {
+    static let spacing: CGFloat = 10
+}
