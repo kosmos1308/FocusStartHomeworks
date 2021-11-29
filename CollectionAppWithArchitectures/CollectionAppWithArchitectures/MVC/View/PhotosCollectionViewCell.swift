@@ -53,7 +53,6 @@ final class PhotosCollectionViewCell: UICollectionViewCell {
         titleLabel.leftAnchor.constraint(equalTo: imageView.leftAnchor, constant: Metrics.spacing).isActive = true
         titleLabel.bottomAnchor.constraint(equalTo: imageView.bottomAnchor, constant: -Metrics.spacing).isActive = true
         titleLabel.rightAnchor.constraint(equalTo: imageView.rightAnchor, constant: -Metrics.spacing).isActive = true
-        titleLabel.heightAnchor.constraint(equalToConstant: 30).isActive = true
-        
+        titleLabel.heightAnchor.constraint(equalToConstant: Metrics.spacing * 3).isActive = true
     }
 }

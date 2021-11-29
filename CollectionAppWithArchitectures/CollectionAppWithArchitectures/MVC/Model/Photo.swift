@@ -44,4 +44,9 @@ struct Photo {
               titlePhoto: "Apple Park",
               descriptionPhoto: "Apple Park is the corporate headquarters of Apple Inc., located in Cupertino, California. \nIt was opened to employees in April 2017, while construction was still underway, and superseded the original headquarters at 1 Infinite Loop, which opened in 1993. \nThe main building's scale and circular groundscraper design, by Norman Foster, have earned the structure a media nickname \"the spaceship\". \nLocated on a suburban site totalling 1.46 km2, it houses more than 12,000 employees in one central four-story circular building of approximately 0.26 km2. \nApple co-founder Steve Jobs wanted the campus to look less like a business park and more like a nature refuge. Eighty percent of the site consists of green space planted with drought-resistant trees and plants indigenous to the Cupertino area, and the center courtyard of the main building features an artificial pond.")
     ]
+    
+    func getData() -> [Photo] {
+        let photosArray = [Photo]()
+        return photosArray
+    }
 }
