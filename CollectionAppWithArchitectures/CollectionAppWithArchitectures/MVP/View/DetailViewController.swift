@@ -7,14 +7,20 @@
 
 import UIKit
 
-class DetailViewController: UIViewController {
+//MARK: - protocol definition
+protocol IDetailViewController {
+    func presentVC(vc: UIViewController)
+}
+
+//MARK: - class definition
+final class DetailViewController: UIViewController {
     
-    private var detailView: DetailView
-    private var presenter: Presenter
+    private var detailView: IDetailView
+    private var presenter: IDetailPresenter
     
-    init() {
+    init(presenter: IDetailPresenter) {
         self.detailView = DetailView(frame: UIScreen.main.bounds)
-        self.presenter = Presenter()
+        self.presenter = presenter
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -29,11 +35,19 @@ class DetailViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.presenter.sendDetailImage()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.view.addSubview(detailView)
     }
+}
 
+//MARK: - IDetailViewController
+extension DetailViewController: IDetailViewController {
+    func presentVC(vc: UIViewController) {
+        vc.modalPresentationStyle = .fullScreen
+        present(vc, animated: true, completion: nil)
+    }
 }

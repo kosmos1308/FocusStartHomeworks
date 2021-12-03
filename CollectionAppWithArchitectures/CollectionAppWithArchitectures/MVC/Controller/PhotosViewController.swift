@@ -7,15 +7,18 @@
 
 import UIKit
 
+//MARK: - class definition
 final class PhotosViewController: UIViewController {
     
     private var photosView: PhotosView?
+    private var photos: Photos?
     
     override func loadView() {
         super.loadView()
         
         photosView = PhotosView(frame: UIScreen.main.bounds)
         photosView?.loadView(controller: self)
+        photos = Photos()
     }
 
     override func viewDidLoad() {
@@ -44,7 +47,9 @@ final class PhotosViewController: UIViewController {
 //MARK: - UICollectionViewDataSource
 extension PhotosViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return Photo.data.count
+        let count = photos?.getPhoto().count ?? 0
+        
+        return count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -52,12 +57,14 @@ extension PhotosViewController: UICollectionViewDataSource {
         let cell = photosView?.photosCollectionView.dequeueReusableCell(withReuseIdentifier: PhotosCollectionViewCell.id, for: indexPath)
         guard let photoCell = cell as? PhotosCollectionViewCell else {return cell!}
         photoCell.backgroundColor = .white
-        photoCell.layer.cornerRadius = 10
+        photoCell.layer.cornerRadius = Metrics.cornerRadius
         photoCell.layer.borderColor = UIColor.black.cgColor
         photoCell.layer.borderWidth = 1
         
-        photoCell.imageView.image = UIImage(named: "\(Photo.data[indexPath.item].namePhoto)")
-        photoCell.titleLabel.text = Photo.data[indexPath.item].titlePhoto
+        let title = photos?.getPhoto()[indexPath.item].titlePhoto
+        let namePhoto = photos?.getPhoto()[indexPath.item].namePhoto ?? ""
+        photoCell.titleLabel.text = title
+        photoCell.imageView.image = UIImage(named: namePhoto)
         
         return photoCell
     }
@@ -67,15 +74,12 @@ extension PhotosViewController: UICollectionViewDataSource {
 extension PhotosViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        //переход assenbly
-        if indexPath.item != nil {
-            let detailVC = DetailViewController()
-            navigationController?.pushViewController(detailVC, animated: true)
+        if let detailPhoto = photos?.getPhoto()[indexPath.item] {
+            let vc = AssamblyDetailVC.build(photo: detailPhoto)
+            navigationController?.pushViewController(vc, animated: false)
         }
-        
     }
 }
-
 
 //MARK: - UICollectionViewDelegateFlowLayout
 extension PhotosViewController: UICollectionViewDelegateFlowLayout {

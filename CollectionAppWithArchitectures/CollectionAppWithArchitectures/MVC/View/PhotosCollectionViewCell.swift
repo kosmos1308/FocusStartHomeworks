@@ -16,7 +16,7 @@ final class PhotosCollectionViewCell: UICollectionViewCell {
         imageView.backgroundColor = .systemGray
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.clipsToBounds = true
-        imageView.layer.cornerRadius = 10
+        imageView.layer.cornerRadius = Metrics.cornerRadius
         imageView.contentMode = .scaleAspectFill
         return imageView
     }()
@@ -25,10 +25,21 @@ final class PhotosCollectionViewCell: UICollectionViewCell {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = .white
-        label.backgroundColor = .systemBlue
+        label.adjustsFontSizeToFitWidth = true
+        label.minimumScaleFactor = 0.7
         label.font = UIFont(name: "Futura", size: 20)
         label.text = "Some text"
         return label
+    }()
+    
+    private lazy var gradient: CAGradientLayer = {
+        let gradient = CAGradientLayer()
+        gradient.frame = contentView.bounds
+        gradient.contents = imageView.image?.cgImage
+        gradient.colors = [UIColor.clear.cgColor, UIColor.black.cgColor]
+        gradient.startPoint = CGPoint(x: 0, y: 0)
+        gradient.endPoint = CGPoint(x: 0, y: 1)
+        return gradient
     }()
     
     override init(frame: CGRect) {
@@ -36,6 +47,7 @@ final class PhotosCollectionViewCell: UICollectionViewCell {
         
         contentView.addSubview(imageView)
         contentView.addSubview(titleLabel)
+        imageView.layer.addSublayer(gradient)
     }
     
     required init?(coder: NSCoder) {

@@ -7,12 +7,29 @@
 
 import Foundation
 
-class DetailModel {
+//MARK: - protocol definition
+protocol IDetailModel {
+    func getTitle() -> String
+    func getNameImage() -> String
+    func getDescription() -> String
+}
 
-    private var title: String = ""
-    private var nameImage: String = ""
-    private var description: String = ""
+//MARK: - class definiton
+final class DetailModel {
+    private var title: String
+    private var nameImage: String
+    private var description: String
     
+    init(photo: Photo) {
+        self.title = photo.titlePhoto
+        self.nameImage = photo.namePhoto
+        self.description = photo.descriptionPhoto
+    }
+}
+
+
+//MARK: - IDetailModel
+extension DetailModel: IDetailModel {
     func getTitle() -> String {
         return self.title
     }
@@ -23,17 +40,5 @@ class DetailModel {
     
     func getDescription() -> String {
         return self.description
-    }
-    
-    func setTitle(title: String) {
-        self.title = title
-    }
-    
-    func setNameImage(nameImage: String) {
-        self.nameImage = nameImage
-    }
-    
-    func setDescription(description: String) {
-        self.description = description
     }
 }

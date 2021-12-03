@@ -7,6 +7,7 @@
 
 import UIKit
 
+//MARK: - class definition
 final class PhotosView: UIView {
     
     private weak var controller: PhotosViewController?
@@ -25,8 +26,6 @@ final class PhotosView: UIView {
         return cv
     }()
     
-    
-    //MARK: -
     func configureView() {
         setupCollectionView()
         setupCollectionViewAutoLayout()
@@ -35,15 +34,13 @@ final class PhotosView: UIView {
     func loadView(controller: PhotosViewController) {
         self.controller = controller
     }
-    
-    //MARK: - get Data
-    func getData() {
-        
-        
-    }
-  
-    //MARK: - AutoLayout
-    func setupCollectionViewAutoLayout() {
+}
+
+
+//MARK: - private extension
+private extension PhotosView {
+    //AutoLayout
+    private func setupCollectionViewAutoLayout() {
         photosCollectionView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
         photosCollectionView.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
         photosCollectionView.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
@@ -56,4 +53,5 @@ final class PhotosView: UIView {
         self.addSubview(photosCollectionView)
     }
 }
+
 
