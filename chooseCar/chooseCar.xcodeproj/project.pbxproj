@@ -12,6 +12,8 @@
 		E90BC55C2760CF720081B5BB /* ChooseCarTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90BC55B2760CF720081B5BB /* ChooseCarTableViewCell.swift */; };
 		E90BC55F2760D4850081B5BB /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90BC55E2760D4850081B5BB /* DetailsViewController.swift */; };
 		E90BC5612760D49F0081B5BB /* DetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90BC5602760D49F0081B5BB /* DetailsView.swift */; };
+		E90BC56727611AC40081B5BB /* DetailsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90BC56627611AC40081B5BB /* DetailsPresenter.swift */; };
+		E90BC56927613E000081B5BB /* TypeBodyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90BC56827613E000081B5BB /* TypeBodyTableViewCell.swift */; };
 		E97673C12760BC590087478D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97673C02760BC590087478D /* AppDelegate.swift */; };
 		E97673C32760BC590087478D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97673C22760BC590087478D /* SceneDelegate.swift */; };
 		E97673C52760BC590087478D /* ChooseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97673C42760BC590087478D /* ChooseViewController.swift */; };
@@ -34,6 +36,8 @@
 		E90BC55B2760CF720081B5BB /* ChooseCarTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseCarTableViewCell.swift; sourceTree = "<group>"; };
 		E90BC55E2760D4850081B5BB /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
 		E90BC5602760D49F0081B5BB /* DetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsView.swift; sourceTree = "<group>"; };
+		E90BC56627611AC40081B5BB /* DetailsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsPresenter.swift; sourceTree = "<group>"; };
+		E90BC56827613E000081B5BB /* TypeBodyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeBodyTableViewCell.swift; sourceTree = "<group>"; };
 		E97673BD2760BC590087478D /* chooseCar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = chooseCar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E97673C02760BC590087478D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E97673C22760BC590087478D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -72,6 +76,28 @@
 			path = Application;
 			sourceTree = "<group>";
 		};
+		E90BC5622761153A0081B5BB /* MainScreen */ = {
+			isa = PBXGroup;
+			children = (
+				E90BC55B2760CF720081B5BB /* ChooseCarTableViewCell.swift */,
+				E97673C42760BC590087478D /* ChooseViewController.swift */,
+				E90BC5552760CAE00081B5BB /* ChooseView.swift */,
+				E90BC5572760CBF10081B5BB /* ChoosePresenter.swift */,
+			);
+			path = MainScreen;
+			sourceTree = "<group>";
+		};
+		E90BC5632761156E0081B5BB /* DetailsScreen */ = {
+			isa = PBXGroup;
+			children = (
+				E90BC55E2760D4850081B5BB /* DetailsViewController.swift */,
+				E90BC5602760D49F0081B5BB /* DetailsView.swift */,
+				E90BC56827613E000081B5BB /* TypeBodyTableViewCell.swift */,
+				E90BC56627611AC40081B5BB /* DetailsPresenter.swift */,
+			);
+			path = DetailsScreen;
+			sourceTree = "<group>";
+		};
 		E97673B42760BC590087478D = {
 			isa = PBXGroup;
 			children = (
@@ -93,12 +119,8 @@
 			children = (
 				E97673D42760C72A0087478D /* Fonts */,
 				E90BC55D2760D4100081B5BB /* Application */,
-				E90BC5552760CAE00081B5BB /* ChooseView.swift */,
-				E97673C42760BC590087478D /* ChooseViewController.swift */,
-				E90BC55B2760CF720081B5BB /* ChooseCarTableViewCell.swift */,
-				E90BC5572760CBF10081B5BB /* ChoosePresenter.swift */,
-				E90BC55E2760D4850081B5BB /* DetailsViewController.swift */,
-				E90BC5602760D49F0081B5BB /* DetailsView.swift */,
+				E90BC5622761153A0081B5BB /* MainScreen */,
+				E90BC5632761156E0081B5BB /* DetailsScreen */,
 				E97673C92760BC5B0087478D /* Assets.xcassets */,
 				E97673CB2760BC5B0087478D /* LaunchScreen.storyboard */,
 				E97673CE2760BC5B0087478D /* Info.plist */,
@@ -206,9 +228,11 @@
 				E97673C12760BC590087478D /* AppDelegate.swift in Sources */,
 				E90BC55C2760CF720081B5BB /* ChooseCarTableViewCell.swift in Sources */,
 				E90BC55F2760D4850081B5BB /* DetailsViewController.swift in Sources */,
+				E90BC56927613E000081B5BB /* TypeBodyTableViewCell.swift in Sources */,
 				E90BC5612760D49F0081B5BB /* DetailsView.swift in Sources */,
 				E97673C32760BC590087478D /* SceneDelegate.swift in Sources */,
 				E90BC5562760CAE00081B5BB /* ChooseView.swift in Sources */,
+				E90BC56727611AC40081B5BB /* DetailsPresenter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

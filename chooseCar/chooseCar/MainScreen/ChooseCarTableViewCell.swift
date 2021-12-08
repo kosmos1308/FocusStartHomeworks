@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ChooseCarTableViewCell: UITableViewCell {
+final class ChooseCarTableViewCell: UITableViewCell {
     
     static let id = "ChooseCarTableViewCell"
     
@@ -33,6 +33,7 @@ class ChooseCarTableViewCell: UITableViewCell {
         button.setTitle("Select", for: .normal)
         button.titleLabel?.font = UIFont(name: "Inter-Regular", size: 14)
         button.setTitleColor(.black, for: .normal)
+        button.addTarget(self, action: #selector(selectButtonTapped), for: .touchUpInside)
         return button
     }()
     
@@ -56,6 +57,10 @@ class ChooseCarTableViewCell: UITableViewCell {
         self.addSubview(self.modelCarLabel)
         self.addSubview(self.selectButton)
         setupAutoLayout()
+    }
+    
+    @objc private func selectButtonTapped() {
+        print("tap select")
     }
     
     private func setupAutoLayout() {
