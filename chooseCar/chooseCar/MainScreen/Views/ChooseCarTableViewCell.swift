@@ -10,6 +10,7 @@ import UIKit
 final class ChooseCarTableViewCell: UITableViewCell {
     
     static let id = "ChooseCarTableViewCell"
+    var onTouchedHandler: (() -> Void)?
     
     private lazy var iconView: UIView = {
         let view = UIView()
@@ -19,48 +20,28 @@ final class ChooseCarTableViewCell: UITableViewCell {
         return view
     }()
     
-    private lazy var modelCarLabel: UILabel = {
+    lazy var modelCarLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont(name: "Inter-Medium", size: 16)
-        label.text = "Audi"
         return label
     }()
     
-    private lazy var selectButton: UIButton = {
-        let button = UIButton()
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle("Select", for: .normal)
-        button.titleLabel?.font = UIFont(name: "Inter-Regular", size: 14)
-        button.setTitleColor(.black, for: .normal)
-        button.addTarget(self, action: #selector(selectButtonTapped), for: .touchUpInside)
-        return button
+    private lazy var selectLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = UIFont(name: "Inter-Regular", size: 14)
+        label.text = "Select"
+        return label
     }()
-    
-    
-
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
     
     override func layoutSubviews() {
         super.layoutSubviews()
         
         self.addSubview(self.iconView)
         self.addSubview(self.modelCarLabel)
-        self.addSubview(self.selectButton)
+        self.addSubview(self.selectLabel)
         setupAutoLayout()
-    }
-    
-    @objc private func selectButtonTapped() {
-        print("tap select")
     }
     
     private func setupAutoLayout() {
@@ -80,11 +61,11 @@ final class ChooseCarTableViewCell: UITableViewCell {
         ])
         
         NSLayoutConstraint.activate([
-            self.selectButton.topAnchor.constraint(equalTo: self.topAnchor, constant: 8),
-            self.selectButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16),
-            self.selectButton.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -18),
-            self.selectButton.heightAnchor.constraint(equalToConstant: 17),
-            self.selectButton.widthAnchor.constraint(equalToConstant: 42)
+            self.selectLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 8),
+            self.selectLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16),
+            self.selectLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -18),
+            self.selectLabel.heightAnchor.constraint(equalToConstant: 17),
+            self.selectLabel.widthAnchor.constraint(equalToConstant: 42)
         ])
     }
 }

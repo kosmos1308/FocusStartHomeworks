@@ -7,19 +7,24 @@
 
 import UIKit
 
+//MARK: - Protocol definition
+protocol IChooseView: UIView {
+    var onTouchedHandler: ((String) -> Void)? { get set }
+    var carsTableView: UITableView { get set }
+    var titleLabel: UILabel { get set }
+    func setContentLabel(text: PresentContent)
+}
+
+
+//MARK: - Class definition
 final class ChooseView: UIView {
     
-    private var choosePresenter: ChoosePresenter?
-
-    private lazy var modelLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Марку машины"
-        label.font = UIFont(name: "Inter-Medium", size: 24)
-        return label
-    }()
+    private var choosePresenter: IChoosePresenter?
+    private var chooseVC: ChooseViewController?
     
-    lazy var carsTableView: UITableView = {
+    //handler, tableView, title
+    var onTouchedHandler: ((String) -> Void)?
+    var carsTableView: UITableView = {
         let tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.register(ChooseCarTableViewCell.self,
@@ -27,32 +32,43 @@ final class ChooseView: UIView {
         return tableView
     }()
     
-    //view ->(view, controller) -> presenter
-    func loadView(controller: ChooseViewController) {
-        self.choosePresenter?.loadView(controller: controller, view: self)
-    }
-    
-    func setPresenter(presenter: ChoosePresenter) {
-        self.choosePresenter = ChoosePresenter()
-        self.choosePresenter = presenter
-    }
+    var titleLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont(name: "Inter-SemiBold", size: 30)
+        return label
+    }()
+
+    private lazy var modelLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = UIFont(name: "Inter-Medium", size: 24)
+        return label
+    }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.backgroundColor = .systemBackground
+        self.configureView()
+        
+        self.onTouchedHandler = { [weak self] car in
+            self?.onTouchedHandler?(car)
+        }
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+}
+
+//MARK: - Private extension
+private extension ChooseView {
     func configureView() {
         self.addSubview(self.modelLabel)
         self.addSubview(self.carsTableView)
         setupAutoLayot()
     }
     
-    private func setupAutoLayot() {
+    func setupAutoLayot() {
         NSLayoutConstraint.activate([
             self.modelLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 139),
             self.modelLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 18),
@@ -66,5 +82,12 @@ final class ChooseView: UIView {
             self.carsTableView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
             self.carsTableView.bottomAnchor.constraint(equalTo: self.bottomAnchor)
         ])
+    }
+}
+
+extension ChooseView: IChooseView {
+    func setContentLabel(text: PresentContent) {
+        self.modelLabel.text = text.labelText
+        self.titleLabel.text = text.navigationBarText
     }
 }
