@@ -10,15 +10,15 @@ import Foundation
 //MARK: - Protocol definition
 protocol IChoosePresenter {
     func loadView(controller: ChooseViewController, view: IChooseView)
-    
 }
 
 //MARK: - Class definition
 final class ChoosePresenter {
     
     private let router: Router
-    private let model: ICarModel
+    private var model: ICarModel
     private let contentModel: IContentModel
+   
     private weak var view: IChooseView?
     private weak var controller: IChooseViewController?
         
@@ -39,8 +39,8 @@ final class ChoosePresenter {
 private extension ChoosePresenter {
     func setHandlers() {
         self.view?.onTouchedHandler = { [weak self] car in
-            print("next \(car)")
-            self?.router.next()
+            //print(car)
+            self?.router.next(car: car)
         }
     }
     

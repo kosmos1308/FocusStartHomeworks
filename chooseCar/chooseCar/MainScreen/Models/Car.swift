@@ -8,5 +8,6 @@
 import Foundation
 
 struct Car {
+    //static let id = UUID()
     let modelCar: String
 }

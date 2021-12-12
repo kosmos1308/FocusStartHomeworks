@@ -12,6 +12,7 @@ protocol ICarModel {
 }
 
 final class CarModel {
+    static let shared = CarModel()
     private var cars = [Car]()
     
     init() {

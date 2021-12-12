@@ -11,7 +11,6 @@ protocol IChooseViewController: AnyObject {
     func setCars(modelsCars: [Car])
     //func setContentTitle(title: PresentContent)
     var onTouchedHandler: ((String) -> Void)? { get set }
-    
 }
 
 final class ChooseViewController: UIViewController {
@@ -31,7 +30,6 @@ final class ChooseViewController: UIViewController {
     init(dependencies: Dependencies) {
         self.chooseView = ChooseView(frame: UIScreen.main.bounds)
         self.choosePresenter = dependencies.presenter
-        //self.chooseView.onTouchedHandler?(self.cars[0].modelCar)
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -71,6 +69,7 @@ extension ChooseViewController: IChooseViewController {
 //MARK: - UITableViewDataSource
 extension ChooseViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
         return cars.count
     }
     
@@ -91,12 +90,9 @@ extension ChooseViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.index = indexPath.row
-        
+        tableView.deselectRow(at: indexPath, animated: true)
+
         let modelCar = self.cars[indexPath.row].modelCar
-        print(modelCar, index)
-        
         self.chooseView.onTouchedHandler?(modelCar)
-        //self.onTouchedHandler?(modelCar)
     }
 }

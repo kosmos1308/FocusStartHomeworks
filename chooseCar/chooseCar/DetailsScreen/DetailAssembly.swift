@@ -10,8 +10,10 @@ import UIKit
 
 final class DetailsAssembly {
     static func build() -> UIViewController {
-        let presenter = DetailsPresenter()
-        let controller = DetailsViewController()
+        let model = TypeCarModel()
+        let router = Router()
+        let presenter = DetailsPresenter(detailsDependencies: .init(model: model, router: router))
+        let controller = DetailsViewController(detailsDependencies: .init(presenter: presenter))
         
         return controller
     }

@@ -11,7 +11,7 @@ class TypeBodyTableViewCell: UITableViewCell {
     
     static let id = "TypeBodyTableViewCell"
     
-    private lazy var bodyLabel: UILabel = {
+    var bodyLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Седан"
@@ -28,13 +28,11 @@ class TypeBodyTableViewCell: UITableViewCell {
         return view
     }()
     
-    private lazy var circleButton: UIButton = {
-        let button = UIButton()
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.layer.cornerRadius = 6
-        button.backgroundColor = .systemGreen
-        button.addTarget(self, action: #selector(circleButtonTapped), for: .touchUpInside)
-        return button
+    var littleCircleView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.layer.cornerRadius = 6
+        return view
     }()
 
     override func awakeFromNib() {
@@ -45,7 +43,6 @@ class TypeBodyTableViewCell: UITableViewCell {
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
-        // Configure the view for the selected state
     }
     
     override func layoutSubviews() {
@@ -53,12 +50,8 @@ class TypeBodyTableViewCell: UITableViewCell {
         
         self.addSubview(self.bodyLabel)
         self.addSubview(self.circleView)
-        self.circleView.addSubview(self.circleButton)
+        self.addSubview(self.littleCircleView)
         setupAutoLayot()
-    }
-    
-    @objc private func circleButtonTapped() {
-        print("press circle")
     }
     
     private func setupAutoLayot() {
@@ -78,12 +71,12 @@ class TypeBodyTableViewCell: UITableViewCell {
         ])
         
         NSLayoutConstraint.activate([
-            self.circleButton.topAnchor.constraint(equalTo: self.circleView.topAnchor, constant: 2),
-            self.circleButton.leadingAnchor.constraint(equalTo: self.circleView.leadingAnchor, constant: 2),
-            self.circleButton.trailingAnchor.constraint(equalTo: self.circleView.trailingAnchor, constant: -2),
-            self.circleButton.bottomAnchor.constraint(equalTo: self.circleView.bottomAnchor, constant: -2),
-            self.circleButton.heightAnchor.constraint(equalToConstant: 12),
-            self.circleButton.widthAnchor.constraint(equalToConstant: 12)
+            self.littleCircleView.topAnchor.constraint(equalTo: self.circleView.topAnchor, constant: 2),
+            self.littleCircleView.leadingAnchor.constraint(equalTo: self.circleView.leadingAnchor, constant: 2),
+            self.littleCircleView.trailingAnchor.constraint(equalTo: self.circleView.trailingAnchor, constant: -2),
+            self.littleCircleView.bottomAnchor.constraint(equalTo: self.circleView.bottomAnchor, constant: -2),
+            self.littleCircleView.heightAnchor.constraint(equalToConstant: 12),
+            self.littleCircleView.widthAnchor.constraint(equalToConstant: 12)
         ])
     }
 }

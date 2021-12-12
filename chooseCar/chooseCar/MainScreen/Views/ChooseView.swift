@@ -49,10 +49,6 @@ final class ChooseView: UIView {
         super.init(frame: frame)
         self.backgroundColor = .systemBackground
         self.configureView()
-        
-        self.onTouchedHandler = { [weak self] car in
-            self?.onTouchedHandler?(car)
-        }
     }
     
     required init?(coder: NSCoder) {

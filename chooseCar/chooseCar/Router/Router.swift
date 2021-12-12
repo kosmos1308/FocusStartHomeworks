@@ -21,7 +21,7 @@ final class Router {
         self.detailsController = controller
     }
     
-    func next() {
+    func next(car: String) {
         guard let detailsController = detailsController else {
             return
         }

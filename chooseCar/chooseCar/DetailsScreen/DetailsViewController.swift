@@ -7,12 +7,25 @@
 
 import UIKit
 
+protocol IDetailsViewController: AnyObject {
+    var onTouchedHandler: ((Int) -> Void)? { get set }
+}
+
 final class DetailsViewController: UIViewController {
     
-    private var detailsView: DetailsView?
+    var onTouchedHandler: ((Int) -> Void)?
+    private var typeBodyArray: [Body] = []
+   
+    private var detailsView: IDetailsView
+    private var detailsPresenter: IDetailsPresenter
     
-    init() {
+    struct DetailDependencies {
+        let presenter: IDetailsPresenter
+    }
+    
+    init(detailsDependencies: DetailDependencies) {
         self.detailsView = DetailsView(frame: UIScreen.main.bounds)
+        self.detailsPresenter = detailsDependencies.presenter
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -22,52 +35,24 @@ final class DetailsViewController: UIViewController {
     
     override func loadView() {
         super.loadView()
-        self.detailsView?.loadView(controler: self)
+        self.detailsPresenter.loadView(controller: self, view: self.detailsView)
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         updateNavBar()
-        
-        self.detailsView?.typeBodyTableView.delegate = self
-        self.detailsView?.typeBodyTableView.dataSource = self
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
-        self.detailsView?.configureView()
-        guard let detailsView = detailsView else {
-            return
-        }
         self.view.addSubview(detailsView)
     }
     
     private func updateNavBar() {
         self.navigationController?.navigationBar.tintColor = .systemGreen
     }
-    
 }
 
-//MARK: - UITableViewDataSource
-extension DetailsViewController: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4
-    }
+extension DetailsViewController: IDetailsViewController {
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = detailsView?.typeBodyTableView.dequeueReusableCell(withIdentifier: TypeBodyTableViewCell.id, for: indexPath)
-        guard let typeBodyCell = cell as? TypeBodyTableViewCell else {return cell ?? UITableViewCell() }
-        
-        return typeBodyCell
-    }
-}
-
-//MARK: - UITableViewDelegate
-extension DetailsViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        
-        return 51
-    }
 }
