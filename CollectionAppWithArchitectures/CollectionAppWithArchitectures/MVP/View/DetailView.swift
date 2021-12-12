@@ -68,10 +68,10 @@ final class DetailView: UIView {
 //MARK: - private extension
 private extension DetailView {
     func configView() {
-        addSubview(titleLabel)
-        addSubview(detailImageView)
-        addSubview(descriptionLabel)
-        addSubview(detailButton)
+        self.addSubview(titleLabel)
+        self.addSubview(detailImageView)
+        self.addSubview(descriptionLabel)
+        self.addSubview(detailButton)
         
         setupTitleLabelAutoLayout()
         setupDetailImageViewAutoLayout()
@@ -86,43 +86,43 @@ private extension DetailView {
     //AutoLayout
     private func setupTitleLabelAutoLayout() {
         NSLayoutConstraint.activate([
-            titleLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            titleLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: Metrics.top * 6),
-            titleLabel.rightAnchor.constraint(equalTo: self.rightAnchor, constant: Metrics.right),
-            titleLabel.leftAnchor.constraint(equalTo: self.leftAnchor, constant: Metrics.left),
-            titleLabel.heightAnchor.constraint(equalToConstant: Metrics.height/3)])
+            self.titleLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+            self.titleLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: Metrics.top * 6),
+            self.titleLabel.rightAnchor.constraint(equalTo: self.rightAnchor, constant: Metrics.right),
+            self.titleLabel.leftAnchor.constraint(equalTo: self.leftAnchor, constant: Metrics.left),
+            self.titleLabel.heightAnchor.constraint(equalToConstant: Metrics.height/3)])
     }
     
     private func setupDetailImageViewAutoLayout() {
         NSLayoutConstraint.activate([
-            detailImageView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            detailImageView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: Metrics.top/2),
-            detailImageView.widthAnchor.constraint(equalToConstant: Metrics.width * 2),
-            detailImageView.heightAnchor.constraint(equalToConstant: Metrics.width * 2)])
+            self.detailImageView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+            self.detailImageView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: Metrics.top/2),
+            self.detailImageView.widthAnchor.constraint(equalToConstant: Metrics.width * 2),
+            self.detailImageView.heightAnchor.constraint(equalToConstant: Metrics.width * 2)])
     }
     
     private func setupDescriptionLabelAutoLayout() {
         NSLayoutConstraint.activate([
-            descriptionLabel.topAnchor.constraint(equalTo: detailImageView.bottomAnchor),
-            descriptionLabel.leftAnchor.constraint(equalTo: self.leftAnchor, constant: Metrics.left),
-            descriptionLabel.rightAnchor.constraint(equalTo: self.rightAnchor, constant: Metrics.right),
-            descriptionLabel.heightAnchor.constraint(equalToConstant: Metrics.height/1.5)])
+            self.descriptionLabel.topAnchor.constraint(equalTo: detailImageView.bottomAnchor),
+            self.descriptionLabel.leftAnchor.constraint(equalTo: self.leftAnchor, constant: Metrics.left),
+            self.descriptionLabel.rightAnchor.constraint(equalTo: self.rightAnchor, constant: Metrics.right),
+            self.descriptionLabel.heightAnchor.constraint(equalToConstant: Metrics.height/1.5)])
     }
     
     private func setupDetailButtonAutoLayout() {
         NSLayoutConstraint.activate([
-            detailButton.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: Metrics.top),
-            detailButton.leftAnchor.constraint(equalTo: self.leftAnchor, constant: Metrics.left),
-            detailButton.rightAnchor.constraint(equalTo: self.rightAnchor, constant: Metrics.right),
-            detailButton.heightAnchor.constraint(equalToConstant: Metrics.height/3)])
+            self.detailButton.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: Metrics.top),
+            self.detailButton.leftAnchor.constraint(equalTo: self.leftAnchor, constant: Metrics.left),
+            self.detailButton.rightAnchor.constraint(equalTo: self.rightAnchor, constant: Metrics.right),
+            self.detailButton.heightAnchor.constraint(equalToConstant: Metrics.height/3)])
     }
 }
 
 //MARK: - IDetailView
 extension DetailView: IDetailView {
     func updateView(title: String, nameImage: String, description: String) {
-        titleLabel.text = title
-        detailImageView.image = UIImage(named: nameImage)
-        descriptionLabel.text = description
+        self.titleLabel.text = title
+        self.detailImageView.image = UIImage(named: nameImage)
+        self.descriptionLabel.text = description
     }
 }

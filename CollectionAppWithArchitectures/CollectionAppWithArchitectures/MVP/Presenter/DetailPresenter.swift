@@ -11,7 +11,6 @@ import UIKit
 //MARK: - protocol definition
 protocol IDetailPresenter {
     func loadView(controller: DetailViewController, view: IDetailView)
-    func sendDetailImage()
 }
 
 //MARK: - class definition
@@ -27,13 +26,19 @@ final class DetailPresenter {
 
 //MARK: - private extension
 private extension DetailPresenter {
-    private func setHandlers() {
+    func setHandlers() {
         self.view?.onTouchedHandler = { [weak self] in
             let vc = ModalViewController()
-            let text = self?.model.getDescription()
+            let text = self?.model.getData().descriptionPhoto
             vc.modalViewModel.data.data = text ?? ""
             self?.controller?.presentVC(vc: vc)
         }
+    }
+    
+    func sendDetailImage() {
+        guard let view = view else {return}
+        let data = model.getData()
+        view.updateView(title: data.titlePhoto, nameImage: data.namePhoto, description: data.descriptionPhoto)
     }
 }
 
@@ -42,17 +47,7 @@ extension DetailPresenter: IDetailPresenter {
     func loadView(controller: DetailViewController, view: IDetailView) {
         self.controller = controller
         self.view = view
-        
         setHandlers()
-    }
-    
-    func sendDetailImage() {
-        guard let view = view else {return}
-        
-        let title = model.getTitle()
-        let nameImage = model.getNameImage()
-        let description = model.getDescription()
-        
-        view.updateView(title: title, nameImage: nameImage, description: description)
+        sendDetailImage()
     }
 }

@@ -9,9 +9,7 @@ import Foundation
 
 //MARK: - protocol definition
 protocol IDetailModel {
-    func getTitle() -> String
-    func getNameImage() -> String
-    func getDescription() -> String
+    func getData() -> Photo
 }
 
 //MARK: - class definiton
@@ -30,15 +28,9 @@ final class DetailModel {
 
 //MARK: - IDetailModel
 extension DetailModel: IDetailModel {
-    func getTitle() -> String {
-        return self.title
-    }
-    
-    func getNameImage() -> String {
-        return self.nameImage
-    }
-    
-    func getDescription() -> String {
-        return self.description
+    func getData() -> Photo {
+        return Photo.init(namePhoto: self.nameImage,
+                          titlePhoto: self.title,
+                          descriptionPhoto: self.description)
     }
 }

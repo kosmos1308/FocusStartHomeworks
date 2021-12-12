@@ -35,7 +35,6 @@ final class DetailViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.presenter.sendDetailImage()
     }
     
     override func viewDidAppear(_ animated: Bool) {
