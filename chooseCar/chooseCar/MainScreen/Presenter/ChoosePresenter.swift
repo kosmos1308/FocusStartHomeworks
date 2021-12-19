@@ -14,18 +14,17 @@ protocol IChoosePresenter {
 
 //MARK: - Class definition
 final class ChoosePresenter {
-    
-    private let router: Router
-    private var model: ICarModel
+        
+    private let router: IChooseRouter
+    private let model: ICarModel
     private let contentModel: IContentModel
-   
     private weak var view: IChooseView?
     private weak var controller: IChooseViewController?
         
     struct Dependencies {
         let model: ICarModel
         let contentModel: IContentModel
-        let router: Router
+        let router: IChooseRouter
     }
     
     init(dependencies: Dependencies) {
@@ -38,9 +37,8 @@ final class ChoosePresenter {
 //MARK: - Private extension
 private extension ChoosePresenter {
     func setHandlers() {
-        self.view?.onTouchedHandler = { [weak self] car in
-            //print(car)
-            self?.router.next(car: car)
+        self.controller?.onTouchedHandler = { [weak self] index in
+            self?.router.next(index: index)
         }
     }
     
@@ -61,6 +59,7 @@ extension ChoosePresenter: IChoosePresenter {
     func loadView(controller: ChooseViewController, view: IChooseView) {
         self.controller = controller
         self.view = view
+        
         presentContent()
         presentCars()
         setHandlers()

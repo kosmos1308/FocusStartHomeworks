@@ -7,12 +7,13 @@
 
 import Foundation
 
+//MARK: - Protocol definition
 protocol ICarModel {
     func getCars() -> [Car]
 }
 
+//MARK: - Class definition
 final class CarModel {
-    static let shared = CarModel()
     private var cars = [Car]()
     
     init() {
@@ -20,16 +21,18 @@ final class CarModel {
     }
 
     private func setCars() {
-        cars.append(Car(modelCar: "Audi"))
-        cars.append(Car(modelCar: "BMW"))
-        cars.append(Car(modelCar: "Mazda"))
-        cars.append(Car(modelCar: "Lexus"))
-        cars.append(Car(modelCar: "Mersedes"))
+        self.cars.append(Car(modelCar: "Audi"))
+        self.cars.append(Car(modelCar: "BMW"))
+        self.cars.append(Car(modelCar: "Mazda"))
+        self.cars.append(Car(modelCar: "Lexus"))
+        self.cars.append(Car(modelCar: "Mersedes"))
     }
 }
 
+//MARK: - ICarModel
 extension CarModel: ICarModel {
     func getCars() -> [Car] {
         return self.cars
     }
 }
+

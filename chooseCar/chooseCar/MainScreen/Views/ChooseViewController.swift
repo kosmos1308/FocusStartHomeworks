@@ -7,21 +7,21 @@
 
 import UIKit
 
-protocol IChooseViewController: AnyObject {
+//MARK: - Protocol definition
+protocol IChooseViewController: UIViewController {
     func setCars(modelsCars: [Car])
-    //func setContentTitle(title: PresentContent)
-    var onTouchedHandler: ((String) -> Void)? { get set }
+    var onTouchedHandler: ((Int) -> Void)? { get set }
 }
 
+
+//MARK: - Class definition
 final class ChooseViewController: UIViewController {
     
     private var cars = [Car]()
-    private var index: Int?
     private var chooseView: IChooseView
     private var choosePresenter: IChoosePresenter
     
-    var onTouchedHandler: ((String) -> Void)?
-
+    var onTouchedHandler: ((Int) -> Void)?
     
     struct Dependencies {
         let presenter: IChoosePresenter
@@ -44,7 +44,7 @@ final class ChooseViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        updateNavBar()
+        self.updateNavBar()
         self.chooseView.carsTableView.delegate = self
         self.chooseView.carsTableView.dataSource = self
     }
@@ -69,15 +69,13 @@ extension ChooseViewController: IChooseViewController {
 //MARK: - UITableViewDataSource
 extension ChooseViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        return cars.count
+        return self.cars.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         let cell = chooseView.carsTableView.dequeueReusableCell(withIdentifier: ChooseCarTableViewCell.id, for: indexPath)
         guard let carCell = cell as? ChooseCarTableViewCell else {return cell}
-        carCell.modelCarLabel.text = "\(cars[indexPath.row].modelCar)"
+        carCell.modelCarLabel.text = "\(self.cars[indexPath.row].modelCar)"
         
         return carCell
     }
@@ -86,13 +84,12 @@ extension ChooseViewController: UITableViewDataSource {
 //MARK: - UITableViewDelegate
 extension ChooseViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 43
+        return Metrics.heigtModelCarCell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-
-        let modelCar = self.cars[indexPath.row].modelCar
-        self.chooseView.onTouchedHandler?(modelCar)
+        self.onTouchedHandler?(indexPath.row)
     }
 }
+

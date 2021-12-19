@@ -9,7 +9,7 @@ import UIKit
 
 //MARK: - Protocol definition
 protocol IChooseView: UIView {
-    var onTouchedHandler: ((String) -> Void)? { get set }
+    var onTouchedIndexCell: ((Int) -> Void)? { get set }
     var carsTableView: UITableView { get set }
     var titleLabel: UILabel { get set }
     func setContentLabel(text: PresentContent)
@@ -22,8 +22,7 @@ final class ChooseView: UIView {
     private var choosePresenter: IChoosePresenter?
     private var chooseVC: ChooseViewController?
     
-    //handler, tableView, title
-    var onTouchedHandler: ((String) -> Void)?
+    var onTouchedIndexCell: ((Int) -> Void)?
     var carsTableView: UITableView = {
         let tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
@@ -61,7 +60,7 @@ private extension ChooseView {
     func configureView() {
         self.addSubview(self.modelLabel)
         self.addSubview(self.carsTableView)
-        setupAutoLayot()
+        self.setupAutoLayot()
     }
     
     func setupAutoLayot() {
@@ -81,6 +80,7 @@ private extension ChooseView {
     }
 }
 
+//MARK: - IChooseView
 extension ChooseView: IChooseView {
     func setContentLabel(text: PresentContent) {
         self.modelLabel.text = text.labelText

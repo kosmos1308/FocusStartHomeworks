@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "AudiTT.jpg",
+      "filename" : "audi-coupe.jpg",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "AudiTT-1.jpg",
+      "filename" : "audi-coupe-1.jpg",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "AudiTT-2.jpg",
+      "filename" : "audi-coupe-2.jpg",
       "idiom" : "universal",
       "scale" : "3x"
     }

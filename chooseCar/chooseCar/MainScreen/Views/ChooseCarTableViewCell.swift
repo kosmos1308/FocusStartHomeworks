@@ -10,12 +10,11 @@ import UIKit
 final class ChooseCarTableViewCell: UITableViewCell {
     
     static let id = "ChooseCarTableViewCell"
-    var onTouchedHandler: (() -> Void)?
     
     private lazy var iconView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.layer.cornerRadius = 8
+        view.layer.cornerRadius = Metrics.cornerRadiusIcon
         view.backgroundColor = .systemGreen
         return view
     }()
@@ -41,31 +40,31 @@ final class ChooseCarTableViewCell: UITableViewCell {
         self.addSubview(self.iconView)
         self.addSubview(self.modelCarLabel)
         self.addSubview(self.selectLabel)
-        setupAutoLayout()
+        self.setupAutoLayout()
     }
     
     private func setupAutoLayout() {
         NSLayoutConstraint.activate([
-            self.iconView.heightAnchor.constraint(equalToConstant: 16),
-            self.iconView.widthAnchor.constraint(equalToConstant: 16),
-            self.iconView.topAnchor.constraint(equalTo: self.topAnchor, constant: 10),
-            self.iconView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16),
-            self.iconView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -17)
+            self.iconView.heightAnchor.constraint(equalToConstant: Metrics.heightIcon),
+            self.iconView.widthAnchor.constraint(equalToConstant: Metrics.heightIcon),
+            self.iconView.topAnchor.constraint(equalTo: self.topAnchor, constant: Metrics.topIcon),
+            self.iconView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: Metrics.leading),
+            self.iconView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: Metrics.bottomIcon)
         ])
         
         NSLayoutConstraint.activate([
-            self.modelCarLabel.leadingAnchor.constraint(equalTo: self.iconView.trailingAnchor, constant: 16),
-            self.modelCarLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 8),
-            self.modelCarLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -16),
-            self.modelCarLabel.heightAnchor.constraint(equalToConstant: 19)
+            self.modelCarLabel.leadingAnchor.constraint(equalTo: self.iconView.trailingAnchor, constant: Metrics.leading),
+            self.modelCarLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: Metrics.topLabel),
+            self.modelCarLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: Metrics.trailing),
+            self.modelCarLabel.heightAnchor.constraint(equalToConstant: Metrics.heightModelCarLabel)
         ])
         
         NSLayoutConstraint.activate([
-            self.selectLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 8),
-            self.selectLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16),
-            self.selectLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -18),
-            self.selectLabel.heightAnchor.constraint(equalToConstant: 17),
-            self.selectLabel.widthAnchor.constraint(equalToConstant: 42)
+            self.selectLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: Metrics.topLabel),
+            self.selectLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: Metrics.trailing),
+            self.selectLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: Metrics.bottomSelectLabel),
+            self.selectLabel.heightAnchor.constraint(equalToConstant: Metrics.heightSelectLabel),
+            self.selectLabel.widthAnchor.constraint(equalToConstant: Metrics.widthLabel)
         ])
     }
 }
