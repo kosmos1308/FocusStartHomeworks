@@ -23,7 +23,7 @@ class TypeBodyTableViewCell: UITableViewCell {
     private lazy var circleView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.layer.cornerRadius = 8
+        view.layer.cornerRadius = Metrics.cornerRadiusCircle
         view.layer.borderWidth = 1
         view.layer.borderColor = UIColor.systemGreen.cgColor
         return view
@@ -32,7 +32,7 @@ class TypeBodyTableViewCell: UITableViewCell {
     var littleCircleView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.layer.cornerRadius = 6
+        view.layer.cornerRadius = Metrics.cornerRadiusLittleCircle
         return view
     }()
       
@@ -47,27 +47,27 @@ class TypeBodyTableViewCell: UITableViewCell {
     
     private func setupAutoLayot() {
         NSLayoutConstraint.activate([
-            self.bodyLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 17),
-            self.bodyLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16),
-            self.bodyLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -15),
-            self.bodyLabel.widthAnchor.constraint(equalToConstant: 200)
+            self.bodyLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: Metrics.topBodyLabel),
+            self.bodyLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: Metrics.leading),
+            self.bodyLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: Metrics.bottomBodyLabel),
+            self.bodyLabel.widthAnchor.constraint(equalToConstant: Metrics.widthBodyLabel)
         ])
         
         NSLayoutConstraint.activate([
-            self.circleView.topAnchor.constraint(equalTo: self.topAnchor, constant: 18),
-            self.circleView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -17),
-            self.circleView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -17),
-            self.circleView.heightAnchor.constraint(equalToConstant: 16),
-            self.circleView.widthAnchor.constraint(equalToConstant: 16)
+            self.circleView.topAnchor.constraint(equalTo: self.topAnchor, constant: Metrics.topCircle),
+            self.circleView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: Metrics.trailingCircle),
+            self.circleView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: Metrics.bottomCircle),
+            self.circleView.heightAnchor.constraint(equalToConstant: Metrics.heightCircle),
+            self.circleView.widthAnchor.constraint(equalToConstant: Metrics.heightCircle)
         ])
         
         NSLayoutConstraint.activate([
-            self.littleCircleView.topAnchor.constraint(equalTo: self.circleView.topAnchor, constant: 2),
-            self.littleCircleView.leadingAnchor.constraint(equalTo: self.circleView.leadingAnchor, constant: 2),
-            self.littleCircleView.trailingAnchor.constraint(equalTo: self.circleView.trailingAnchor, constant: -2),
-            self.littleCircleView.bottomAnchor.constraint(equalTo: self.circleView.bottomAnchor, constant: -2),
-            self.littleCircleView.heightAnchor.constraint(equalToConstant: 12),
-            self.littleCircleView.widthAnchor.constraint(equalToConstant: 12)
+            self.littleCircleView.topAnchor.constraint(equalTo: self.circleView.topAnchor, constant: Metrics.spacingLittleCircle),
+            self.littleCircleView.leadingAnchor.constraint(equalTo: self.circleView.leadingAnchor, constant: Metrics.spacingLittleCircle),
+            self.littleCircleView.trailingAnchor.constraint(equalTo: self.circleView.trailingAnchor, constant: -Metrics.spacingLittleCircle),
+            self.littleCircleView.bottomAnchor.constraint(equalTo: self.circleView.bottomAnchor, constant: -Metrics.spacingLittleCircle),
+            self.littleCircleView.heightAnchor.constraint(equalToConstant: Metrics.heightLittleCircle),
+            self.littleCircleView.widthAnchor.constraint(equalToConstant: Metrics.heightLittleCircle)
         ])
     }
 }

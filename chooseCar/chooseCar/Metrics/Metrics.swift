@@ -23,7 +23,7 @@ enum Metrics {
     static let heightModelCarLabel: CGFloat = 19
     
     
-    //detailsView
+    //detailsView + cell
     static let left: CGFloat = 16
     static let right: CGFloat = -19
     static let heightImage: CGFloat = 196
@@ -38,5 +38,18 @@ enum Metrics {
     static let bottomButton: CGFloat = -20
     static let cornerRadiusButton: CGFloat = 25
     static let heightTypeBodyCell: CGFloat = 51
+    
+    static let cornerRadiusCircle: CGFloat = 8
+    static let cornerRadiusLittleCircle: CGFloat = 6
+    static let heightCircle: CGFloat = 16
+    static let topCircle: CGFloat = 18
+    static let trailingCircle: CGFloat = -17
+    static let bottomCircle: CGFloat = -17
+    static let heightLittleCircle: CGFloat = 12
+    static let spacingLittleCircle: CGFloat = 2
+    
+    static let topBodyLabel: CGFloat = 17
+    static let bottomBodyLabel: CGFloat = -15
+    static let widthBodyLabel: CGFloat = 200
     
 }

@@ -144,7 +144,7 @@ private extension DetailsView {
             self.priceLabel.topAnchor.constraint(equalTo: self.carImageView.bottomAnchor, constant: 23),
             self.priceLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16),
             self.priceLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16),
-            self.heightAnchor.constraint(equalToConstant: 29)
+            self.priceLabel.heightAnchor.constraint(equalToConstant: 29)
         ])
         
         NSLayoutConstraint.activate([
