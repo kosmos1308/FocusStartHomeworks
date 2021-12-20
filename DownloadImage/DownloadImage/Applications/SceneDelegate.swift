@@ -15,8 +15,8 @@ final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         self.window = UIWindow(windowScene: windowScene)
-        let vc = DownloadImageViewController()
-        self.window?.rootViewController = UINavigationController(rootViewController: vc)
+        let rootVC = DownloadImageAssembly.build()
+        self.window?.rootViewController = UINavigationController(rootViewController: rootVC)
         self.window?.makeKeyAndVisible()
     }
 }

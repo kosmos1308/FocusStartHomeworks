@@ -15,6 +15,9 @@
 		E9295A202771053700B14B26 /* DownloadImageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9295A1F2771053700B14B26 /* DownloadImageModel.swift */; };
 		E9295A222771054800B14B26 /* DownloadImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9295A212771054800B14B26 /* DownloadImageViewController.swift */; };
 		E9295A282771068900B14B26 /* DownloadImagePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9295A272771068900B14B26 /* DownloadImagePresenter.swift */; };
+		E9295A2B27710B1600B14B26 /* DownloadImageAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9295A2A27710B1600B14B26 /* DownloadImageAssembly.swift */; };
+		E9295A2D27711EE700B14B26 /* DownloadImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9295A2C27711EE700B14B26 /* DownloadImageTableViewCell.swift */; };
+		E9295A30277121EA00B14B26 /* Metrics.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9295A2F277121EA00B14B26 /* Metrics.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +31,9 @@
 		E9295A1F2771053700B14B26 /* DownloadImageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadImageModel.swift; sourceTree = "<group>"; };
 		E9295A212771054800B14B26 /* DownloadImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadImageViewController.swift; sourceTree = "<group>"; };
 		E9295A272771068900B14B26 /* DownloadImagePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadImagePresenter.swift; sourceTree = "<group>"; };
+		E9295A2A27710B1600B14B26 /* DownloadImageAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadImageAssembly.swift; sourceTree = "<group>"; };
+		E9295A2C27711EE700B14B26 /* DownloadImageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadImageTableViewCell.swift; sourceTree = "<group>"; };
+		E9295A2F277121EA00B14B26 /* Metrics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Metrics.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,7 +66,9 @@
 		E9295A08277104B300B14B26 /* DownloadImage */ = {
 			isa = PBXGroup;
 			children = (
+				E9295A2E277121DC00B14B26 /* Metrics */,
 				E9295A23277105CA00B14B26 /* Applications */,
+				E9295A2927710AFB00B14B26 /* Assembly */,
 				E9295A262771060600B14B26 /* Model */,
 				E9295A252771060100B14B26 /* View */,
 				E9295A24277105F900B14B26 /* Presenter */,
@@ -92,6 +100,7 @@
 			isa = PBXGroup;
 			children = (
 				E9295A1D2771052500B14B26 /* DownloadImageView.swift */,
+				E9295A2C27711EE700B14B26 /* DownloadImageTableViewCell.swift */,
 				E9295A212771054800B14B26 /* DownloadImageViewController.swift */,
 			);
 			path = View;
@@ -103,6 +112,22 @@
 				E9295A1F2771053700B14B26 /* DownloadImageModel.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		E9295A2927710AFB00B14B26 /* Assembly */ = {
+			isa = PBXGroup;
+			children = (
+				E9295A2A27710B1600B14B26 /* DownloadImageAssembly.swift */,
+			);
+			path = Assembly;
+			sourceTree = "<group>";
+		};
+		E9295A2E277121DC00B14B26 /* Metrics */ = {
+			isa = PBXGroup;
+			children = (
+				E9295A2F277121EA00B14B26 /* Metrics.swift */,
+			);
+			path = Metrics;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -176,7 +201,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				E9295A282771068900B14B26 /* DownloadImagePresenter.swift in Sources */,
+				E9295A2B27710B1600B14B26 /* DownloadImageAssembly.swift in Sources */,
+				E9295A2D27711EE700B14B26 /* DownloadImageTableViewCell.swift in Sources */,
 				E9295A202771053700B14B26 /* DownloadImageModel.swift in Sources */,
+				E9295A30277121EA00B14B26 /* Metrics.swift in Sources */,
 				E9295A1E2771052500B14B26 /* DownloadImageView.swift in Sources */,
 				E9295A222771054800B14B26 /* DownloadImageViewController.swift in Sources */,
 				E9295A0A277104B300B14B26 /* AppDelegate.swift in Sources */,

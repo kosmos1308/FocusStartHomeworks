@@ -6,3 +6,15 @@
 //
 
 import Foundation
+
+protocol IDownloadImageModel {
+    
+}
+
+final class DownloadImageModel {
+    
+}
+
+extension DownloadImageModel: IDownloadImageModel {
+    
+}
