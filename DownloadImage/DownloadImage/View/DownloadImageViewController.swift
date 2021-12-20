@@ -9,6 +9,7 @@ import UIKit
 
 protocol IDownloadImageViewController: UIViewController {
 
+    func showAlert(message: String)
 }
 
 final class DownloadImageViewController: UIViewController {
@@ -20,7 +21,6 @@ final class DownloadImageViewController: UIViewController {
         let presenter: IDownloadImagePresenter
     }
       
-    
     init(dependencies: Dependencies) {
         self.downloadImagePresenter = dependencies.presenter
         self.downloadImageView = DownloadImageView(frame: UIScreen.main.bounds)
@@ -43,7 +43,7 @@ final class DownloadImageViewController: UIViewController {
         self.updateNavigationBar()
     }
     
-    func updateNavigationBar() {
+    private func updateNavigationBar() {
         self.navigationController?.navigationBar.prefersLargeTitles = true
         self.title = "Download image"
     }
@@ -52,9 +52,13 @@ final class DownloadImageViewController: UIViewController {
         super.viewDidAppear(animated)
         self.view.addSubview(self.downloadImageView)
     }
-    
 }
 
 extension DownloadImageViewController: IDownloadImageViewController {
-    
+    func showAlert(message: String) {
+        let alert = UIAlertController(title: "Error! Not image ☹️", message: message, preferredStyle: .alert)
+        let ok = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alert.addAction(ok)
+        present(alert, animated: true, completion: nil)
+    }
 }

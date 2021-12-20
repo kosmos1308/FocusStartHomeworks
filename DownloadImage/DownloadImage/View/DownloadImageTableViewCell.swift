@@ -15,7 +15,7 @@ class DownloadImageTableViewCell: UITableViewCell {
         let img = UIImageView()
         img.translatesAutoresizingMaskIntoConstraints = false
         img.backgroundColor = .darkGray
-        img.layer.cornerRadius = 8
+        img.layer.cornerRadius = Metrics.cornerRadius
         return img
     }()
     
@@ -67,39 +67,39 @@ class DownloadImageTableViewCell: UITableViewCell {
     
     private func setupAutoLayout() {
         NSLayoutConstraint.activate([
-            self.pictureImageView.topAnchor.constraint(equalTo: self.topAnchor, constant: 10),
+            self.pictureImageView.topAnchor.constraint(equalTo: self.topAnchor, constant: Metrics.top),
             self.pictureImageView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: Metrics.leading),
-            self.pictureImageView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -10),
-            self.pictureImageView.widthAnchor.constraint(equalToConstant: 80),
-            self.pictureImageView.heightAnchor.constraint(equalToConstant: 80)
+            self.pictureImageView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: Metrics.bottom),
+            self.pictureImageView.widthAnchor.constraint(equalToConstant: Metrics.heightImage),
+            self.pictureImageView.heightAnchor.constraint(equalToConstant: Metrics.heightImage)
         ])
      
         NSLayoutConstraint.activate([
             self.nameImageLabel.leadingAnchor.constraint(equalTo: self.pictureImageView.trailingAnchor, constant: Metrics.leading),
-            self.nameImageLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 10),
+            self.nameImageLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: Metrics.top),
             self.nameImageLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: Metrics.trailing),
-            self.nameImageLabel.heightAnchor.constraint(equalToConstant: 30)
+            self.nameImageLabel.heightAnchor.constraint(equalToConstant: Metrics.heightNameLabel)
         ])
         
         NSLayoutConstraint.activate([
             self.progressLoadLabel.leadingAnchor.constraint(equalTo: self.pictureImageView.trailingAnchor, constant: Metrics.leading),
             self.progressLoadLabel.topAnchor.constraint(equalTo: self.nameImageLabel.bottomAnchor),
             self.progressLoadLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: Metrics.trailing),
-            self.progressLoadLabel.heightAnchor.constraint(equalToConstant: 20)
+            self.progressLoadLabel.heightAnchor.constraint(equalToConstant: Metrics.heightLabel)
         ])
         
         NSLayoutConstraint.activate([
             self.downloadMbLabel.leadingAnchor.constraint(equalTo: self.pictureImageView.trailingAnchor, constant: Metrics.leading),
             self.downloadMbLabel.topAnchor.constraint(equalTo: self.progressLoadLabel.bottomAnchor),
             self.downloadMbLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: Metrics.trailing),
-            self.downloadMbLabel.heightAnchor.constraint(equalToConstant: 20)
+            self.downloadMbLabel.heightAnchor.constraint(equalToConstant: Metrics.heightLabel)
         ])
         
         NSLayoutConstraint.activate([
             self.progressView.leadingAnchor.constraint(equalTo: self.pictureImageView.trailingAnchor, constant: Metrics.leading),
-            self.progressView.topAnchor.constraint(equalTo: self.downloadMbLabel.bottomAnchor, constant: 5),
+            self.progressView.topAnchor.constraint(equalTo: self.downloadMbLabel.bottomAnchor, constant: Metrics.top/2),
             self.progressView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: Metrics.trailing),
-            self.progressView.heightAnchor.constraint(equalToConstant: 5)
+            self.progressView.heightAnchor.constraint(equalToConstant: Metrics.heightProgressView)
         ])
     }
 }

@@ -12,7 +12,8 @@ final class DownloadImageAssembly {
     
     static func build() -> UIViewController {
         let model = DownloadImageModel()
-        let presenter = DownloadImagePresenter(dependicies: .init(model: model))
+        let networkService = NetworkService()
+        let presenter = DownloadImagePresenter(dependicies: .init(model: model, networkService: networkService))
         let controller = DownloadImageViewController(dependencies: .init(presenter: presenter))
         
         return controller

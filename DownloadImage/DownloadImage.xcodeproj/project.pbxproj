@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4E2B1A29A25D8668FC3A5332 /* Pods_DownloadImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 942CF44B9463C954F860B28C /* Pods_DownloadImage.framework */; };
 		E9295A0A277104B300B14B26 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9295A09277104B300B14B26 /* AppDelegate.swift */; };
 		E9295A0C277104B300B14B26 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9295A0B277104B300B14B26 /* SceneDelegate.swift */; };
 		E9295A13277104B400B14B26 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E9295A12277104B400B14B26 /* Assets.xcassets */; };
@@ -18,9 +19,14 @@
 		E9295A2B27710B1600B14B26 /* DownloadImageAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9295A2A27710B1600B14B26 /* DownloadImageAssembly.swift */; };
 		E9295A2D27711EE700B14B26 /* DownloadImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9295A2C27711EE700B14B26 /* DownloadImageTableViewCell.swift */; };
 		E9295A30277121EA00B14B26 /* Metrics.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9295A2F277121EA00B14B26 /* Metrics.swift */; };
+		E9295A3327712AE600B14B26 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9295A3227712AE600B14B26 /* NetworkService.swift */; };
+		E9295A35277131E900B14B26 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9295A34277131E900B14B26 /* Image.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		54B076EE47762AD82D16465D /* Pods-DownloadImage.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DownloadImage.release.xcconfig"; path = "Target Support Files/Pods-DownloadImage/Pods-DownloadImage.release.xcconfig"; sourceTree = "<group>"; };
+		942CF44B9463C954F860B28C /* Pods_DownloadImage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DownloadImage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B47174CF3CDFE2175E2E0A75 /* Pods-DownloadImage.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DownloadImage.debug.xcconfig"; path = "Target Support Files/Pods-DownloadImage/Pods-DownloadImage.debug.xcconfig"; sourceTree = "<group>"; };
 		E9295A06277104B300B14B26 /* DownloadImage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DownloadImage.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9295A09277104B300B14B26 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E9295A0B277104B300B14B26 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -34,6 +40,8 @@
 		E9295A2A27710B1600B14B26 /* DownloadImageAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadImageAssembly.swift; sourceTree = "<group>"; };
 		E9295A2C27711EE700B14B26 /* DownloadImageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadImageTableViewCell.swift; sourceTree = "<group>"; };
 		E9295A2F277121EA00B14B26 /* Metrics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Metrics.swift; sourceTree = "<group>"; };
+		E9295A3227712AE600B14B26 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		E9295A34277131E900B14B26 /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -41,17 +49,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4E2B1A29A25D8668FC3A5332 /* Pods_DownloadImage.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7EB1844B465F860D798E02F8 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				B47174CF3CDFE2175E2E0A75 /* Pods-DownloadImage.debug.xcconfig */,
+				54B076EE47762AD82D16465D /* Pods-DownloadImage.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		E4DB66B2991B34165C8326AC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				942CF44B9463C954F860B28C /* Pods_DownloadImage.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		E92959FD277104B200B14B26 = {
 			isa = PBXGroup;
 			children = (
 				E9295A08277104B300B14B26 /* DownloadImage */,
 				E9295A07277104B300B14B26 /* Products */,
+				7EB1844B465F860D798E02F8 /* Pods */,
+				E4DB66B2991B34165C8326AC /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -66,6 +94,7 @@
 		E9295A08277104B300B14B26 /* DownloadImage */ = {
 			isa = PBXGroup;
 			children = (
+				E9295A3127712ACC00B14B26 /* NetworkService */,
 				E9295A2E277121DC00B14B26 /* Metrics */,
 				E9295A23277105CA00B14B26 /* Applications */,
 				E9295A2927710AFB00B14B26 /* Assembly */,
@@ -109,6 +138,7 @@
 		E9295A262771060600B14B26 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				E9295A34277131E900B14B26 /* Image.swift */,
 				E9295A1F2771053700B14B26 /* DownloadImageModel.swift */,
 			);
 			path = Model;
@@ -130,6 +160,14 @@
 			path = Metrics;
 			sourceTree = "<group>";
 		};
+		E9295A3127712ACC00B14B26 /* NetworkService */ = {
+			isa = PBXGroup;
+			children = (
+				E9295A3227712AE600B14B26 /* NetworkService.swift */,
+			);
+			path = NetworkService;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -137,9 +175,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E9295A1A277104B400B14B26 /* Build configuration list for PBXNativeTarget "DownloadImage" */;
 			buildPhases = (
+				5F1657DB360497DC237F35DD /* [CP] Check Pods Manifest.lock */,
 				E9295A02277104B300B14B26 /* Sources */,
 				E9295A03277104B300B14B26 /* Frameworks */,
 				E9295A04277104B300B14B26 /* Resources */,
+				9BC5D87B78D1D967451354A9 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -195,11 +235,54 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		5F1657DB360497DC237F35DD /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-DownloadImage-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9BC5D87B78D1D967451354A9 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-DownloadImage/Pods-DownloadImage-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-DownloadImage/Pods-DownloadImage-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-DownloadImage/Pods-DownloadImage-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		E9295A02277104B300B14B26 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E9295A3327712AE600B14B26 /* NetworkService.swift in Sources */,
 				E9295A282771068900B14B26 /* DownloadImagePresenter.swift in Sources */,
 				E9295A2B27710B1600B14B26 /* DownloadImageAssembly.swift in Sources */,
 				E9295A2D27711EE700B14B26 /* DownloadImageTableViewCell.swift in Sources */,
@@ -208,6 +291,7 @@
 				E9295A1E2771052500B14B26 /* DownloadImageView.swift in Sources */,
 				E9295A222771054800B14B26 /* DownloadImageViewController.swift in Sources */,
 				E9295A0A277104B300B14B26 /* AppDelegate.swift in Sources */,
+				E9295A35277131E900B14B26 /* Image.swift in Sources */,
 				E9295A0C277104B300B14B26 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -344,6 +428,7 @@
 		};
 		E9295A1B277104B400B14B26 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B47174CF3CDFE2175E2E0A75 /* Pods-DownloadImage.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -372,6 +457,7 @@
 		};
 		E9295A1C277104B400B14B26 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 54B076EE47762AD82D16465D /* Pods-DownloadImage.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
