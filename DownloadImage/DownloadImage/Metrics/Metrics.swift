@@ -10,5 +10,6 @@ import UIKit
 
 enum Metrics {
     static let leading: CGFloat = 10
-    static let trailing: CGFloat  = -10
+    static let trailing: CGFloat = -10
+    static let heightCell: CGFloat = 100
 }

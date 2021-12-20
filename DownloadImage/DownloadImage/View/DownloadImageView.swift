@@ -67,8 +67,8 @@ final class DownloadImageView: UIView {
     private func setupAutoLayout() {
         NSLayoutConstraint.activate([
             self.searchBar.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor),
-            self.searchBar.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: Metrics.leading),
-            self.searchBar.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: Metrics.trailing)
+            self.searchBar.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: Metrics.leading/2),
+            self.searchBar.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: Metrics.trailing/2)
         ])
         
         NSLayoutConstraint.activate([
@@ -98,15 +98,21 @@ extension DownloadImageView: UITableViewDataSource {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: DownloadImageTableViewCell.id, for: indexPath)
         guard let imageCell = cell as? DownloadImageTableViewCell else { return UITableViewCell()}
-        imageCell.backgroundColor = .systemGreen
-        
+
         return imageCell
     }
 }
 
 
 extension DownloadImageView: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.tableView.deselectRow(at: indexPath, animated: true)
+        print(indexPath.row)
+    }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return Metrics.heightCell
+    }
 }
 
 extension DownloadImageView: IDownloadImageView {
