@@ -7,13 +7,16 @@
 
 import UIKit
 
+//MARK: - Protocol definition
 protocol IDownloadImageViewController: UIViewController {
-
     func showAlert(message: String)
+    func showProgressText(progress: String)
 }
 
+//MARK: - Class definition
 final class DownloadImageViewController: UIViewController {
     
+    private let loadingLabel = UILabel()
     private var downloadImageView: IDownloadImageView
     private var downloadImagePresenter: IDownloadImagePresenter
     
@@ -46,6 +49,15 @@ final class DownloadImageViewController: UIViewController {
     private func updateNavigationBar() {
         self.navigationController?.navigationBar.prefersLargeTitles = true
         self.title = "Download image"
+                
+        let rect: CGRect = CGRect.init(origin: CGPoint.init(x: 0, y: 0), size: CGSize.init(width: 200, height: 40))
+        self.loadingLabel.frame = rect
+        self.loadingLabel.textAlignment = .center
+
+        let titleView = UIView()
+        titleView.frame = rect
+        titleView.addSubview(self.loadingLabel)
+        navigationItem.titleView = titleView
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -54,11 +66,16 @@ final class DownloadImageViewController: UIViewController {
     }
 }
 
+//MARK: - IDownloadImageViewController
 extension DownloadImageViewController: IDownloadImageViewController {
     func showAlert(message: String) {
         let alert = UIAlertController(title: "Error! Not image ☹️", message: message, preferredStyle: .alert)
         let ok = UIAlertAction(title: "OK", style: .default, handler: nil)
         alert.addAction(ok)
         present(alert, animated: true, completion: nil)
+    }
+    
+    func showProgressText(progress: String) {
+        self.loadingLabel.text = progress
     }
 }

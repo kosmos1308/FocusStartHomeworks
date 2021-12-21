@@ -9,33 +9,25 @@ import Foundation
 import Alamofire
 
 protocol INetworkService {
-    func execute(_ url: String, completion: @escaping (String, Data?, Error?) -> Void)
+    func execute(_ url: String, completion: @escaping (Progress, Data?, Error?) -> Void)
 }
 
-class NetworkService {
-    
-}
-
-extension NetworkService: INetworkService {
-    
-    func execute(_ url: String, completion: @escaping (String, Data?, Error?) -> Void) {
-        //AF.download(url)
-        AF.request(url)
+class NetworkService: INetworkService {
+    func execute(_ url: String, completion: @escaping (Progress, Data?, Error?) -> Void) {
+        AF.download(url)
             .validate()
             .downloadProgress { progress in
-                print("progress.localizedDescription: ", progress.localizedDescription)
-                completion(progress.localizedDescription, nil, nil)
+                let progress = progress
+                completion(progress, nil, nil)
             }
         
             .responseData { response in
             if let error = response.error {
                 print(error.localizedDescription)
-                completion("Error", nil, error)
+                completion(Progress(totalUnitCount: 0), nil, error)
             } else if let data = response.value {
-                print(data)
-                completion("", data, nil)
+                completion(Progress(totalUnitCount: 0), data, nil)
             }
         }
     }
-    
 }

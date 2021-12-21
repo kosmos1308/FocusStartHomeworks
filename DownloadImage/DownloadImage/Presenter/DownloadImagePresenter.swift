@@ -10,11 +10,14 @@ https://kb.rspca.org.au/wp-content/uploads/2018/11/golder-retriever-puppy.jpeg
  */
 
 import Foundation
+import UIKit
 
+//MARK: - Protocol definition
 protocol IDownloadImagePresenter: AnyObject {
     func loadView(controller: DownloadImageViewController, view: IDownloadImageView)
 }
 
+//MARK: - Class definition
 final class DownloadImagePresenter {
     
     private let model: IDownloadImageModel
@@ -35,45 +38,30 @@ final class DownloadImagePresenter {
     func setHandlers() {
         self.view?.onTouchHandler = { [weak self] url in
             self?.networkService.execute(url, completion: { (progress, data, error) in
-                let progress = progress
-                print(progress)
-                //print(Float(progress))
-                
-                if let error = error {
-                    //show alert
+                self?.controller?.showProgressText(progress: progress.localizedDescription)
+                self?.view?.showProgress(progress: Float(progress.fractionCompleted))
+            
+                if let data = data {
+                    DispatchQueue.main.async {
+                        self?.model.setImages(url: URL(string: url))
+                        guard let name = self?.model.getNameImage() else { return }
+                        guard let size = self?.model.getSizeImage() else { return }
+                        self?.view?.getData(image: data, name: name, size: size)
+                        self?.view?.tableView.reloadData()
+                    }
+                } else if let error = error {
                     self?.controller?.showAlert(message: error.localizedDescription)
-                    
-                } else if let data = data {
-                    
-                    let urlString = URL(string: url)
-                    guard let url = urlString else { return }
-                    let withoutExt = url.deletingPathExtension()
-                    let name = withoutExt.lastPathComponent
-                
-                    print(data)
-                    self?.model.setImages(name: name,
-                                          progressDownload: Float(progress) ?? 0.0,
-                                          url: urlString,
-                                          progressString: progress)
-                    let image = self?.model.getImage()
-//                    print(image?.first?.url)
-//                    print(image?.first?.name)
-//                    print(image?.first?.progressString)
-//                    print(image?.first?.progressDownload)
-//                    print(image)
                 }
             })
         }
     }
-
 }
 
+//MARK: - IDownloadImagePresenter
 extension DownloadImagePresenter: IDownloadImagePresenter {
     func loadView(controller: DownloadImageViewController, view: IDownloadImageView) {
         self.controller = controller
         self.view = view
-
         self.setHandlers()
-        
     }
 }

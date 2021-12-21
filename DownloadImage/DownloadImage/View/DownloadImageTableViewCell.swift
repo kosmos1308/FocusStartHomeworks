@@ -7,15 +7,16 @@
 
 import UIKit
 
-class DownloadImageTableViewCell: UITableViewCell {
+final class DownloadImageTableViewCell: UITableViewCell {
     
     static let id = "DownloadImageTableViewCell"
     
     lazy var pictureImageView: UIImageView = {
         let img = UIImageView()
         img.translatesAutoresizingMaskIntoConstraints = false
-        img.backgroundColor = .darkGray
         img.layer.cornerRadius = Metrics.cornerRadius
+        img.contentMode = .scaleAspectFill
+        img.clipsToBounds = true
         return img
     }()
     
@@ -24,16 +25,6 @@ class DownloadImageTableViewCell: UITableViewCell {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = .boldSystemFont(ofSize: 20)
         label.textColor = .darkGray
-        label.backgroundColor = .systemMint
-        return label
-    }()
-    
-    lazy var progressLoadLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = .systemFont(ofSize: 16)
-        label.textColor = .darkGray
-        label.backgroundColor = .systemRed
         return label
     }()
     
@@ -42,15 +33,7 @@ class DownloadImageTableViewCell: UITableViewCell {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = .systemFont(ofSize: 16)
         label.textColor = .darkGray
-        label.backgroundColor = .systemMint
         return label
-    }()
-    
-    lazy var progressView: UIProgressView = {
-        lazy var progressView = UIProgressView(progressViewStyle: .default)
-        progressView.translatesAutoresizingMaskIntoConstraints = false
-        progressView.backgroundColor = .systemMint
-        return progressView
     }()
     
     
@@ -59,9 +42,7 @@ class DownloadImageTableViewCell: UITableViewCell {
         
         self.addSubview(self.pictureImageView)
         self.addSubview(self.nameImageLabel)
-        self.addSubview(self.progressLoadLabel)
         self.addSubview(self.downloadMbLabel)
-        self.addSubview(self.progressView)
         self.setupAutoLayout()
     }
     
@@ -82,24 +63,10 @@ class DownloadImageTableViewCell: UITableViewCell {
         ])
         
         NSLayoutConstraint.activate([
-            self.progressLoadLabel.leadingAnchor.constraint(equalTo: self.pictureImageView.trailingAnchor, constant: Metrics.leading),
-            self.progressLoadLabel.topAnchor.constraint(equalTo: self.nameImageLabel.bottomAnchor),
-            self.progressLoadLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: Metrics.trailing),
-            self.progressLoadLabel.heightAnchor.constraint(equalToConstant: Metrics.heightLabel)
-        ])
-        
-        NSLayoutConstraint.activate([
             self.downloadMbLabel.leadingAnchor.constraint(equalTo: self.pictureImageView.trailingAnchor, constant: Metrics.leading),
-            self.downloadMbLabel.topAnchor.constraint(equalTo: self.progressLoadLabel.bottomAnchor),
+            self.downloadMbLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: Metrics.bottom),
             self.downloadMbLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: Metrics.trailing),
             self.downloadMbLabel.heightAnchor.constraint(equalToConstant: Metrics.heightLabel)
-        ])
-        
-        NSLayoutConstraint.activate([
-            self.progressView.leadingAnchor.constraint(equalTo: self.pictureImageView.trailingAnchor, constant: Metrics.leading),
-            self.progressView.topAnchor.constraint(equalTo: self.downloadMbLabel.bottomAnchor, constant: Metrics.top/2),
-            self.progressView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: Metrics.trailing),
-            self.progressView.heightAnchor.constraint(equalToConstant: Metrics.heightProgressView)
         ])
     }
 }

@@ -10,14 +10,29 @@ import UIKit
 //MARK: - Protocol definition
 protocol IDownloadImageView: UIView {
     var onTouchHandler: ((String) -> Void)?  { get set }
+    var tableView: UITableView { get set }
+    func showProgress(progress: Float)
+    func getData(image: Data, name: String, size: String)
 }
 
+//MARK: - Class definition
 final class DownloadImageView: UIView {
     
     private var controller: DownloadImageViewController?
     private var presenter: IDownloadImagePresenter?
     
     var onTouchHandler: ((String) -> Void)?
+    private var images = [Data]()
+    private var nameImages = [String]()
+    private var sizeImages = [String]()
+    
+    private lazy var progressView: UIProgressView = {
+        let progressView = UIProgressView(progressViewStyle: .bar)
+        progressView.translatesAutoresizingMaskIntoConstraints = false
+        progressView.progress = 0.0
+        progressView.progressTintColor = .systemBlue
+        return progressView
+    }()
 
     private lazy var searchBar: UISearchBar = {
         let searchBar = UISearchBar()
@@ -47,6 +62,7 @@ final class DownloadImageView: UIView {
     private func configureView() {
         self.backgroundColor = .systemBackground
 
+        self.addSubview(self.progressView)
         self.addSubview(self.tableView)
         self.addSubview(self.searchBar)
         
@@ -66,7 +82,13 @@ final class DownloadImageView: UIView {
     
     private func setupAutoLayout() {
         NSLayoutConstraint.activate([
-            self.searchBar.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor),
+            self.progressView.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor),
+            self.progressView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+            self.progressView.trailingAnchor.constraint(equalTo: self.trailingAnchor)
+        ])
+        
+        NSLayoutConstraint.activate([
+            self.searchBar.topAnchor.constraint(equalTo: self.progressView.bottomAnchor),
             self.searchBar.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: Metrics.leading/2),
             self.searchBar.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: Metrics.trailing/2)
         ])
@@ -80,6 +102,7 @@ final class DownloadImageView: UIView {
     }
 }
 
+//MARK: - UISearchBarDelegate
 extension DownloadImageView: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         guard let text = searchBar.text else { return }
@@ -87,27 +110,29 @@ extension DownloadImageView: UISearchBarDelegate {
     }
 }
 
-
+//MARK: - UITableViewDataSource
 extension DownloadImageView: UITableViewDataSource {
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return self.images.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: DownloadImageTableViewCell.id, for: indexPath)
         guard let imageCell = cell as? DownloadImageTableViewCell else { return UITableViewCell()}
-
+        
+        imageCell.pictureImageView.image = UIImage(data: images[indexPath.row])
+        imageCell.nameImageLabel.text = nameImages[indexPath.row]
+        imageCell.downloadMbLabel.text = sizeImages[indexPath.row]
+        
         return imageCell
     }
 }
 
-
+//MARK: - UITableViewDelegate
 extension DownloadImageView: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.tableView.deselectRow(at: indexPath, animated: true)
-        print(indexPath.row)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -115,6 +140,15 @@ extension DownloadImageView: UITableViewDelegate {
     }
 }
 
+//MARK: - IDownloadImageView
 extension DownloadImageView: IDownloadImageView {
-
+    func showProgress(progress: Float) {
+        self.progressView.setProgress(progress, animated: true)
+    }
+    
+    func getData(image: Data, name: String, size: String) {
+        self.images.append(image)
+        self.nameImages.append(name)
+        self.sizeImages.append(size)
+    }
 }

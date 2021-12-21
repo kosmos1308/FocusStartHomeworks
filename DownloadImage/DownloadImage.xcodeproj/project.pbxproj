@@ -20,7 +20,6 @@
 		E9295A2D27711EE700B14B26 /* DownloadImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9295A2C27711EE700B14B26 /* DownloadImageTableViewCell.swift */; };
 		E9295A30277121EA00B14B26 /* Metrics.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9295A2F277121EA00B14B26 /* Metrics.swift */; };
 		E9295A3327712AE600B14B26 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9295A3227712AE600B14B26 /* NetworkService.swift */; };
-		E9295A35277131E900B14B26 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9295A34277131E900B14B26 /* Image.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,7 +40,6 @@
 		E9295A2C27711EE700B14B26 /* DownloadImageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadImageTableViewCell.swift; sourceTree = "<group>"; };
 		E9295A2F277121EA00B14B26 /* Metrics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Metrics.swift; sourceTree = "<group>"; };
 		E9295A3227712AE600B14B26 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
-		E9295A34277131E900B14B26 /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,7 +136,6 @@
 		E9295A262771060600B14B26 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				E9295A34277131E900B14B26 /* Image.swift */,
 				E9295A1F2771053700B14B26 /* DownloadImageModel.swift */,
 			);
 			path = Model;
@@ -291,7 +288,6 @@
 				E9295A1E2771052500B14B26 /* DownloadImageView.swift in Sources */,
 				E9295A222771054800B14B26 /* DownloadImageViewController.swift in Sources */,
 				E9295A0A277104B300B14B26 /* AppDelegate.swift in Sources */,
-				E9295A35277131E900B14B26 /* Image.swift in Sources */,
 				E9295A0C277104B300B14B26 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
