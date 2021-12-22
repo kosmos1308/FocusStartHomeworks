@@ -37,7 +37,7 @@ final class DownloadImageView: UIView {
     private lazy var searchBar: UISearchBar = {
         let searchBar = UISearchBar()
         searchBar.translatesAutoresizingMaskIntoConstraints = false
-        searchBar.placeholder = "Search"
+        searchBar.placeholder = "Search image"
         return searchBar
     }()
     
@@ -106,7 +106,9 @@ final class DownloadImageView: UIView {
 extension DownloadImageView: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         guard let text = searchBar.text else { return }
+        self.searchBar.resignFirstResponder()
         self.onTouchHandler?(text)
+        
     }
 }
 

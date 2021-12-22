@@ -92,9 +92,9 @@
 		E9295A08277104B300B14B26 /* DownloadImage */ = {
 			isa = PBXGroup;
 			children = (
+				E9295A23277105CA00B14B26 /* Applications */,
 				E9295A3127712ACC00B14B26 /* NetworkService */,
 				E9295A2E277121DC00B14B26 /* Metrics */,
-				E9295A23277105CA00B14B26 /* Applications */,
 				E9295A2927710AFB00B14B26 /* Assembly */,
 				E9295A262771060600B14B26 /* Model */,
 				E9295A252771060100B14B26 /* View */,

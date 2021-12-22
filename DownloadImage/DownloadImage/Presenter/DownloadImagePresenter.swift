@@ -5,8 +5,8 @@
 //  Created by pavel on 20.12.21.
 //
 
-/*
-https://kb.rspca.org.au/wp-content/uploads/2018/11/golder-retriever-puppy.jpeg
+/* image
+https://searchthisweb.com/wallpaper/earth_3840x2918_xji53.jpg
  */
 
 import Foundation
@@ -65,3 +65,4 @@ extension DownloadImagePresenter: IDownloadImagePresenter {
         self.setHandlers()
     }
 }
+
