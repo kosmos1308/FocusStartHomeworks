@@ -7,14 +7,11 @@
 
 import UIKit
 
-class EmployeeViewController: UIViewController {
-
+final class EmployeeViewController: UIViewController {
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
         
     }
-    
-
 
 }
